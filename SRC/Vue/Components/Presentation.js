@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, Text} from 'react-native'
 
-export default class Presentation extends React.Component {
+class Presentation extends React.Component {
     render() {
         return (
             <View>
@@ -11,4 +11,4 @@ export default class Presentation extends React.Component {
     }
 }
 
-export default (Presentation)
+export default Presentation
