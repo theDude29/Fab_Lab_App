@@ -11,4 +11,4 @@ export default class Presentation extends React.Component {
     }
 }
 
-export default Presentation
+export default (Presentation)
