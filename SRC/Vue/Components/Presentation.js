@@ -5,7 +5,9 @@ class Presentation extends React.Component {
     render() {
         return (
             <View>
-                <Text>App du fab lab</Text>
+                <Text>Bienvenu dans l'application du fab lab !</Text>
+                <Text>texte de prsentation qsdfdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</Text>
+                <Text>Dernier publication : sqdfffffffdddddddddddddddddddddddddd</Text>
             </View>
         )
     }

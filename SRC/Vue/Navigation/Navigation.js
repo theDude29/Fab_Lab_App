@@ -10,19 +10,40 @@ import Parametres from '../Components/Parametres'
 const MyDrawerNavigator = createDrawerNavigator({
   Home: {
     screen: Presentation,
+    navigationOptions: {
+        title: 'Home'
+    }
   },
   Articles: {
       screen: Articles,
+      navigationOptions: {
+          title: 'Articles'
+      }
   },
   Forum: {
       screen: Forum,
+      navigationOptions: {
+          title: 'Forums'
+      }
   },
   Mon_compte: {
       screen: Mon_compte,
+      navigationOptions: {
+          title: 'Mon compte'
+      }
   },
   Parametres: {
-      screen: Parametres
-  }
-});
+      screen: Parametres,
+      navigationOptions: {
+          title: 'Paramètres'
+            }
+        }
+    },
+    {
+        drawerBackgroundColor: 'orange',
+        drawerType: 'slide',
+        hideStatusBar: 'true'
+    }
+);
 
 export default createAppContainer(MyDrawerNavigator)
