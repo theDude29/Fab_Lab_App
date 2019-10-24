@@ -10,3 +10,16 @@ creer projer expo dans un dossier :
     supprimer tous les fichier present dans le dossier
 
 cloner ce projet dans le repertoire ou le projet expo a été initialisé
+
+mettez vous a la racine du projet : 
+    mettez ca dans un terminal : $ cd [emplacement du projet]
+
+installer les dependances : 
+    mettez ca dans un terminal : $ npm install
+
+lancer le serveur node js :
+    mettez ca dans un terminal : $ npm start
+    
+scanner le QR Code et admirer le resultat ;-)
+
+        
