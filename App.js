@@ -1,10 +1,10 @@
 import React from 'react';
-import Presentation from './SRC/Vue/Components/Presentation'
+import Navigation from './SRC/Vue/Navigation/Navigation'
 
 export default class App extends React.Component {
     render() {
         return (
-            <Presentation />
+            <Navigation />
         )
     }
 }

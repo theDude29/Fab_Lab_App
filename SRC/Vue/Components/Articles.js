@@ -1,14 +1,14 @@
 import React from 'react'
 import {View, Text} from 'react-native'
 
-class Parametres extends React.Component {
+class Articles extends React.Component {
     render() {
         return (
             <View>
-                <Text>Parametres</Text>
+                <Text>Articles</Text>
             </View>
         )
     }
 }
 
-export default Parametres
+export default Articles
