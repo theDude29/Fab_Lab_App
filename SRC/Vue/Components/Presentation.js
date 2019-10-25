@@ -1,7 +1,16 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground} from 'react-native'
+import * as Font from 'expo-font' ;
 
 class Presentation extends React.Component {
+  async componentDidMount() {
+      await Font.loadAsync({
+        'matrix': require('../ressources/police/matrix.ttf'),
+      });
+
+      this.setState({ fontLoaded: true });
+    }
+
     render() {
         return (
             <ImageBackground
@@ -25,7 +34,8 @@ const styles = StyleSheet.create({
     },
     default_text: {
         color: "white",
-        fontSize: 30
+        fontSize: 30,
+        fontFamily: 'matrix'
     },
     main_container: {
         margin: 20,

@@ -1,14 +1,36 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground} from 'react-native'
 
 class Parametres extends React.Component {
     render() {
         return (
-            <View>
-                <Text>Parametres</Text>
-            </View>
+            <ImageBackground
+                style={styles.image}
+                source={require('../ressources/images/parametres.png')}
+            >
+                <View style={styles.main_container}>
+                    <Text style={styles.default_text}>Parametre</Text>
+                </View>
+            </ImageBackground>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    image: {
+        width: '100%',
+        height: '100%'
+    },
+    default_text: {
+        color: "white",
+        fontSize: 30
+    },
+    main_container: {
+        margin: 20,
+        padding: 15,
+        backgroundColor: 'rgba(100,100,100,0.5)',
+        borderRadius: 20,
+    }
+})
 
 export default Parametres
