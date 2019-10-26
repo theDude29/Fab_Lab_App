@@ -3,6 +3,14 @@ import {View, Text, StyleSheet, ImageBackground} from 'react-native'
 import * as Font from 'expo-font' ;
 
 class Presentation extends React.Component {
+
+    constructor(props) {
+    super(props)
+    this.state = {
+      fontLoaded: false,
+    }
+  }
+
   async componentDidMount() {
       await Font.loadAsync({
         'matrix': require('../ressources/police/matrix.ttf'),
@@ -18,9 +26,11 @@ class Presentation extends React.Component {
                 source={require('../ressources/images/presentation.jpg')}
             >
                 <View style={styles.main_container}>
-                    <Text style={styles.default_text}>Bienvenu dans l'application du fab lab !</Text>
-                    <Text style={styles.default_text}>texte de prsentation qsdfdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</Text>
-                    <Text style={styles.default_text}>Dernier publication : sqdfffffffdddddddddddddddddddddddddd</Text>
+                {
+                    this.state.fontLoaded ? (
+                        <Text style={styles.default_text}>Bienvenu dans l application du fab lab !</Text>
+                    ) : null
+                }
                 </View>
             </ImageBackground>
         )

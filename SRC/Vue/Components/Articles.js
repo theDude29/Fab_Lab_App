@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
     },
     default_text: {
         color: "white",
-        fontSize: 30
+        fontSize: 30,
+        fontFamily: 'matrix'
     },
     main_container: {
         margin: 20,
