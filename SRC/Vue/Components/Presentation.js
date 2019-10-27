@@ -19,19 +19,27 @@ class Presentation extends React.Component {
       this.setState({ fontLoaded: true });
     }
 
+    _displayDescription() {
+        return (
+            <Text>Descrioption</Text>
+        )
+    }
+
     render() {
         return (
             <ImageBackground
                 style={styles.image}
                 source={require('../ressources/images/presentation.jpg')}
             >
-                <View style={styles.main_container}>
-                {
-                    this.state.fontLoaded ? (
-                        <Text style={styles.default_text}>{"Bienvenue\n dans l'application du fab lab !"}</Text>
+            {
+                this.state.fontLoaded ? (
+                    <View style={styles.main_container}>
+                        <Text style={styles.default_text}>Bienvenue dans l'application du fab lab !</Text>
+                        <Text style={styles.default_text}>{this._displayDescription()}</Text>
+                        //<Text style={styles.default_text}>{this._displayLastArticle()}</Text>
+                    </View>
                     ) : null
-                }
-                </View>
+            }
             </ImageBackground>
         )
     }
