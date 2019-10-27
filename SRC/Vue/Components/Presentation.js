@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, ScrollView} from 'react-native'
 import * as Font from 'expo-font' ;
 
 class Presentation extends React.Component {
@@ -21,7 +21,7 @@ class Presentation extends React.Component {
 
     _displayDescription() {
         return (
-            <Text>Descrioption</Text>
+            <Text>Description</Text>
         )
     }
 
@@ -31,15 +31,16 @@ class Presentation extends React.Component {
                 style={styles.image}
                 source={require('../ressources/images/presentation.jpg')}
             >
+            <ScrollView>
             {
                 this.state.fontLoaded ? (
                     <View style={styles.main_container}>
-                        <Text style={styles.default_text}>Bienvenue dans l'application du fab lab !</Text>
+                        <Text style={styles.title_text}>Bienvenue dans l'application du fab lab !</Text>
                         <Text style={styles.default_text}>{this._displayDescription()}</Text>
-                        //<Text style={styles.default_text}>{this._displayLastArticle()}</Text>
                     </View>
                     ) : null
             }
+            </ScrollView>
             </ImageBackground>
         )
     }
@@ -49,6 +50,11 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: '100%'
+    },
+    title_text: {
+        color: "cyan",
+        fontFamily: 'futuriste',
+        fontSize: 40
     },
     default_text: {
         color: "white",
