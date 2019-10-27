@@ -1,7 +1,23 @@
 import React from 'react'
 import {View, Text, ImageBackground, StyleSheet} from 'react-native'
+import loadFile from '../../Model/LoadFile'
 
 class Articles extends React.Component {
+
+    constructor(props) {
+        super(props)
+
+        this._majData = this._majData.bind(this)
+
+        this.state = {
+            data: loadFile("http://remi.perenne.free.fr/site_world_of_colonies/vue/jouer.php", this._majData)
+        }
+    }
+
+    _majData(data) {
+        this.setState({data: data})
+    }
+
     render() {
         return (
             <ImageBackground
@@ -9,7 +25,12 @@ class Articles extends React.Component {
                 source={require('../ressources/images/articles.jpg')}
             >
                 <View style={styles.main_container}>
-                    <Text style={styles.default_text}>Article singe\n singe!</Text>
+                <Text>
+                    {
+                        //this.setState({data: "singe"})
+                        this.state.data
+                    }
+                </Text>
                 </View>
             </ImageBackground>
         )
@@ -24,7 +45,7 @@ const styles = StyleSheet.create({
     default_text: {
         color: "white",
         fontSize: 30,
-        fontFamily: 'matrix'
+        fontFamily: 'futuriste'
     },
     main_container: {
         margin: 20,

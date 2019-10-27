@@ -13,7 +13,7 @@ class Presentation extends React.Component {
 
   async componentDidMount() {
       await Font.loadAsync({
-        'matrix': require('../ressources/police/matrix.ttf'),
+        'futuriste': require('../ressources/police/future_weknow/FUTURE.otf'),
       });
 
       this.setState({ fontLoaded: true });
@@ -28,7 +28,7 @@ class Presentation extends React.Component {
                 <View style={styles.main_container}>
                 {
                     this.state.fontLoaded ? (
-                        <Text style={styles.default_text}>Bienvenu dans l application du fab lab !</Text>
+                        <Text style={styles.default_text}>{"Bienvenue\n dans l'application du fab lab !"}</Text>
                     ) : null
                 }
                 </View>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     default_text: {
         color: "white",
         fontSize: 30,
-        fontFamily: 'matrix'
+        fontFamily: 'futuriste'
     },
     main_container: {
         margin: 20,

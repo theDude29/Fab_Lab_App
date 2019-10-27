@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     default_text: {
         color: "white",
         fontSize: 30,
-        fontFamily: 'matrix'
+        fontFamily: 'futuriste'
     },
     main_container: {
         margin: 20,
