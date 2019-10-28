@@ -9,7 +9,7 @@ function loadFile(file, callback) {
 
         if (xhr.readyState === XMLHttpRequest.DONE && (xhr.status === 200 || xhr.status === 0)) { // Si le fichier est chargé sans erreur
 
-            callback(xhr.responseText)
+            callback(JSON.parse(xhr.responseText))
         }
 
         else if (xhr.readyState === XMLHttpRequest.DONE && (xhr.status != 200 || xhr.status != 0)) { // En cas d'erreur !

@@ -1,27 +1,40 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, ScrollView} from 'react-native'
 import * as Font from 'expo-font' ;
+import * as InfoPresentation from '../../Controleur/infoPresentation'
+import ArticleItem from './ArticleItem'
 
 class Presentation extends React.Component {
 
     constructor(props) {
     super(props)
+
+    this._majDescription = this._majDescription.bind(this)
+
     this.state = {
       fontLoaded: false,
+      description_app: ""
     }
+
+    InfoPresentation.getDescription(this._majDescription)
   }
 
-  async componentDidMount() {
-      await Font.loadAsync({
-        'futuriste': require('../ressources/police/future_weknow/FUTURE.otf'),
-      });
-
-      this.setState({ fontLoaded: true });
-    }
+  _majDescription(data) {
+      this.setState({description_app: data})
+  }
 
     _displayDescription() {
         return (
-            <Text>Description</Text>
+            <Text>{this.state.description_app}</Text>
+        )
+    }
+
+    _displayLastArticle() {
+        return (
+            <View>
+                <Text style={styles.default_text}>Dernier article: </Text>
+                {InfoPresentation.getLastArticle()}
+            </View>
         )
     }
 
@@ -37,6 +50,7 @@ class Presentation extends React.Component {
                     <View style={styles.main_container}>
                         <Text style={styles.title_text}>Bienvenue dans l'application du fab lab !</Text>
                         <Text style={styles.default_text}>{this._displayDescription()}</Text>
+                        {this._displayLastArticle()}
                     </View>
                     ) : null
             }
@@ -44,6 +58,14 @@ class Presentation extends React.Component {
             </ImageBackground>
         )
     }
+
+    async componentDidMount() {
+        await Font.loadAsync({
+          'futuriste': require('../ressources/police/future_weknow/FUTURE.otf'),
+        });
+
+        this.setState({ fontLoaded: true });
+      }
 }
 
 const styles = StyleSheet.create({

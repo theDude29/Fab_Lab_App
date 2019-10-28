@@ -1,5 +1,6 @@
 import React from 'react'
-import {View, Text, ImageBackground, StyleSheet} from 'react-native'
+import {View, Text, ImageBackground, StyleSheet, ScrollView} from 'react-native'
+import ArticleItem from './ArticleItem'
 import loadFile from '../../Model/LoadFile'
 
 class Articles extends React.Component {
@@ -10,7 +11,7 @@ class Articles extends React.Component {
         this._majData = this._majData.bind(this)
 
         this.state = {
-            data: loadFile("http://remi.perenne.free.fr/site_world_of_colonies/vue/jouer.php", this._majData)
+            data: loadFile("http://192.168.0.5/test/App/requeteSQL.php", this._majData)
         }
     }
 
@@ -24,14 +25,9 @@ class Articles extends React.Component {
                 style={styles.image}
                 source={require('../ressources/images/articles.jpg')}
             >
-                <View style={styles.main_container}>
-                <Text>
-                    {
-                        //this.setState({data: "singe"})
-                        this.state.data
-                    }
-                </Text>
-                </View>
+            <ScrollView>
+                <Text>{this.state.data}</Text>
+            </ScrollView>
             </ImageBackground>
         )
     }
