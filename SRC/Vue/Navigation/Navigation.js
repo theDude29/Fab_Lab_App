@@ -6,6 +6,7 @@ import Articles from '../Components/Articles'
 import Forum from '../Components/Forum'
 import Mon_compte from '../Components/Mon_compte'
 import Parametres from '../Components/Parametres'
+import Faq from '../Components/FAQ'
 
 const MyDrawerNavigator = createDrawerNavigator({
   Home: {
@@ -19,6 +20,13 @@ const MyDrawerNavigator = createDrawerNavigator({
       navigationOptions: {
           title: 'Articles'
       }
+  },
+  Faq: {
+      screen: Faq,
+      navigationOptions: {
+          title: 'FAQ'
+      }
+
   },
   Forum: {
       screen: Forum,

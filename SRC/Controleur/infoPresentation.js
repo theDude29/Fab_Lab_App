@@ -8,7 +8,7 @@ export function getDescription(callback) {
     }
     modif = modif.bind(this)
 
-    loadFile("http://192.168.0.5/test/App/requeteSQL.php?sql=SELECT_*_FROM_App", modif)
+    loadFile("requeteSQL.php?sql=SELECT_*_FROM_App", modif)
 }
 
 export function getLastArticle() {

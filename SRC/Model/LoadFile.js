@@ -1,9 +1,11 @@
+ADRESSE_SERVEUR = "http://192.168.0.5/test/App/"
+
 function loadFile(file, callback) {
 
     var xhr = new XMLHttpRequest();
 
     // On souhaite juste récupérer le contenu du fichier, la méthode GET suffit amplement :
-    xhr.open('GET', file);
+    xhr.open('GET', ADRESSE_SERVEUR + file);
 
     xhr.addEventListener('readystatechange', function() { // On gère ici une requête asynchrone
 
