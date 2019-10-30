@@ -1,33 +1,48 @@
 import React from 'react'
-import {View, Text, ImageBackground, StyleSheet, ScrollView} from 'react-native'
+import {View, Text, ImageBackground, StyleSheet, ScrollView, FlatList} from 'react-native'
 import ArticleItem from './ArticleItem'
-import loadFile from '../../Model/LoadFile'
+import * as InfoArticles from '../../Controleur/infoArticles'
 
 class Articles extends React.Component {
 
     constructor(props) {
         super(props)
 
-        this._majData = this._majData.bind(this)
+        this._majListArticles = this._majListArticles.bind(this)
 
         this.state = {
-            data: loadFile("http://192.168.0.5/test/App/requeteSQL.php", this._majData)
+            listArticles: undefined
         }
+
+        InfoArticles.getListArticles(this._majListArticles)
     }
 
-    _majData(data) {
-        this.setState({data: data})
+    _majListArticles(data) {
+        this.setState({listArticles: data})
+    }
+
+    _displayArticles() {
+        if(this.state.listArticles != undefined)
+        {
+            return (
+                <FlatList
+                    style={styles.list}
+                  data={this.state.listArticles}
+                  keyExtractor={(item) => item.id.toString()}
+                  renderItem={({item}) => (
+                    <ArticleItem
+                      article={item}
+                    />
+                  )}
+                />
+            )
+        }
     }
 
     render() {
         return (
-            <ImageBackground
-                style={styles.image}
-                source={require('../ressources/images/articles.jpg')}
-            >
-            <ScrollView>
-                <Text>{this.state.data}</Text>
-            </ScrollView>
+            <ImageBackground style={styles.image} source={require('../ressources/images/articles.jpg')}>
+                {this._displayArticles()}
             </ImageBackground>
         )
     }
@@ -43,11 +58,11 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontFamily: 'futuriste'
     },
-    main_container: {
-        margin: 20,
-        padding: 15,
-        backgroundColor: 'rgba(100,100,100,0.5)',
-        borderRadius: 20,
+    list: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        //padding: 15,
+        paddingTop: 80
     }
 })
 

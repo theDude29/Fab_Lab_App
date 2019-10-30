@@ -1,6 +1,5 @@
 import React from 'react'
-import ArticleItem from '../Vue/Components/ArticleItem'
-import loadFile from '../Model/LoadFile'
+import {requeteSQL} from '../Model/LoadFile'
 
 export function getDescription(callback) {
     var modif = function(data) {
@@ -8,9 +7,9 @@ export function getDescription(callback) {
     }
     modif = modif.bind(this)
 
-    loadFile("requeteSQL.php?sql=SELECT_*_FROM_App", modif)
+    requeteSQL("SELECT * FROM App", modif)
 }
 
 export function getLastArticle() {
-    return <ArticleItem />
+    return null
 }

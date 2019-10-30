@@ -40,10 +40,7 @@ class Presentation extends React.Component {
 
     render() {
         return (
-            <ImageBackground
-                style={styles.image}
-                source={require('../ressources/images/presentation.jpg')}
-            >
+            <ImageBackground style={styles.image} source={require('../ressources/images/presentation.jpg')}>
             <ScrollView>
             {
                 this.state.fontLoaded ? (
@@ -76,7 +73,8 @@ const styles = StyleSheet.create({
     title_text: {
         color: "cyan",
         fontFamily: 'futuriste',
-        fontSize: 40
+        fontSize: 40,
+        fontFamily: 'futuriste'
     },
     default_text: {
         color: "white",
