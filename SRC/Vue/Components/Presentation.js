@@ -72,14 +72,13 @@ const styles = StyleSheet.create({
     },
     title_text: {
         color: "cyan",
-        fontFamily: 'futuriste',
+        //fontFamily: 'futuriste',
         fontSize: 40,
-        fontFamily: 'futuriste'
     },
     default_text: {
         color: "white",
         fontSize: 30,
-        fontFamily: 'futuriste'
+        //fontFamily: 'futuriste'
     },
     main_container: {
         margin: 20,

@@ -25,9 +25,11 @@ class ArticleItem extends React.Component {
     render() {
         return (
             <ImageBackground style={styles.image} source={{uri: this.props.article.picture_url}}>
-                <Text style={styles.title_text}>{this._getTitle()}</Text>
-                <Text style={styles.default_text} numberOfLines={4}>{this._getContent()}</Text>
-                <Text style={styles.author_text}>{this._getAuthor()}</Text>
+                <View style={styles.main_container}>
+                    <Text style={styles.title_text}>{this._getTitle()}</Text>
+                    <Text style={styles.default_text} numberOfLines={4}>{this._getContent()}</Text>
+                    <Text style={styles.author_text}>{this._getAuthor()}</Text>
+                </View>
             </ImageBackground>
         )
     }
@@ -43,26 +45,26 @@ const styles = StyleSheet.create({
     },
     title_text: {
         color: 'brown',
-        fontSize: 30,
-        fontFamily: 'futuriste',
+        fontSize: 20,
+        //fontFamily: 'futuriste',
         textAlign: 'center'
     },
     default_text: {
-        color: "white",
-        fontSize: 20,
-        fontFamily: 'futuriste'
+        color: "black",
+        fontSize: 15,
+        //fontFamily: 'futuriste'
     },
     author_text: {
         color: "yellow",
-        fontSize: 15,
-        fontFamily: 'futuriste'
+        fontSize: 10,
+        //fontFamily: 'futuriste'
     },
     main_container: {
-        margin: 20,
+        //margin: 20,
         padding: 15,
         backgroundColor: 'rgba(200,200,200,0.5)',
         borderRadius: 20,
-        borderWidth: 5,
+        //borderWidth: 5,
     }
 })
 

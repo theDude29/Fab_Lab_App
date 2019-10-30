@@ -53,6 +53,10 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
     },
+    title_text: {
+        margin: 10,
+        fontSize: 40
+    },
     default_text: {
         color: "white",
         fontSize: 30,
@@ -61,7 +65,6 @@ const styles = StyleSheet.create({
     list: {
         justifyContent: 'center',
         alignItems: 'center',
-        //padding: 15,
         paddingTop: 80
     }
 })
