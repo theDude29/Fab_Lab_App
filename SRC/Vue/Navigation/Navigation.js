@@ -8,6 +8,8 @@ import Mon_compte from '../Components/Mon_compte'
 import Parametres from '../Components/Parametres'
 import Faq from '../Components/FAQ'
 
+import ArticleDetail from '../Components/ArticleDetail'
+
 const MyDrawerNavigator = createDrawerNavigator({
   Home: {
     screen: Presentation,
@@ -16,7 +18,7 @@ const MyDrawerNavigator = createDrawerNavigator({
     }
   },
   Articles: {
-      screen: Articles,
+      screen: ArticleDetail,
       navigationOptions: {
           title: 'Articles'
       }

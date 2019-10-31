@@ -19,7 +19,11 @@ class ArticleItem extends React.Component {
     }
 
     _getAuthor() {
-        return ("Auteur: " + this.props.article.author_custom_name)
+        var nomAuteur = this.props.article.author_custom_name
+        if(nomAuteur == "") {
+            nomAuteur = "Anomyme"
+        }
+        return ("Auteur: " + nomAuteur)
     }
 
     render() {
@@ -60,11 +64,9 @@ const styles = StyleSheet.create({
         //fontFamily: 'futuriste'
     },
     main_container: {
-        //margin: 20,
         padding: 15,
         backgroundColor: 'rgba(200,200,200,0.5)',
         borderRadius: 20,
-        //borderWidth: 5,
     }
 })
 
