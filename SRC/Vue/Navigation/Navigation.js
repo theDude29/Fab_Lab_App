@@ -1,14 +1,29 @@
 import React from 'react'
 import {createAppContainer} from 'react-navigation'
 import {createDrawerNavigator} from 'react-navigation-drawer'
+import {createStackNavigator} from 'react-navigation-stack'
 import Presentation from '../Components/Presentation'
 import Articles from '../Components/Articles'
 import Forum from '../Components/Forum'
 import Mon_compte from '../Components/Mon_compte'
 import Parametres from '../Components/Parametres'
 import Faq from '../Components/FAQ'
-
 import ArticleDetail from '../Components/ArticleDetail'
+
+const ArticleStackNavigator = createStackNavigator({
+  Articles: {
+    screen: Articles,
+    navigationOptions: {
+      title: 'Derniers articles'
+    }
+  },
+  ArticleDetail: {
+    screen: ArticleDetail,
+    navigationOptions: {
+        title: 'Detail de l\'article'
+    }
+  }
+})
 
 const MyDrawerNavigator = createDrawerNavigator({
   Home: {
@@ -18,7 +33,7 @@ const MyDrawerNavigator = createDrawerNavigator({
     }
   },
   Articles: {
-      screen: ArticleDetail,
+      screen: ArticleStackNavigator,
       navigationOptions: {
           title: 'Articles'
       }

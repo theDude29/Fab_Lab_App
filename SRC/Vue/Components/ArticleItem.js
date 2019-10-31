@@ -1,14 +1,7 @@
 import React from 'react'
-import {View, Text, ImageBackground, StyleSheet} from 'react-native'
+import {View, Text, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native'
 
 class ArticleItem extends React.Component {
-
-    constructor(props) {
-        super(props)
-
-        console.log("------------------------")
-        console.log(this.props.article)
-    }
 
     _getTitle() {
         return this.props.article.title
@@ -27,13 +20,17 @@ class ArticleItem extends React.Component {
     }
 
     render() {
+        const displayDetail = this.props.displayDetail
         return (
             <ImageBackground style={styles.image} source={{uri: this.props.article.picture_url}}>
-                <View style={styles.main_container}>
+                <TouchableOpacity
+                style={styles.main_container}
+                onPress={() => displayDetail(this.props.article)}
+                >
                     <Text style={styles.title_text}>{this._getTitle()}</Text>
                     <Text style={styles.default_text} numberOfLines={4}>{this._getContent()}</Text>
                     <Text style={styles.author_text}>{this._getAuthor()}</Text>
-                </View>
+                </TouchableOpacity>
             </ImageBackground>
         )
     }

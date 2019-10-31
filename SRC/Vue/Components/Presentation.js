@@ -29,15 +29,6 @@ class Presentation extends React.Component {
         )
     }
 
-    _displayLastArticle() {
-        return (
-            <View>
-                <Text style={styles.default_text}>Dernier article: </Text>
-                {InfoPresentation.getLastArticle()}
-            </View>
-        )
-    }
-
     render() {
         return (
             <ImageBackground style={styles.image} source={require('../ressources/images/presentation.jpg')}>
@@ -47,7 +38,6 @@ class Presentation extends React.Component {
                     <View style={styles.main_container}>
                         <Text style={styles.title_text}>Bienvenue dans l'application du fab lab !</Text>
                         <Text style={styles.default_text}>{this._displayDescription()}</Text>
-                        {this._displayLastArticle()}
                     </View>
                     ) : null
             }

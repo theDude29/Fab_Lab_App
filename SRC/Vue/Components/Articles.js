@@ -9,6 +9,7 @@ class Articles extends React.Component {
         super(props)
 
         this._majListArticles = this._majListArticles.bind(this)
+        this._displayDetailForArticle = this._displayDetailForArticle.bind(this)
 
         this.state = {
             listArticles: undefined
@@ -32,6 +33,7 @@ class Articles extends React.Component {
                   renderItem={({item}) => (
                     <ArticleItem
                       article={item}
+                      displayDetail={this._displayDetailForArticle}
                     />
                   )}
                 />
@@ -45,6 +47,10 @@ class Articles extends React.Component {
                 {this._displayArticles()}
             </ImageBackground>
         )
+    }
+
+    _displayDetailForArticle(article) {
+        this.props.navigation.navigate('ArticleDetail', {article: article})
     }
 }
 
@@ -65,7 +71,7 @@ const styles = StyleSheet.create({
     list: {
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 80
+        paddingTop: 110,
     }
 })
 

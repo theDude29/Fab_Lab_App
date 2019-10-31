@@ -9,7 +9,3 @@ export function getDescription(callback) {
 
     requeteSQL("SELECT * FROM App", modif)
 }
-
-export function getLastArticle() {
-    return null
-}

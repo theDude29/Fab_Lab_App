@@ -9,13 +9,15 @@ class ArticleDetail extends React.Component {
     }
 
     render() {
+        article = this.props.navigation.state.params.article
+        console.log(article)
         return (
-            <ImageBackground style={styles.image} source={{uri: "https://fablab-dedale.fr/assets/img/iphone.jpg"}}>
+            <ImageBackground style={styles.image} source={{uri: article.picture_url}}>
             <ScrollView>
                 <View style={styles.main_container}>
-                    <Text style={styles.title_text}>Title</Text>
-                    <Text style={styles.default_text}>Content...</Text>
-                    <Text style={styles.default_text}>Auteur...</Text>
+                    <Text style={styles.title_text}>{article.title}</Text>
+                    <Text style={styles.default_text}>{article.contents}</Text>
+                    <Text style={styles.default_text}>{"Auteur: " + article.author_custom_name}</Text>
                 </View>
             </ScrollView>
             </ImageBackground>
