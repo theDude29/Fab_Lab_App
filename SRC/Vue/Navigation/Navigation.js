@@ -9,6 +9,8 @@ import Mon_compte from '../Components/Mon_compte'
 import Parametres from '../Components/Parametres'
 import Faq from '../Components/FAQ'
 import ArticleDetail from '../Components/ArticleDetail'
+import CreationCompte from '../Components/CreationCompte'
+import AcceuilCompte from '../Components/AcceuilCompte'
 
 const ArticleStackNavigator = createStackNavigator({
   Articles: {
@@ -25,7 +27,28 @@ const ArticleStackNavigator = createStackNavigator({
   }
 })
 
+const CompteStackNavigator = createStackNavigator({
+  AcceuilCompte: {
+    screen: AcceuilCompte,
+    navigationOptions: {
+      title: 'Mon compte'
+    }
+  },
+  CreationCompte: {
+    screen: CreationCompte,
+    navigationOptions: {
+        title: 'Créer votre compte'
+    }
+  }
+})
+
 const MyDrawerNavigator = createDrawerNavigator({
+    Mon_compte: {
+        screen: CompteStackNavigator,
+        navigationOptions: {
+            title: 'Mon compte'
+        }
+    },
   Home: {
     screen: Presentation,
     navigationOptions: {
@@ -49,12 +72,6 @@ const MyDrawerNavigator = createDrawerNavigator({
       screen: Forum,
       navigationOptions: {
           title: 'Forums'
-      }
-  },
-  Mon_compte: {
-      screen: Mon_compte,
-      navigationOptions: {
-          title: 'Mon compte'
       }
   },
   Parametres: {
