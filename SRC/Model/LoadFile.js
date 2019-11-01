@@ -1,9 +1,5 @@
 ADRESSE_SERVEUR = "http://192.168.0.5/test/App/"
 
-export function requeteSQL(requete, callback) {
-    loadFile("requeteSQL.php?sql=" + requete, callback)
-}
-
 export function loadFile(file, callback) {
 
     var xhr = new XMLHttpRequest();

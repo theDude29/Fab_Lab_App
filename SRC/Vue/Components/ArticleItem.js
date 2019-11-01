@@ -1,18 +1,19 @@
 import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native'
+import {convertHTMLtoText} from '../../Controleur/utilitaire'
 
 class ArticleItem extends React.Component {
 
     _getTitle() {
-        return this.props.article.title
+        return convertHTMLtoText(this.props.article.title)
     }
 
     _getContent() {
-        return this.props.article.contents
+        return convertHTMLtoText(this.props.article.contents)
     }
 
     _getAuthor() {
-        var nomAuteur = this.props.article.author_custom_name
+        var nomAuteur = convertHTMLtoText(this.props.article.author_custom_name)
         if(nomAuteur == "") {
             nomAuteur = "Anomyme"
         }

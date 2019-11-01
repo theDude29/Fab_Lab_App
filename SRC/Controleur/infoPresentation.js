@@ -1,5 +1,5 @@
 import React from 'react'
-import {requeteSQL} from '../Model/LoadFile'
+import {requeteSQL} from '../Controleur/utilitaire'
 
 export function getDescription(callback) {
     var modif = function(data) {
