@@ -2,24 +2,18 @@ import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, ScrollView, TextInput} from 'react-native'
 import Boutton from './Boutton'
 
-class CreationCompte extends React.Component {
+class ConnectionCompte extends React.Component {
 
     constructor(props) {
     super(props)
 
     this.textPseudo = ""
-    this.textMail = ""
     this.textMdp = ""
   }
 
   _pseudoTextInputChanged(text)
   {
       this.textPseudo = text
-  }
-
-  _mailTextInputChanged(text)
-  {
-      this.textMail = text
   }
 
   _mdpTextInputChanged(text)
@@ -36,11 +30,9 @@ class CreationCompte extends React.Component {
             >
                 <View style={styles.main_container}>
                     <View style={styles.info_container}>
-                        <Text style={styles.default_text}>Pseudo: </Text>
+                        <Text style={styles.default_text}>Entrez votre pseudo: </Text>
                         <TextInput
                             style={styles.textInput}
-                            placeholderTextColor= '#111111'
-                            placeholder='Choisissez votre pseudo'
                             returnKeyType='next'
                             textContentType='username'
                             onChangeText={(text) => this._pseudoTextInputChanged(text)}
@@ -48,24 +40,9 @@ class CreationCompte extends React.Component {
                     </View>
 
                     <View style={styles.info_container}>
-                        <Text style={styles.default_text}>Adresse mail (facultatif): </Text>
+                        <Text style={styles.default_text}>Entrez votre de passe: </Text>
                         <TextInput
                             style={styles.textInput}
-                            placeholderTextColor= '#111111'
-                            placeholder='Votre adresse mail'
-                            returnKeyType='next'
-                            textContentType='emailAdresse'
-                            keyboardType='email-address'
-                            onChangeText={(text) => this._mailTextInputChanged(text)}
-                        />
-                    </View>
-
-                    <View style={styles.info_container}>
-                        <Text style={styles.default_text}>Mot de passe: </Text>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholderTextColor= '#111111'
-                            placeholder='Votre mot de passe'
                             returnKeyType='next'
                             textContentType='password'
                             secureTextEntry='true'
@@ -73,7 +50,9 @@ class CreationCompte extends React.Component {
                         />
                     </View>
 
-                    <Boutton title="Confirmer"/>
+                    <Boutton title="Connection"/>
+
+                    <Text style={styles.mdpOublie_text}>Mot de passe oublié ?</Text>
                 </View>
             </ImageBackground>
         )
@@ -94,6 +73,10 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 20,
         //fontFamily: 'futuriste'
+    },
+    mdpOublie_text: {
+        margin: 10,
+        fontSize: 15
     },
     main_container: {
         margin: 20,
@@ -116,4 +99,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default CreationCompte
+export default ConnectionCompte

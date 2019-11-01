@@ -5,12 +5,12 @@ import {createStackNavigator} from 'react-navigation-stack'
 import Presentation from '../Components/Presentation'
 import Articles from '../Components/Articles'
 import Forum from '../Components/Forum'
-import Mon_compte from '../Components/Mon_compte'
 import Parametres from '../Components/Parametres'
 import Faq from '../Components/FAQ'
 import ArticleDetail from '../Components/ArticleDetail'
 import CreationCompte from '../Components/CreationCompte'
 import AcceuilCompte from '../Components/AcceuilCompte'
+import ConnectionCompte from '../Components/ConnectionCompte'
 
 const ArticleStackNavigator = createStackNavigator({
   Articles: {
@@ -39,16 +39,17 @@ const CompteStackNavigator = createStackNavigator({
     navigationOptions: {
         title: 'Créer votre compte'
     }
+  },
+  ConnectionCompte: {
+      screen: ConnectionCompte,
+      navigationOptions: {
+          title: 'Connectez-vous'
+      }
   }
 })
 
 const MyDrawerNavigator = createDrawerNavigator({
-    Mon_compte: {
-        screen: CompteStackNavigator,
-        navigationOptions: {
-            title: 'Mon compte'
-        }
-    },
+
   Home: {
     screen: Presentation,
     navigationOptions: {
@@ -72,6 +73,12 @@ const MyDrawerNavigator = createDrawerNavigator({
       screen: Forum,
       navigationOptions: {
           title: 'Forums'
+      }
+  },
+  Mon_compte: {
+      screen: CompteStackNavigator,
+      navigationOptions: {
+          title: 'Mon compte'
       }
   },
   Parametres: {
