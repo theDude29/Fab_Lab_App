@@ -11,6 +11,7 @@ import ArticleDetail from '../Components/ArticleDetail'
 import CreationCompte from '../Components/CreationCompte'
 import AcceuilCompte from '../Components/AcceuilCompte'
 import ConnectionCompte from '../Components/ConnectionCompte'
+import Credits from '../Components/Credits'
 
 const ArticleStackNavigator = createStackNavigator({
   Articles: {
@@ -48,6 +49,21 @@ const CompteStackNavigator = createStackNavigator({
   }
 })
 
+const ParametreStackNavigator = createStackNavigator({
+  AcceuilParametre: {
+    screen: Parametres,
+    navigationOptions: {
+      title: 'Paramètres'
+    }
+  },
+  Credits: {
+    screen: Credits,
+    navigationOptions: {
+        title: 'Crédits'
+    }
+  }
+})
+
 const MyDrawerNavigator = createDrawerNavigator({
 
   Home: {
@@ -67,7 +83,6 @@ const MyDrawerNavigator = createDrawerNavigator({
       navigationOptions: {
           title: 'FAQ'
       }
-
   },
   Forum: {
       screen: Forum,
@@ -82,7 +97,7 @@ const MyDrawerNavigator = createDrawerNavigator({
       }
   },
   Parametres: {
-      screen: Parametres,
+      screen: ParametreStackNavigator,
       navigationOptions: {
           title: 'Paramètres'
             }
