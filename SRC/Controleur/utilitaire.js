@@ -9,5 +9,11 @@ export function convertHTMLtoText(text) {
 }
 
 export function requeteSQL(requete, callback) {
-    loadFile("requeteSQL.php?sql=" + requete, callback)
+
+    if(requete.match(/SELECT/)) {
+        loadFile("queryRequeteSQL.php?sql=" + requete, callback)
+    }
+    if(requete.match(/DELETE|INSERT|UPDATE/)) {
+        loadFile("execRequeteSQL.php?sql=" + requete)
+    }
 }
