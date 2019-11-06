@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity} from 'react-native'
+import {Text, StyleSheet, TouchableOpacity} from 'react-native'
 
 class Boutton extends React.Component {
 

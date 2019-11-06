@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, ImageBackground, StyleSheet, ScrollView, FlatList} from 'react-native'
+import {View, Text, ImageBackground, StyleSheet, FlatList} from 'react-native'
 import ArticleItem from './ArticleItem'
 import * as InfoArticles from '../../Controleur/infoArticles'
 
@@ -58,15 +58,6 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: '100%'
-    },
-    title_text: {
-        margin: 10,
-        fontSize: 40
-    },
-    default_text: {
-        color: "white",
-        fontSize: 30,
-        fontFamily: 'futuriste'
     },
     list: {
         justifyContent: 'center',

@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, TouchableOpacity} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground} from 'react-native'
 import A from 'react-native-a'
 
 class Credits extends React.Component {
@@ -24,10 +24,6 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: '100%'
-    },
-    title_text: {
-        color: 'white',
-        fontSize: 30
     },
     default_text: {
         color: "white",

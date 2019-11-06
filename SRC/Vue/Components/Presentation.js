@@ -48,7 +48,7 @@ class Presentation extends React.Component {
 
     async componentDidMount() {
         await Font.loadAsync({
-          'futuriste': require('../ressources/police/future_weknow/FUTURE.otf'),
+          //'futuriste': require('../ressources/police/future_weknow/FUTURE.otf'),
         });
 
         this.setState({ fontLoaded: true });
@@ -62,13 +62,11 @@ const styles = StyleSheet.create({
     },
     title_text: {
         color: "cyan",
-        //fontFamily: 'futuriste',
-        fontSize: 40,
+        fontSize: 35,
     },
     default_text: {
         color: "white",
-        fontSize: 30,
-        //fontFamily: 'futuriste'
+        fontSize: 25,
     },
     main_container: {
         margin: 20,

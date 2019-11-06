@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, ImageBackground, StyleSheet, ScrollView, FlatList} from 'react-native'
+import {View, Text, ImageBackground, StyleSheet, ScrollView} from 'react-native'
 import {convertHTMLtoText} from '../../Controleur/utilitaire'
 import moment from 'moment'
 

@@ -31,19 +31,12 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
     },
-    title_text: {
-        color: 'white',
-        fontSize: 30
-    },
     default_text: {
         color: "white",
         fontSize: 20,
-        //fontFamily: 'futuriste'
     },
     main_container: {
         margin: 10,
-        //backgroundColor: 'rgba(100,100,100,0.2)',
-        //borderRadius: 20,
     },
     item_container: {
         backgroundColor: 'rgba(0,0,130,0.5)',

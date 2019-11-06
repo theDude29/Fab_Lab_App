@@ -1,7 +1,6 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, ScrollView, TextInput, TouchableOpacity} from 'react-native'
 import Boutton from './Boutton'
-import Mon_compte from './Mon_compte'
 
 class AcceuilCompte extends React.Component {
 
@@ -49,14 +48,9 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
     },
-    title_text: {
-        color: "black",
-        fontSize: 25,
-    },
     default_text: {
         color: "white",
         fontSize: 20,
-        //fontFamily: 'futuriste'
     },
     main_container: {
         margin: 20,

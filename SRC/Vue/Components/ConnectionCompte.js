@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, ScrollView, TextInput} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, TextInput} from 'react-native'
 import Boutton from './Boutton'
 
 class ConnectionCompte extends React.Component {
@@ -63,11 +63,6 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: '100%'
-    },
-    title_text: {
-        color: "cyan",
-        //fontFamily: 'futuriste',
-        fontSize: 40,
     },
     default_text: {
         color: "white",
