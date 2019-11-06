@@ -14,7 +14,7 @@ class FaqItem extends React.Component {
 
     _displayReponse() {
         if(this.state.afficherReponse == true) {
-            return <Text style={styles.reponse_text}>Réponseeeeeeeeeeeeeeeeeee</Text>
+            return <Text style={styles.reponse_text}>{this.props.question.answer}</Text>
         }
         else {
             return null
@@ -36,7 +36,7 @@ class FaqItem extends React.Component {
             style={styles.main_container}
             onPress={() => this._questionClique()}
             >
-                <Text style={styles.default_text}>Questionnnnnnnnnnnnnnnnn ?</Text>
+                <Text style={styles.default_text}>{this.props.question.question}</Text>
                 {this._displayReponse()}
             </TouchableOpacity>
         )
@@ -52,20 +52,20 @@ const styles = StyleSheet.create({
         borderWidth: 10
     },
     default_text: {
-        color: "black",
+        color: "orange",
         fontSize: 20,
+        textDecorationLine: 'underline',
         //fontFamily: 'futuriste'
     },
     reponse_text: {
-        color: "black",
+        color: "orange",
         fontSize: 20,
-        textDecorationLine: 'underline',
         marginLeft: 10
     },
     main_container: {
         padding: 15,
-        margin: 10,
-        backgroundColor: 'rgba(200,50,200, 0.2)',
+        margin: 15,
+        backgroundColor: 'rgba(20,20,200, 0.5)',
         borderRadius: 10,
     }
 })
