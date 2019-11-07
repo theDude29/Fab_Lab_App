@@ -10,7 +10,7 @@ class Boutton extends React.Component {
 
     render() {
         return (
-            <TouchableOpacity style={styles.main_container}>
+            <TouchableOpacity style={styles.main_container} onPress={this.props.onPress}>
                 <Text style={styles.default_text}>{this.props.title}</Text>
             </TouchableOpacity>
         )

@@ -1,6 +1,7 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TextInput} from 'react-native'
 import Boutton from './Boutton'
+import {creerNouveauCompte} from '../../Controleur/creerNouveauCompte'
 
 class CreationCompte extends React.Component {
 
@@ -73,7 +74,7 @@ class CreationCompte extends React.Component {
                         />
                     </View>
 
-                    <Boutton title="Confirmer"/>
+                    <Boutton title="Confirmer" onPress={creerNouveauCompte}/>
                 </View>
             </ImageBackground>
         )

@@ -18,7 +18,7 @@ export function loadFile(file, callback) {
 
         else if (xhr.readyState === XMLHttpRequest.DONE && (xhr.status != 200 || xhr.status != 0)) { // En cas d'erreur !
 
-        console.log(('Une erreur est survenue !\n\nCode :' + xhr.status + '\nTexte : ' + xhr.statusText))
+            console.log(('Une erreur est survenue !\n\nCode :' + xhr.status + '\nTexte : ' + xhr.statusText))
         }
     });
 
