@@ -25,7 +25,7 @@ class Presentation extends React.Component {
 
     _displayDescription() {
         return (
-            <Text>{this.state.description_app + '\n'}</Text>
+            <Text>{InfoPresentation.getDescription() + '\n'}</Text>
         )
     }
 

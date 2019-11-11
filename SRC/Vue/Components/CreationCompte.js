@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TextInput} from 'react-native'
 import Boutton from './Boutton'
-import {creerNouveauCompte} from '../../Controleur/creerNouveauCompte'
+import {creerNouveauCompte, pseudoPris} from '../../Controleur/creerNouveauCompte'
 
 class CreationCompte extends React.Component {
 
@@ -11,11 +11,17 @@ class CreationCompte extends React.Component {
     this.textPseudo = ""
     this.textMail = ""
     this.textMdp = ""
+
+    this.state = {
+        pseudoPris: false,
+    }
   }
 
   _pseudoTextInputChanged(text)
   {
       this.textPseudo = text
+
+      this.setState({pseudoPris: pseudoPris(this.textPseudo)});
   }
 
   _mailTextInputChanged(text)
@@ -38,14 +44,17 @@ class CreationCompte extends React.Component {
                 <View style={styles.main_container}>
                     <View style={styles.info_container}>
                         <Text style={styles.default_text}>Pseudo: </Text>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholderTextColor= '#111111'
-                            placeholder='Choisissez votre pseudo'
-                            returnKeyType='next'
-                            textContentType='username'
-                            onChangeText={(text) => this._pseudoTextInputChanged(text)}
-                        />
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholderTextColor= '#111111'
+                                placeholder='Choisissez votre pseudo'
+                                returnKeyType='next'
+                                textContentType='username'
+                                onChangeText={(text) => this._pseudoTextInputChanged(text)}
+                            />
+                            {this._displayMessageValiditePseudo()}
+                        </View>
                     </View>
 
                     <View style={styles.info_container}>
@@ -74,10 +83,19 @@ class CreationCompte extends React.Component {
                         />
                     </View>
 
-                    <Boutton title="Confirmer" onPress={creerNouveauCompte}/>
+                    <Boutton title="Confirmer" onPress={() => creerNouveauCompte(this.textPseudo, this.textMdp, this.textMail)}/>
                 </View>
             </ImageBackground>
         )
+    }
+
+    _displayMessageValiditePseudo() {
+        if(this.state.pseudoPris == true) {
+            return <Text style={styles.warning_text}>Le pseudo est deja utilisé</Text>
+        }
+        else {
+            return <Text style={styles.warning_text}>Bien</Text>
+        }
     }
 }
 
@@ -109,6 +127,13 @@ const styles = StyleSheet.create({
         padding: 3,
         margin: 2,
         fontSize: 15
+    },
+    warning_text: {
+        color: "red",
+        fontSize: 20,
+    },
+    inputContainer: {
+        flexDirection: 'row'
     }
 })
 

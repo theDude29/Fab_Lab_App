@@ -1,6 +1,8 @@
 ADRESSE_SERVEUR = "http://192.168.0.5/test/App/"
 
-export function loadFile(file, callback) {
+export function loadFile(file) {
+
+    var reponse = undefined
 
     var xhr = new XMLHttpRequest();
 
@@ -11,9 +13,7 @@ export function loadFile(file, callback) {
 
         if (xhr.readyState === XMLHttpRequest.DONE && (xhr.status === 200 || xhr.status === 0)) { // Si le fichier est chargé sans erreur
 
-            if(callback != undefined) {
-                callback(JSON.parse(xhr.responseText))
-            }
+            reponse = JSON.parse(xhr.responseText)
         }
 
         else if (xhr.readyState === XMLHttpRequest.DONE && (xhr.status != 200 || xhr.status != 0)) { // En cas d'erreur !
@@ -23,5 +23,11 @@ export function loadFile(file, callback) {
     });
 
     xhr.send(null); // La requête est prête, on envoie tout !
+
+    while(reponse === undefined) {
+
+    }
+
+    return reponse
 
 }
