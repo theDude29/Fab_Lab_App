@@ -8,18 +8,14 @@ class Articles extends React.Component {
     constructor(props) {
         super(props)
 
-        this._majListArticles = this._majListArticles.bind(this)
         this._displayDetailForArticle = this._displayDetailForArticle.bind(this)
 
         this.state = {
             listArticles: undefined
         }
 
-        InfoArticles.getListArticles(this._majListArticles)
-    }
-
-    _majListArticles(data) {
-        this.setState({listArticles: data})
+        this._chargerArticles = this._chargerArticles.bind(this)
+        this._chargerArticles()
     }
 
     _displayArticles() {
@@ -47,6 +43,12 @@ class Articles extends React.Component {
                 {this._displayArticles()}
             </ImageBackground>
         )
+    }
+
+    _chargerArticles() {
+        InfoArticles.getListArticles(this._majListArticles).then(data => {
+            this.setState({listArticles: data})
+        })
     }
 
     _displayDetailForArticle(article) {

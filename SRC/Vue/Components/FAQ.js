@@ -8,17 +8,12 @@ class Faq extends React.Component {
     constructor(props) {
         super(props)
 
-        this._majListQuestions = this._majListQuestions.bind(this)
-
         this.state = {
             listQuestions: undefined
         }
 
-        InfoFaq.getListQuestions(this._majListQuestions)
-    }
-
-    _majListQuestions(data) {
-        this.setState({listQuestions: data})
+        this._chargerQuestions = this._chargerQuestions.bind(this)
+        this._chargerQuestions()
     }
 
     render() {
@@ -41,6 +36,12 @@ class Faq extends React.Component {
                 </View>
             </ImageBackground>
         )
+    }
+
+    _chargerQuestions() {
+        InfoFaq.getListQuestions().then(data => {
+            this.setState({listQuestions: data})
+        })
     }
 }
 

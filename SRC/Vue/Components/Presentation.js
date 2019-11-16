@@ -9,24 +9,13 @@ class Presentation extends React.Component {
     constructor(props) {
     super(props)
 
-    this._majDescription = this._majDescription.bind(this)
-
     this.state = {
       fontLoaded: false,
       description_app: ""
     }
 
-    InfoPresentation.getDescription(this._majDescription)
-  }
-
-  _majDescription(data) {
-      this.setState({description_app: data})
-  }
-
-    _displayDescription() {
-        return (
-            <Text>{InfoPresentation.getDescription() + '\n'}</Text>
-        )
+    this._chargerDescription = this._chargerDescription.bind(this)
+    this._chargerDescription()
     }
 
     render() {
@@ -45,6 +34,20 @@ class Presentation extends React.Component {
             </ImageBackground>
         )
     }
+
+    _displayDescription() {
+        return (
+            <Text>{this.state.description_app + '\n'}</Text>
+        )
+    }
+
+    _chargerDescription() {
+        InfoPresentation.getDescription().then(data => {
+          this.setState({
+            description_app: data[0].description_app
+          })
+      })
+  }
 
     async componentDidMount() {
         await Font.loadAsync({

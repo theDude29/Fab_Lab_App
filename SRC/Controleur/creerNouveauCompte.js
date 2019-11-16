@@ -4,8 +4,6 @@ import {requeteSQL} from '../Controleur/utilitaire'
 export function creerNouveauCompte(pseudo, mdp, email) {
     var requete = "INSERT INTO App_compte_utilisateur(pseudo, mdp, email) VALUES('" + pseudo + "','" + mdp + "','" + email + "')"
     requeteSQL(requete)
-
-    console.log(requete)
 }
 
 export function pseudoPris(pseudo) {
