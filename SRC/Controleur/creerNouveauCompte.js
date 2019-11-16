@@ -6,19 +6,18 @@ export function creerNouveauCompte(pseudo, mdp, email) {
     requeteSQL(requete)
 }
 
-export function pseudoPris(pseudo) {
-    var listPseudos = requeteSQL("SELECT pseudo from App_compte_utilisateur")
+export function pseudoPris(pseudo, callback) {
 
-    console.log(listPseudos)
+        var result = requeteSQL("SELECT pseudo from App_compte_utilisateur")
+        .then(listPseudos => {
+            var pseudoPris = false
 
-    var pseudoPris = false
-    if(listPseudos.lenght() != 0) {
-        for(var i = 0; i<listPseudos.lenght(); ++i) {
-            if(listPseudos[i] == pseudo) {
-                pseudoPris = true
+            for(var pseudoItem of listPseudos) {
+                if(pseudoItem.pseudo == pseudo) {
+                    pseudoPris = true
+                }
             }
-        }
-    }
 
-    return pseudoPris
+            callback(pseudoPris)
+        })
 }

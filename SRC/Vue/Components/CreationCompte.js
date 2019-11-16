@@ -8,6 +8,8 @@ class CreationCompte extends React.Component {
     constructor(props) {
     super(props)
 
+    this._majPseudo = this._majPseudo.bind(this)
+
     this.textPseudo = ""
     this.textMail = ""
     this.textMdp = ""
@@ -21,7 +23,7 @@ class CreationCompte extends React.Component {
   {
       this.textPseudo = text
 
-      this.setState({pseudoPris: pseudoPris(this.textPseudo)});
+      pseudoPris(this.textPseudo, this._majPseudo)
   }
 
   _mailTextInputChanged(text)
@@ -96,6 +98,10 @@ class CreationCompte extends React.Component {
         else {
             return <Text style={styles.warning_text}>Bien</Text>
         }
+    }
+
+    _majPseudo(data) {
+        this.setState({pseudoPris: data})
     }
 }
 
