@@ -1,14 +1,15 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, TextInput} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, TextInput, Image} from 'react-native'
 import Boutton from './Boutton'
-import {creerNouveauCompte, pseudoPris} from '../../Controleur/creerNouveauCompte'
+import {creerNouveauCompte, pseudoLibre, emailValide} from '../../Controleur/creerNouveauCompte'
 
 class CreationCompte extends React.Component {
 
     constructor(props) {
     super(props)
 
-    this._majPseudo = this._majPseudo.bind(this)
+    this._majPseudoValide = this._majPseudoValide.bind(this)
+    this._majEmailValide = this._majEmailValide.bind(this)
 
     this.textPseudo = ""
     this.textMail = ""
@@ -16,19 +17,24 @@ class CreationCompte extends React.Component {
 
     this.state = {
         pseudoPris: false,
+        emailValide: true
     }
+
+    pseudoLibre(this.textPseudo, this._majPseudoValide)
   }
 
   _pseudoTextInputChanged(text)
   {
       this.textPseudo = text
 
-      pseudoPris(this.textPseudo, this._majPseudo)
+      pseudoLibre(this.textPseudo, this._majPseudoValide)
   }
 
   _mailTextInputChanged(text)
   {
       this.textMail = text
+
+      emailValide(this.textMail, this._majEmailValide)
   }
 
   _mdpTextInputChanged(text)
@@ -50,26 +56,29 @@ class CreationCompte extends React.Component {
                             <TextInput
                                 style={styles.textInput}
                                 placeholderTextColor= '#111111'
-                                placeholder='Choisissez votre pseudo'
+                                ppseudoPrislaceholder='Choisissez votre pseudo'
                                 returnKeyType='next'
                                 textContentType='username'
                                 onChangeText={(text) => this._pseudoTextInputChanged(text)}
                             />
-                            {this._displayMessageValiditePseudo()}
+                            {this._displayMessageValidite(this.state.pseudoPris)}
                         </View>
                     </View>
 
                     <View style={styles.info_container}>
                         <Text style={styles.default_text}>Adresse mail (facultatif): </Text>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholderTextColor= '#111111'
-                            placeholder='Votre adresse mail'
-                            returnKeyType='next'
-                            textContentType='emailAdresse'
-                            keyboardType='email-address'
-                            onChangeText={(text) => this._mailTextInputChanged(text)}
-                        />
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholderTextColor= '#111111'
+                                placeholder='Votre adresse mail'
+                                returnKeyType='next'
+                                textContentType='emailAdresse'
+                                keyboardType='email-address'
+                                onChangeText={(text) => this._mailTextInputChanged(text)}
+                            />
+                            {this._displayMessageValidite(this.state.emailValide)}
+                        </View>
                     </View>
 
                     <View style={styles.info_container}>
@@ -91,17 +100,21 @@ class CreationCompte extends React.Component {
         )
     }
 
-    _displayMessageValiditePseudo() {
-        if(this.state.pseudoPris == true) {
-            return <Text style={styles.warning_text}>Le pseudo est deja utilisé</Text>
+    _displayMessageValidite(valide) {
+        if(valide) {
+            return <Image style={styles.icon} source={require("../ressources/icon/check.png")}/>
         }
         else {
-            return <Text style={styles.warning_text}>Bien</Text>
+            return <Image style={styles.icon} source={require("../ressources/icon/uncheck.png")}/>
         }
     }
 
-    _majPseudo(data) {
+    _majPseudoValide(data) {
         this.setState({pseudoPris: data})
+    }
+
+    _majEmailValide(data) {
+        this.setState({emailValide: data})
     }
 }
 
@@ -114,6 +127,12 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 20,
         //fontFamily: 'futuriste'
+    },
+    icon: {
+        width: 20,
+        heigh: 20,
+        marginTop: 5,
+        marginLeft: 5
     },
     main_container: {
         margin: 20,
@@ -132,7 +151,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         padding: 3,
         margin: 2,
-        fontSize: 15
+        fontSize: 15,
+        width: 200
     },
     warning_text: {
         color: "red",
