@@ -10,17 +10,22 @@ export function pseudoLibre(pseudo, callback) {
 
         var result = requeteSQL("SELECT pseudo from App_compte_utilisateur")
         .then(listPseudos => {
-            var pseudoLibre = true
+            var pseudoLibre = {
+                etat: true,
+                text: ""
+            }
 
             if(pseudo != "") {
                 for(var pseudoItem of listPseudos) {
                     if(pseudoItem.pseudo == pseudo) {
-                        pseudoLibre = false
+                        pseudoLibre.etat = false
+                        pseudoLibre.text = "Ce pseudo est déja choisi.\n"
                     }
                 }
             }
             else {
-                pseudoLibre = false
+                pseudoLibre.etat = false
+                pseudoLibre.text = "Vous devez remplir le champ 'pseudo'.\n"
             }
 
             callback(pseudoLibre)
@@ -28,19 +33,45 @@ export function pseudoLibre(pseudo, callback) {
 }
 
 export function emailValide(email, callback) {
-    var emailValide = false
+    var emailValide = {
+        etat: false,
+        text: ""
+    }
 
     if(email != "") {
         if(email.match(/^[a-z0-9.-_]+@[a-z0-9.-_]{2,}\.[a-z]{2,4}$/)) {
-            emailValide = true
+            emailValide.etat = true
         }
         else {
-            emailValide = false
+            emailValide.etat = false
+            emailValide.text = "Cette adresse mail n'est pas valide (Ce champ n'est pas obligatoire).\n"
         }
     }
     else {
-        emailValide = true
+        emailValide.etat = true
     }
 
     callback(emailValide)
+}
+
+export function mdpValide(mdp, callback) {
+    var mdpValide = {
+        etat: false,
+        text: ""
+    }
+
+    if(mdp != "") {
+
+        if(mdp.match(/[a-z]+/) && mdp.match(/[A-Z]+/) && mdp.match(/[0-9]+/) && mdp.length >= 8) {
+            mdpValide.etat = true
+        }
+        else {
+            mdpValide.text = "Votre mot de passe doit contenir une minuscule, une majuscule, un chiffre et doit comporter au moin 8 caractères.\n"
+        }
+    }
+    else {
+        mdpValide.text = "Vous devez remplir le champ 'mot de passe'"
+    }
+
+    callback(mdpValide)
 }

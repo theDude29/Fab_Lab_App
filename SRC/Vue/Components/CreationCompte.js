@@ -1,7 +1,8 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, TextInput, Image} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, TextInput, Image, ScrollView} from 'react-native'
 import Boutton from './Boutton'
-import {creerNouveauCompte, pseudoLibre, emailValide} from '../../Controleur/creerNouveauCompte'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import {creerNouveauCompte, pseudoLibre, emailValide, mdpValide} from '../../Controleur/creerNouveauCompte'
 
 class CreationCompte extends React.Component {
 
@@ -10,17 +11,19 @@ class CreationCompte extends React.Component {
 
     this._majPseudoValide = this._majPseudoValide.bind(this)
     this._majEmailValide = this._majEmailValide.bind(this)
+    this._majMdpValide = this._majMdpValide.bind(this)
+    this._majWarningText = this._majWarningText.bind(this)
 
     this.textPseudo = ""
     this.textMail = ""
     this.textMdp = ""
 
     this.state = {
-        pseudoPris: false,
-        emailValide: true
+        pseudoLibre: {etat: false, text: ""},
+        emailValide: {etat: true, text: ""},
+        mdpValide: {etat: false, text: ""},
+        warning_text: ""
     }
-
-    pseudoLibre(this.textPseudo, this._majPseudoValide)
   }
 
   _pseudoTextInputChanged(text)
@@ -40,6 +43,23 @@ class CreationCompte extends React.Component {
   _mdpTextInputChanged(text)
   {
       this.textMdp = text
+
+      mdpValide(this.textMdp, this._majMdpValide)
+  }
+
+  _majWarningText() {
+
+      this.setState({warning_text: ""})
+
+      if(!this.state.pseudoLibre.etat) {
+          this.setState({warning_text: this.state.pseudoLibre.text})
+      }
+      if(!this.state.emailValide.etat) {
+          this.setState({warning_text: this.state.emailValide.text})
+      }
+      if(!this.state.mdpValide.etat) {
+          this.setState({warning_text: this.state.mdpValide.text})
+      }
   }
 
 
@@ -49,6 +69,7 @@ class CreationCompte extends React.Component {
                 style={styles.image}
                 source={require('../ressources/images/mon_compte.png')}
             >
+            <KeyboardAwareScrollView>
                 <View style={styles.main_container}>
                     <View style={styles.info_container}>
                         <Text style={styles.default_text}>Pseudo: </Text>
@@ -61,7 +82,7 @@ class CreationCompte extends React.Component {
                                 textContentType='username'
                                 onChangeText={(text) => this._pseudoTextInputChanged(text)}
                             />
-                            {this._displayMessageValidite(this.state.pseudoPris)}
+                            {this._displayMessageValidite(this.state.pseudoLibre.etat)}
                         </View>
                     </View>
 
@@ -77,25 +98,32 @@ class CreationCompte extends React.Component {
                                 keyboardType='email-address'
                                 onChangeText={(text) => this._mailTextInputChanged(text)}
                             />
-                            {this._displayMessageValidite(this.state.emailValide)}
+                            {this._displayMessageValidite(this.state.emailValide.etat)}
                         </View>
                     </View>
 
                     <View style={styles.info_container}>
                         <Text style={styles.default_text}>Mot de passe: </Text>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholderTextColor= '#111111'
-                            placeholder='Votre mot de passe'
-                            returnKeyType='next'
-                            textContentType='password'
-                            secureTextEntry='true'
-                            onChangeText={(text) => this._mdpTextInputChanged(text)}
-                        />
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholderTextColor= '#111111'
+                                placeholder='Votre mot de passe'
+                                returnKeyType='next'
+                                textContentType='password'
+                                secureTextEntry='true'
+                                onChangeText={(text) => this._mdpTextInputChanged(text)}
+                            />
+                            {this._displayMessageValidite(this.state.mdpValide.etat)}
+                        </View>
                     </View>
 
                     <Boutton title="Confirmer" onPress={() => creerNouveauCompte(this.textPseudo, this.textMdp, this.textMail)}/>
                 </View>
+                <View style={styles.warning_container}>
+                    <Text style={styles.warning_text}>{this.state.warning_text}</Text>
+                </View>
+            </KeyboardAwareScrollView>
             </ImageBackground>
         )
     }
@@ -110,11 +138,15 @@ class CreationCompte extends React.Component {
     }
 
     _majPseudoValide(data) {
-        this.setState({pseudoPris: data})
+        this.setState({pseudoLibre: data}, this._majWarningText)
     }
 
     _majEmailValide(data) {
-        this.setState({emailValide: data})
+        this.setState({emailValide: data}, this._majWarningText)
+    }
+
+    _majMdpValide(data) {
+        this.setState({mdpValide: data}, this._majWarningText)
     }
 }
 
@@ -126,11 +158,10 @@ const styles = StyleSheet.create({
     default_text: {
         color: "white",
         fontSize: 20,
-        //fontFamily: 'futuriste'
     },
     icon: {
         width: 20,
-        heigh: 20,
+        height: 20,
         marginTop: 5,
         marginLeft: 5
     },
@@ -145,6 +176,14 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: 'rgba(100,0,0,0.8)',
         borderRadius: 20,
+    },
+    warning_container: {
+        margin: 20,
+        backgroundColor: 'rgba(255,0,0,0.2)',
+        borderRadius: 15,
+        borderWidth: 3,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     textInput: {
         borderWidth: 2,
