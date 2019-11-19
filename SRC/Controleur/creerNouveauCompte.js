@@ -1,8 +1,9 @@
 import React from 'react'
 import {requeteSQL} from '../Controleur/utilitaire'
+import moment from 'moment'
 
 export function creerNouveauCompte(pseudo, mdp, email) {
-    var requete = "INSERT INTO App_compte_utilisateur(pseudo, mdp, email) VALUES('" + pseudo + "','" + mdp + "','" + email + "')"
+    var requete = "INSERT INTO App_compte_utilisateur(pseudo, mdp, email, date_inscription) VALUES('" + pseudo + "','" + mdp + "','" + email + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss')  + "')"
     requeteSQL(requete)
 }
 
@@ -70,7 +71,7 @@ export function mdpValide(mdp, callback) {
         }
     }
     else {
-        mdpValide.text = "Vous devez remplir le champ 'mot de passe'"
+        mdpValide.text = "Vous devez remplir le champ 'mot de passe'.\n"
     }
 
     callback(mdpValide)

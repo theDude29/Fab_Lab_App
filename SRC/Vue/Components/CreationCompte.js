@@ -19,11 +19,16 @@ class CreationCompte extends React.Component {
     this.textMdp = ""
 
     this.state = {
-        pseudoLibre: {etat: false, text: ""},
+        pseudoLibre: {etat: false, text: "Vous devez remplir le champ 'pseudo'.\n"},
         emailValide: {etat: true, text: ""},
-        mdpValide: {etat: false, text: ""},
-        warning_text: ""
+        mdpValide: {etat: false, text: "Vous devez remplir le champ 'mot de passe'.\n"},
+        warning_text: "",
+        infos_correcte: false
     }
+  }
+
+  componentDidMount() {
+      this._majWarningText()
   }
 
   _pseudoTextInputChanged(text)
@@ -49,19 +54,25 @@ class CreationCompte extends React.Component {
 
   _majWarningText() {
 
-      this.setState({warning_text: ""})
+      var infoMauvaise = false
+
+      var textWarning = ""
 
       if(!this.state.pseudoLibre.etat) {
-          this.setState({warning_text: this.state.pseudoLibre.text})
+          textWarning += this.state.pseudoLibre.text
+          infoMauvaise = true
       }
       if(!this.state.emailValide.etat) {
-          this.setState({warning_text: this.state.emailValide.text})
+          textWarning += "\n\n" + this.state.emailValide.text
+          infoMauvaise = true
       }
       if(!this.state.mdpValide.etat) {
-          this.setState({warning_text: this.state.mdpValide.text})
+          textWarning += "\n\n" + this.state.mdpValide.text
+          infoMauvaise = true
       }
-  }
 
+      this.setState({warning_text: textWarning, infos_correcte: !infoMauvaise})
+  }
 
     render() {
         return (
@@ -118,11 +129,9 @@ class CreationCompte extends React.Component {
                         </View>
                     </View>
 
-                    <Boutton title="Confirmer" onPress={() => creerNouveauCompte(this.textPseudo, this.textMdp, this.textMail)}/>
+                    {this._displayBouttonConfirmer()}
                 </View>
-                <View style={styles.warning_container}>
-                    <Text style={styles.warning_text}>{this.state.warning_text}</Text>
-                </View>
+                {this._displayWarningText()}
             </KeyboardAwareScrollView>
             </ImageBackground>
         )
@@ -134,6 +143,30 @@ class CreationCompte extends React.Component {
         }
         else {
             return <Image style={styles.icon} source={require("../ressources/icon/uncheck.png")}/>
+        }
+    }
+
+    _displayWarningText() {
+
+        if(!this.state.infos_correcte) {
+            return (
+                <View style={styles.warning_container}>
+                    <Text style={styles.warning_text}>{this.state.warning_text}</Text>
+                </View>
+            )
+        }
+
+        else {
+            return null
+        }
+    }
+
+    _displayBouttonConfirmer() {
+        if(this.state.infos_correcte) {
+            return (<Boutton title="Confirmer" disabled={false} onPress={() => creerNouveauCompte(this.textPseudo, this.textMdp, this.textMail)}/>)
+        }
+        else {
+            return (<Boutton title="Confirmer" disabled={true} onPress={() => creerNouveauCompte(this.textPseudo, this.textMdp, this.textMail)}/>)
         }
     }
 
@@ -196,10 +229,11 @@ const styles = StyleSheet.create({
     warning_text: {
         color: "red",
         fontSize: 20,
+        margin: 10
     },
     inputContainer: {
         flexDirection: 'row'
-    }
+    },
 })
 
 export default CreationCompte
