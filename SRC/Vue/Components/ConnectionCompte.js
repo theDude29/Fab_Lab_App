@@ -1,14 +1,21 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TextInput} from 'react-native'
 import Boutton from './Boutton'
+import {connection} from '../../Controleur/connection'
 
 class ConnectionCompte extends React.Component {
 
     constructor(props) {
     super(props)
 
+    this._majInfosConnection = this._majInfosConnection.bind(this)
+
     this.textPseudo = ""
     this.textMdp = ""
+
+    this.state = {
+        infos_connection: {etat: false, text: ""},
+    }
   }
 
   _pseudoTextInputChanged(text)
@@ -50,12 +57,34 @@ class ConnectionCompte extends React.Component {
                         />
                     </View>
 
-                    <Boutton title="Connection"/>
+                    <Boutton title="Connection" onPress={() => connection(this.textPseudo, this.textMdp, this._majInfosConnection)}/>
 
                     <Text style={styles.mdpOublie_text}>Mot de passe oublié ?</Text>
                 </View>
+
+                {this._displayWarningText()}
             </ImageBackground>
         )
+    }
+
+    _displayWarningText() {
+
+        if(this.state.infos_connection.text != "") {
+            return (
+                <View style={styles.warning_container}>
+                    <Text style={styles.warning_text}>{this.state.infos_connection.text}</Text>
+                </View>
+            )
+        }
+
+        else {
+            return null
+        }
+    }
+
+    _majInfosConnection(data) {
+        console.log(data)
+        this.setState({infos_connection: data})
     }
 }
 
@@ -91,7 +120,20 @@ const styles = StyleSheet.create({
         padding: 3,
         margin: 2,
         fontSize: 15
-    }
+    },
+    warning_text: {
+        color: "red",
+        fontSize: 20,
+        margin: 10
+    },
+    warning_container: {
+        margin: 20,
+        backgroundColor: 'rgba(255,0,0,0.2)',
+        borderRadius: 15,
+        borderWidth: 3,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 })
 
 export default ConnectionCompte
