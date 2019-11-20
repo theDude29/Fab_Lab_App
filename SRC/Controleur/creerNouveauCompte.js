@@ -1,9 +1,10 @@
 import React from 'react'
 import {requeteSQL} from '../Controleur/utilitaire'
 import moment from 'moment'
+sha1 = require('js-sha1');
 
 export function creerNouveauCompte(pseudo, mdp, email) {
-    var requete = "INSERT INTO App_compte_utilisateur(pseudo, mdp, email, date_inscription) VALUES('" + pseudo + "','" + mdp + "','" + email + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss')  + "')"
+    var requete = "INSERT INTO App_compte_utilisateur(pseudo, mdp, email, date_inscription) VALUES('" + pseudo + "','" + sha1(mdp) + "','" + email + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss')  + "')"
     requeteSQL(requete)
 }
 
