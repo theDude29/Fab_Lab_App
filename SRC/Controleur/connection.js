@@ -2,7 +2,7 @@ import React from 'react'
 import {requeteSQL} from '../Controleur/utilitaire'
 sha1 = require('js-sha1');
 
-export function connection(pseudo, mdp, callback) {
+export function connection(pseudo, mdp, callback, nouvellePage) {
 
     requeteSQL("SELECT * FROM App_compte_utilisateur").then(listItem => {
         var status = {etat: false, text: ""}
@@ -16,6 +16,8 @@ export function connection(pseudo, mdp, callback) {
 
                     if(item.mdp == sha1(mdp)) {
                         mdpBon = true
+
+                        nouvellePage()
                     }
                 }
             }

@@ -12,6 +12,7 @@ import CreationCompte from '../Components/CreationCompte'
 import AcceuilCompte from '../Components/AcceuilCompte'
 import ConnectionCompte from '../Components/ConnectionCompte'
 import Credits from '../Components/Credits'
+import Mon_compte from '../Components/Mon_compte'
 
 const ArticleStackNavigator = createStackNavigator({
   Articles: {
@@ -45,6 +46,12 @@ const CompteStackNavigator = createStackNavigator({
       screen: ConnectionCompte,
       navigationOptions: {
           title: 'Connectez-vous'
+      }
+  },
+  Mon_compte: {
+      screen: Mon_compte,
+      navigationOptions: {
+          title: 'Mon compte'
       }
   }
 })

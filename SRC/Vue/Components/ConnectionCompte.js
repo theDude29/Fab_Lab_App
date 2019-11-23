@@ -8,6 +8,7 @@ class ConnectionCompte extends React.Component {
     constructor(props) {
     super(props)
 
+    this._allerAMonCompte = this._allerAMonCompte.bind(this)
     this._majInfosConnection = this._majInfosConnection.bind(this)
 
     this.textPseudo = ""
@@ -57,7 +58,7 @@ class ConnectionCompte extends React.Component {
                         />
                     </View>
 
-                    <Boutton title="Connection" onPress={() => connection(this.textPseudo, this.textMdp, this._majInfosConnection)}/>
+                    <Boutton title="Connection" onPress={() => connection(this.textPseudo, this.textMdp, this._majInfosConnection, this._allerAMonCompte)}/>
 
                     <Text style={styles.mdpOublie_text}>Mot de passe oublié ?</Text>
                 </View>
@@ -65,6 +66,10 @@ class ConnectionCompte extends React.Component {
                 {this._displayWarningText()}
             </ImageBackground>
         )
+    }
+
+    _allerAMonCompte() {
+        this.props.navigation.navigate('Mon_compte')
     }
 
     _displayWarningText() {

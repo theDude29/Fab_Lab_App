@@ -9,6 +9,7 @@ class CreationCompte extends React.Component {
     constructor(props) {
     super(props)
 
+    this._allerAMonCompte = this._allerAMonCompte.bind(this)
     this._majPseudoValide = this._majPseudoValide.bind(this)
     this._majEmailValide = this._majEmailValide.bind(this)
     this._majMdpValide = this._majMdpValide.bind(this)
@@ -72,6 +73,10 @@ class CreationCompte extends React.Component {
       }
 
       this.setState({warning_text: textWarning, infos_correcte: !infoMauvaise})
+  }
+
+  _allerAMonCompte() {
+      this.props.navigation.navigate('Mon_compte')
   }
 
     render() {
@@ -163,10 +168,10 @@ class CreationCompte extends React.Component {
 
     _displayBouttonConfirmer() {
         if(this.state.infos_correcte) {
-            return (<Boutton title="Confirmer" disabled={false} onPress={() => creerNouveauCompte(this.textPseudo, this.textMdp, this.textMail)}/>)
+            return (<Boutton title="Confirmer" disabled={false} onPress={() => creerNouveauCompte(this.textPseudo, this.textMdp, this.textMail, this._allerAMonCompte)}/>)
         }
         else {
-            return (<Boutton title="Confirmer" disabled={true} onPress={() => creerNouveauCompte(this.textPseudo, this.textMdp, this.textMail)}/>)
+            return (<Boutton title="Confirmer" disabled={true} onPress={() => creerNouveauCompte(this.textPseudo, this.textMdp, this.textMail, this._allerAMonCompte)}/>)
         }
     }
 
