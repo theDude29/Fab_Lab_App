@@ -1,7 +1,6 @@
 const initialState = {connecte: false, pseudo: ""}
 
 function compteReducer(state = initialState, action) {
-    console.log(action)
   let nextState
   switch (action.type) {
     case 'CONNECTION':

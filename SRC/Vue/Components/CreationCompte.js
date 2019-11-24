@@ -193,7 +193,6 @@ class CreationCompte extends React.Component {
 
     _connectionFaite() {
         const action = { type: "CONNECTION", value: {pseudo: this.textPseudo}}
-        console.log(action)
         this.props.dispatch(action)
     }
 }

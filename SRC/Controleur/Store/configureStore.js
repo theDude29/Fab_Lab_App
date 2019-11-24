@@ -1,11 +1,17 @@
 import { createStore } from 'redux';
 import compteReducer from './Reducers/compteReducer'
-import { persistCombineReducers } from 'redux-persist'
+import {persistReducer, persistStore} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-const rootPersistConfig = {
+const persistConfig = {
   key: 'root',
-  storage: storage
+  storage,
 }
 
-export default createStore(compteReducer)
+const persistedCompteReducer = persistReducer(persistConfig, compteReducer)
+
+export default () => {
+  let store = createStore(persistedCompteReducer)
+  let persistor = persistStore(store)
+  return { store, persistor }
+}
