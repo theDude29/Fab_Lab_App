@@ -79,3 +79,9 @@ export function mdpValide(mdp, callback) {
 
     callback(mdpValide)
 }
+
+const mapStateToProps = (state) => {
+  return {
+      connecte: state.connecte
+  }
+}

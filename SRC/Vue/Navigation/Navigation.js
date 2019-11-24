@@ -33,7 +33,7 @@ const CompteStackNavigator = createStackNavigator({
   AcceuilCompte: {
     screen: AcceuilCompte,
     navigationOptions: {
-      title: 'Mon compte'
+      title: 'Compte'
     }
   },
   CreationCompte: {
@@ -73,7 +73,7 @@ const ParametreStackNavigator = createStackNavigator({
 
 const MyDrawerNavigator = createDrawerNavigator({
 
-    Mon_compte: {
+    Compte: {
         screen: CompteStackNavigator,
         navigationOptions: {
             title: 'Mon compte'

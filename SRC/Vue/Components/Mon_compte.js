@@ -1,5 +1,6 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, ScrollView, TextInput, TouchableOpacity} from 'react-native'
+import { connect } from 'react-redux'
 
 class MonCompte extends React.Component {
 
@@ -15,7 +16,7 @@ class MonCompte extends React.Component {
                 source={require('../ressources/images/mon_compte.png')}
             >
                 <View style={styles.main_container}>
-                    <Text>Mon compte</Text>
+                    <Text>Mon compte {this.props.pseudo}</Text>
                 </View>
             </ImageBackground>
         )
@@ -35,4 +36,11 @@ const styles = StyleSheet.create({
     },
 })
 
-export default MonCompte
+const mapStateToProps = (state) => {
+  return {
+      connecte: state.connecte,
+      pseudo: state.pseudo
+  }
+}
+
+export default connect(mapStateToProps)(MonCompte)

@@ -29,7 +29,7 @@ export function connection(pseudo, mdp, callback, nouvellePage) {
                 status.text = "Le mot de passe est faux."
             }
             else {
-                status.text = "Bienvenue"
+                status.text = ""
                 status.etat = true
             }
         }

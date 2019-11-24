@@ -2,6 +2,7 @@ import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TextInput} from 'react-native'
 import Boutton from './Boutton'
 import {connection} from '../../Controleur/connection'
+import { connect } from 'react-redux'
 
 class ConnectionCompte extends React.Component {
 
@@ -69,6 +70,7 @@ class ConnectionCompte extends React.Component {
     }
 
     _allerAMonCompte() {
+        this._connectionFaite()
         this.props.navigation.navigate('Mon_compte')
     }
 
@@ -88,8 +90,12 @@ class ConnectionCompte extends React.Component {
     }
 
     _majInfosConnection(data) {
-        console.log(data)
         this.setState({infos_connection: data})
+    }
+
+    _connectionFaite() {
+        const action = { type: "CONNECTION", value: {pseudo: this.textPseudo}}
+        this.props.dispatch(action)
     }
 }
 
@@ -141,4 +147,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default ConnectionCompte
+export default connect()(ConnectionCompte)

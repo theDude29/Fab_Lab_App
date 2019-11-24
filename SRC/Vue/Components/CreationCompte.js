@@ -3,12 +3,14 @@ import {View, Text, StyleSheet, ImageBackground, TextInput, Image, ScrollView} f
 import Boutton from './Boutton'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import {creerNouveauCompte, pseudoLibre, emailValide, mdpValide} from '../../Controleur/creerNouveauCompte'
+import { connect } from 'react-redux'
 
 class CreationCompte extends React.Component {
 
     constructor(props) {
     super(props)
 
+    this._connectionFaite = this._connectionFaite.bind(this)
     this._allerAMonCompte = this._allerAMonCompte.bind(this)
     this._majPseudoValide = this._majPseudoValide.bind(this)
     this._majEmailValide = this._majEmailValide.bind(this)
@@ -76,6 +78,7 @@ class CreationCompte extends React.Component {
   }
 
   _allerAMonCompte() {
+      this._connectionFaite()
       this.props.navigation.navigate('Mon_compte')
   }
 
@@ -186,6 +189,12 @@ class CreationCompte extends React.Component {
     _majMdpValide(data) {
         this.setState({mdpValide: data}, this._majWarningText)
     }
+
+    _connectionFaite() {
+        const action = { type: "CONNECTION", value: {pseudo: this.textPseudo}}
+        console.log(action)
+        this.props.dispatch(action)
+    }
 }
 
 const styles = StyleSheet.create({
@@ -241,4 +250,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default CreationCompte
+export default connect()(CreationCompte)
