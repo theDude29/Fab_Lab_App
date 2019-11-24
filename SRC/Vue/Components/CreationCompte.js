@@ -79,7 +79,8 @@ class CreationCompte extends React.Component {
 
   _allerAMonCompte() {
       this._connectionFaite()
-      this.props.navigation.navigate('Mon_compte')
+
+      this.props.navigation.navigate('AcceuilCompte')
   }
 
     render() {

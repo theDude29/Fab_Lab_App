@@ -10,6 +10,7 @@ class AcceuilCompte extends React.Component {
     constructor(props) {
     super(props)
 
+    this._forceMaj = this._forceMaj.bind(this)
     this._allerALaCreationCompte = this._allerALaCreationCompte.bind(this)
     this._allerALaConnectionCompte = this._allerALaConnectionCompte.bind(this)
   }
@@ -20,7 +21,11 @@ class AcceuilCompte extends React.Component {
 
   _allerALaConnectionCompte() {
       this.props.navigation.navigate('ConnectionCompte')
-}
+  }
+
+  _forceMaj() {
+      this.forceUpdate()
+  }
 
     render() {
         return (
@@ -30,7 +35,7 @@ class AcceuilCompte extends React.Component {
 
     _displayScreenAdapte () {
         if(this.props.connecte) {
-            return <MonCompte />
+            return <MonCompte/>
         }
         else {
             return <PasConnecte connection={this._allerALaConnectionCompte} creation={this._allerALaCreationCompte}/>
