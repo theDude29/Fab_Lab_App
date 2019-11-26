@@ -46,7 +46,7 @@ class Articles extends React.Component {
     }
 
     _chargerArticles() {
-        InfoArticles.getListArticles(this._majListArticles).then(data => {
+        InfoArticles.getListArticles().then(data => {
             this.setState({listArticles: data})
         })
     }

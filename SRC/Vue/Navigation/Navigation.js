@@ -29,6 +29,15 @@ const ArticleStackNavigator = createStackNavigator({
   }
 })
 
+const ForumStackNavigator = createStackNavigator({
+  Acceuil: {
+    screen: Forum,
+    navigationOptions: {
+      title: 'Forums'
+    }
+  },
+})
+
 const CompteStackNavigator = createStackNavigator({
   AcceuilCompte: {
     screen: AcceuilCompte,
@@ -73,10 +82,10 @@ const ParametreStackNavigator = createStackNavigator({
 
 const MyDrawerNavigator = createDrawerNavigator({
 
-    Compte: {
-        screen: CompteStackNavigator,
+    Forum: {
+        screen: ForumStackNavigator,
         navigationOptions: {
-            title: 'Mon compte'
+            title: 'Forums'
         }
     },
   Home: {
@@ -97,10 +106,10 @@ const MyDrawerNavigator = createDrawerNavigator({
           title: 'FAQ'
       }
   },
-  Forum: {
-      screen: Forum,
+  Compte: {
+      screen: CompteStackNavigator,
       navigationOptions: {
-          title: 'Forums'
+          title: 'Mon compte'
       }
   },
   Parametres: {
