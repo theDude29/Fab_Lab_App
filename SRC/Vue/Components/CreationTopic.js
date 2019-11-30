@@ -2,7 +2,7 @@ import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, FlatList, TextInput} from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Boutton from './Boutton'
-import {CreerNouveauTopic} from '../../Controleur/creerNouveauTopic'
+import {creerNouveauTopic} from '../../Controleur/creerNouveauTopic'
 
 class CreationTopic extends React.Component {
 

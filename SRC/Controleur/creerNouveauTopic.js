@@ -3,7 +3,8 @@ import {requeteSQL} from '../Controleur/utilitaire'
 import moment from 'moment'
 
 export function creerNouveauTopic(titre, auteur, nouvellePage) {
-    var requete = "INSERT INTO App_forum_sujets(nom, auteur, date, resolue) VALUES('" + titre + "','" auteur + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss')  + "\',\'false\')"
+    console.log("siiiiiinge")
+    var requete = "INSERT INTO App_forum_sujets(nom, auteur, date, resolue) VALUES('" + titre + "','" + auteur + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss')  + "','false')"
     requeteSQL(requete)
 
     nouvellePage()
