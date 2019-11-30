@@ -35,6 +35,7 @@ class Forum extends React.Component {
                 <View style={styles.containerA}>
                     <TouchableOpacity
                         style={styles.add_container}
+                        onPress={() => this.props.navigation.navigate('CreationTopic')}
                     >
                         <Image style={styles.icon} source={require('../ressources/icon/plus.png')} />
                     </TouchableOpacity>

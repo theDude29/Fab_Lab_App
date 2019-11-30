@@ -13,6 +13,7 @@ import AcceuilCompte from '../Components/AcceuilCompte'
 import ConnectionCompte from '../Components/ConnectionCompte'
 import Credits from '../Components/Credits'
 import Mon_compte from '../Components/Mon_compte'
+import CreationTopic from '../Components/CreationTopic'
 
 const ArticleStackNavigator = createStackNavigator({
   Articles: {
@@ -36,6 +37,12 @@ const ForumStackNavigator = createStackNavigator({
       title: 'Forums'
     }
   },
+  CreationTopic: {
+      screen: CreationTopic,
+      navigationOptions: {
+          title: 'Création d\'un sujet'
+      }
+  }
 })
 
 const CompteStackNavigator = createStackNavigator({
