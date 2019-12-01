@@ -57,7 +57,7 @@ class CreationTopic extends React.Component {
     }
 
     _retourAcceuil() {
-        this.props.navigation.navigate('Forum')
+        this.props.navigation.navigate('Acceuil')
     }
 }
 

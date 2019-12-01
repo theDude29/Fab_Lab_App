@@ -13,16 +13,18 @@ class Forum extends React.Component {
         }
 
         this._chargerSujets = this._chargerSujets.bind(this)
-        this._chargerSujets()
     }
 
     render() {
+        this._chargerSujets()
+
         return (
             <ImageBackground
                 style={styles.image}
                 source={require('../ressources/images/forums.jpg')}
             >
                 <FlatList
+                    style={styles.list}
                   data={this.state.listSujets}
                   keyExtractor={(item) => item.id.toString()}
                   renderItem={({item}) => (
@@ -32,7 +34,7 @@ class Forum extends React.Component {
                   )}
                 />
 
-                <View style={styles.containerA}>
+                <View >
                     <TouchableOpacity
                         style={styles.add_container}
                         onPress={() => this.props.navigation.navigate('CreationTopic')}
@@ -46,6 +48,9 @@ class Forum extends React.Component {
 
     _chargerSujets() {
         InfoForums.getListSujets().then(data => {
+            var array = Array(data)
+            array.reverse()
+            console.log(array)
             this.setState({listSujets: data})
         })
     }
@@ -56,16 +61,17 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
     },
+    list: {
+        height: '75%'
+    },
     icon: {
         width: 64,
         height: 64
     },
     add_container: {
         margin: 25,
-    },
-    containerA: {
-        flex: 1,
-        justifyContent: 'flex-end',
+        width: 64,
+        height: 64
     },
     default_text: {
         color: "white",
