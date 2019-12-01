@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TextInput} from 'react-native'
-import Boutton from './Boutton'
-import {connection} from '../../Controleur/connection'
+import Boutton from '../Autres//Boutton'
+import {connection} from '../../../Controleur/connectionCompte'
 import { connect } from 'react-redux'
 
 class ConnectionCompte extends React.Component {
@@ -35,7 +35,7 @@ class ConnectionCompte extends React.Component {
         return (
             <ImageBackground
                 style={styles.image}
-                source={require('../ressources/images/mon_compte.png')}
+                source={require('../../ressources/images/mon_compte.png')}
             >
                 <View style={styles.main_container}>
                     <View style={styles.info_container}>

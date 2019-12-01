@@ -1,8 +1,8 @@
 import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, FlatList, TextInput} from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import Boutton from './Boutton'
-import {creerNouveauTopic} from '../../Controleur/creerNouveauTopic'
+import Boutton from '../Autres/Boutton'
+import {creerNouveauTopic} from '../../../Controleur/creerNouveauTopic'
 
 class CreationTopic extends React.Component {
 
@@ -20,7 +20,7 @@ class CreationTopic extends React.Component {
 
     render() {
         return (
-            <ImageBackground style={styles.image} source={require('../ressources/images/question.png')}>
+            <ImageBackground style={styles.image} source={require('../../ressources/images/question.png')}>
             <KeyboardAwareScrollView>
                 <View style={styles.text_container}>
                     <Text style={styles.title_text}>Cette section est destinée à receuillir vos questions concerant des sujets tels que la programmation, la modélisation 3D, Veillez à bien respecter les règles suivantes afin que votre question soit au mieu prise en compte:</Text>

@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native'
-import {convertHTMLtoText} from '../../Controleur/utilitaire'
+import {convertHTMLtoText} from '../../../Controleur/utilitaire'
 
 class ArticleItem extends React.Component {
 

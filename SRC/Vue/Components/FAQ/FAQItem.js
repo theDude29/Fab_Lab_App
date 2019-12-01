@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
-import {convertHTMLtoText} from '../../Controleur/utilitaire'
+import {convertHTMLtoText} from '../../../Controleur/utilitaire'
 
 class FaqItem extends React.Component {
 

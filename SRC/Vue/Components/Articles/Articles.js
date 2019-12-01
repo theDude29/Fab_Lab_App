@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, FlatList} from 'react-native'
 import ArticleItem from './ArticleItem'
-import * as InfoArticles from '../../Controleur/infoArticles'
+import * as InfoArticles from '../../../Controleur/infoArticles'
 
 class Articles extends React.Component {
 
@@ -39,7 +39,7 @@ class Articles extends React.Component {
 
     render() {
         return (
-            <ImageBackground style={styles.image} source={require('../ressources/images/articles.jpg')}>
+            <ImageBackground style={styles.image} source={require('../../ressources/images/articles.jpg')}>
                 {this._displayArticles()}
             </ImageBackground>
         )

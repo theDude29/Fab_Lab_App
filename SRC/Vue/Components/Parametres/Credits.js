@@ -7,7 +7,7 @@ class Credits extends React.Component {
         return (
             <ImageBackground
                 style={styles.image}
-                source={require('../ressources/images/credits.jpg')}
+                source={require('../../ressources/images/credits.jpg')}
             >
                 <View style={styles.main_container}>
                     <Text style={styles.default_text}>Cette application est dévellopée par Rémi Pérenne et est sous license <A style={styles.lien} href="https://www.gnu.org/licenses/gpl-3.0.txt">"GNU GENERAL PUBLIC LICENSE"</A>.</Text>

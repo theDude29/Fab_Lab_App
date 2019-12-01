@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, ScrollView} from 'react-native'
-import {convertHTMLtoText} from '../../Controleur/utilitaire'
+import {convertHTMLtoText} from '../../../Controleur/utilitaire'
 import moment from 'moment'
 
 class ArticleDetail extends React.Component {

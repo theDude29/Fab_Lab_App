@@ -11,7 +11,7 @@ class Parametres extends React.Component {
         return (
             <ImageBackground
                 style={styles.image}
-                source={require('../ressources/images/parametres.png')}
+                source={require('../../ressources/images/parametres.png')}
             >
                 <View style={styles.main_container}>
                     <TouchableOpacity

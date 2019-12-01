@@ -1,8 +1,7 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, ScrollView} from 'react-native'
 import * as Font from 'expo-font' ;
-import * as InfoPresentation from '../../Controleur/infoPresentation'
-import ArticleItem from './ArticleItem'
+import * as InfoPresentation from '../../../Controleur/infoPresentation'
 
 class Presentation extends React.Component {
 
@@ -20,7 +19,7 @@ class Presentation extends React.Component {
 
     render() {
         return (
-            <ImageBackground style={styles.image} source={require('../ressources/images/presentation.jpg')}>
+            <ImageBackground style={styles.image} source={require('../../ressources/images/presentation.jpg')}>
             <ScrollView>
             {
                 this.state.fontLoaded ? (

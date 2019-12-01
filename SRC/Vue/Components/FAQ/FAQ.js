@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, FlatList} from 'react-native'
 import FaqItem from './FAQItem'
-import * as InfoFaq from '../../Controleur/infoFAQ'
+import * as InfoFaq from '../../../Controleur/infoFAQ'
 
 class Faq extends React.Component {
 
@@ -20,7 +20,7 @@ class Faq extends React.Component {
         return (
             <ImageBackground
                 style={styles.image}
-                source={require('../ressources/images/faq.jpg')}
+                source={require('../../ressources/images/faq.jpg')}
             >
                 <View style={styles.main_container}>
                 <FlatList

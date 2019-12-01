@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, ScrollView, TextInput, TouchableOpacity} from 'react-native'
-import Boutton from './Boutton'
+import Boutton from '../Autres/Boutton'
 import PasConnecte from './PasConnecte'
 import MonCompte from './Mon_compte'
 import { connect } from 'react-redux'

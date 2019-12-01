@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, FlatList} from 'react-native'
-import * as InfoForums from '../../Controleur/infoForum.js'
+import * as InfoForums from '../../../Controleur/infoForum.js'
 import ForumItem from './ForumItem'
 
 class Forum extends React.Component {
@@ -21,7 +21,7 @@ class Forum extends React.Component {
         return (
             <ImageBackground
                 style={styles.image}
-                source={require('../ressources/images/forums.jpg')}
+                source={require('../../ressources/images/forums.jpg')}
             >
                 <FlatList
                     style={styles.list}
@@ -39,7 +39,7 @@ class Forum extends React.Component {
                         style={styles.add_container}
                         onPress={() => this.props.navigation.navigate('CreationTopic')}
                     >
-                        <Image style={styles.icon} source={require('../ressources/icon/plus.png')} />
+                        <Image style={styles.icon} source={require('../../ressources/icon/plus.png')} />
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
@@ -48,9 +48,6 @@ class Forum extends React.Component {
 
     _chargerSujets() {
         InfoForums.getListSujets().then(data => {
-            var array = Array(data)
-            array.reverse()
-            console.log(array)
             this.setState({listSujets: data})
         })
     }

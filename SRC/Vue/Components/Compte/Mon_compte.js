@@ -13,7 +13,7 @@ class MonCompte extends React.Component {
         return (
             <ImageBackground
                 style={styles.image}
-                source={require('../ressources/images/mon_compte.png')}
+                source={require('../../ressources/images/mon_compte.png')}
             >
                 <View style={styles.main_container}>
                     <Text>Mon compte {this.props.pseudo}</Text>

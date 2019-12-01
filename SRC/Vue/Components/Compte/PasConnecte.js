@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, ScrollView, TextInput, TouchableOpacity} from 'react-native'
-import Boutton from './Boutton'
+import Boutton from '../Autres/Boutton'
 
 class PasConnecte extends React.Component {
 
@@ -12,7 +12,7 @@ class PasConnecte extends React.Component {
         return (
             <ImageBackground
                 style={styles.image}
-                source={require('../ressources/images/mon_compte.png')}
+                source={require('../../ressources/images/mon_compte.png')}
             >
                 <View style={styles.main_container}>
                     <Text style={styles.title_text}>Bonjour malheureusement aucun compte n'est lié à l'application.</Text>

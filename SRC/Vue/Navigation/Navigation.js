@@ -2,18 +2,24 @@ import React from 'react'
 import {createAppContainer} from 'react-navigation'
 import {createDrawerNavigator} from 'react-navigation-drawer'
 import {createStackNavigator} from 'react-navigation-stack'
-import Presentation from '../Components/Presentation'
-import Articles from '../Components/Articles'
-import Forum from '../Components/Forum'
-import Parametres from '../Components/Parametres'
-import Faq from '../Components/FAQ'
-import ArticleDetail from '../Components/ArticleDetail'
-import CreationCompte from '../Components/CreationCompte'
-import AcceuilCompte from '../Components/AcceuilCompte'
-import ConnectionCompte from '../Components/ConnectionCompte'
-import Credits from '../Components/Credits'
-import Mon_compte from '../Components/Mon_compte'
-import CreationTopic from '../Components/CreationTopic'
+
+import Presentation from '../Components/Presentation/Presentation'
+
+import Articles from '../Components/Articles/Articles'
+import ArticleDetail from '../Components/Articles/ArticleDetail'
+
+import Forum from '../Components/Forum/Forum'
+import CreationTopic from '../Components/Forum/CreationTopic'
+
+import Faq from '../Components/FAQ/FAQ'
+
+import CreationCompte from '../Components/Compte/CreationCompte'
+import AcceuilCompte from '../Components/Compte/AcceuilCompte'
+import ConnectionCompte from '../Components/Compte/ConnectionCompte'
+import Mon_compte from '../Components/Compte/Mon_compte'
+
+import Parametres from '../Components/Parametres/Parametres'
+import Credits from '../Components/Parametres/Credits'
 
 const ArticleStackNavigator = createStackNavigator({
   Articles: {

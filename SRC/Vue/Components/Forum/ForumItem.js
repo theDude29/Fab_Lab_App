@@ -23,7 +23,7 @@ class ForumItem extends React.Component {
 
     _displayImageCheck() {
         if(this.props.sujet.resolu == true) {
-            return <Image source={require('../ressources/icon/check.png')} style={styles.icon} />
+            return <Image source={require('../../ressources/icon/check.png')} style={styles.icon} />
         }
         else {
             return null

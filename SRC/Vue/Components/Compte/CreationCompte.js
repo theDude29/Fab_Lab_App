@@ -1,8 +1,8 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TextInput, Image, ScrollView} from 'react-native'
-import Boutton from './Boutton'
+import Boutton from '../Autres/Boutton'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import {creerNouveauCompte, pseudoLibre, emailValide, mdpValide} from '../../Controleur/creerNouveauCompte'
+import {creerNouveauCompte, pseudoLibre, emailValide, mdpValide} from '../../../Controleur/creerNouveauCompte'
 import { connect } from 'react-redux'
 
 class CreationCompte extends React.Component {
@@ -87,7 +87,7 @@ class CreationCompte extends React.Component {
         return (
             <ImageBackground
                 style={styles.image}
-                source={require('../ressources/images/mon_compte.png')}
+                source={require('../../ressources/images/mon_compte.png')}
             >
             <KeyboardAwareScrollView>
                 <View style={styles.main_container}>
@@ -148,10 +148,10 @@ class CreationCompte extends React.Component {
 
     _displayMessageValidite(valide) {
         if(valide) {
-            return <Image style={styles.icon} source={require("../ressources/icon/check.png")}/>
+            return <Image style={styles.icon} source={require("../../ressources/icon/check.png")}/>
         }
         else {
-            return <Image style={styles.icon} source={require("../ressources/icon/uncheck.png")}/>
+            return <Image style={styles.icon} source={require("../../ressources/icon/uncheck.png")}/>
         }
     }
 
