@@ -10,6 +10,7 @@ import ArticleDetail from '../Components/Articles/ArticleDetail'
 
 import Forum from '../Components/Forum/Forum'
 import CreationTopic from '../Components/Forum/CreationTopic'
+import Discussion from '../Components/Forum/Discussion'
 
 import Faq from '../Components/FAQ/FAQ'
 
@@ -47,6 +48,12 @@ const ForumStackNavigator = createStackNavigator({
       screen: CreationTopic,
       navigationOptions: {
           title: 'Création d\'un sujet'
+      }
+  },
+  Discussion: {
+      screen: Discussion,
+      navigationOptions: {
+          title: 'Discussion'
       }
   }
 })

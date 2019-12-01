@@ -8,6 +8,7 @@ class ForumItem extends React.Component {
         return (
             <TouchableOpacity
                 style={styles.main_container}
+                onPress={this.props.onPress}
             >
                 <View style={styles.titre_container}>
                     <Text style={styles.title_text}>{this.props.sujet.nom}</Text>

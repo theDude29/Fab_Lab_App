@@ -13,6 +13,7 @@ class Forum extends React.Component {
         }
 
         this._chargerSujets = this._chargerSujets.bind(this)
+        this._allerALADiscussion = this._allerALADiscussion.bind(this)
     }
 
     render() {
@@ -30,6 +31,7 @@ class Forum extends React.Component {
                   renderItem={({item}) => (
                     <ForumItem
                       sujet={item}
+                      onPress={this._allerALADiscussion}
                     />
                   )}
                 />
@@ -50,6 +52,10 @@ class Forum extends React.Component {
         InfoForums.getListSujets().then(data => {
             this.setState({listSujets: data})
         })
+    }
+
+    _allerALADiscussion() {
+        this.props.navigation.navigate('Discussion')
     }
 }
 
