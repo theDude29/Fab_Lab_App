@@ -2,6 +2,7 @@ import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, FlatList} from 'react-native'
 import Message from './Message'
 import {getDiscussion} from '../../../Controleur/infoForum'
+import moment from 'moment'
 
 class Discussion extends React.Component {
 
@@ -12,7 +13,7 @@ class Discussion extends React.Component {
             listMessages: undefined
         }
 
-        this.nom = this.props.navigation.state.params.nom
+        this.sujet = this.props.navigation.state.params.sujet
 
         this._chargerMessages = this._chargerMessages.bind(this)
         this._chargerMessages()
@@ -25,6 +26,10 @@ class Discussion extends React.Component {
                 style={styles.image}
                 source={require('../../ressources/images/fond_messages.jpg')}
             >
+
+            <View style={styles.title_container}>
+                <Text style={styles.title_text}>{this.sujet.nom + " par " + this.sujet.auteur + " le " + moment(new Date(this.sujet.date)).format('DD/MM/YYYY')}</Text>
+            </View>
 
             <FlatList
                 style={styles.list}
@@ -50,7 +55,7 @@ class Discussion extends React.Component {
     }
 
     _chargerMessages() {
-        getDiscussion(this.nom).then(data => {
+        getDiscussion(this.sujet.nom).then(data => {
             this.setState({listMessages: data})
         })
     }
@@ -73,6 +78,16 @@ const styles = StyleSheet.create({
     list: {
         height: '75%'
     },
+    title_text: {
+        fontSize: 20,
+        textAlign: 'center'
+    },
+    title_container: {
+        backgroundColor: 'rgba(200,100,0,0.5)',
+        borderWidth: 3,
+        margin: 20,
+        padding: 10
+    }
 })
 
 export default Discussion

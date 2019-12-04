@@ -11,7 +11,7 @@ class ForumItem extends React.Component {
     }
 
     _allerALADiscussion() {
-        this.props.onPress(this.props.sujet.nom)
+        this.props.onPress(this.props.sujet)
     }
 
     render() {

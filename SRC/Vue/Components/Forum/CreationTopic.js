@@ -2,7 +2,7 @@ import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, FlatList, TextInput} from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Boutton from '../Autres/Boutton'
-import {creerNouveauTopic} from '../../../Controleur/creerNouveauTopic'
+import {creerNouveauTopic} from '../../../Controleur/infoForum'
 
 class CreationTopic extends React.Component {
 
@@ -23,13 +23,6 @@ class CreationTopic extends React.Component {
         return (
             <ImageBackground style={styles.image} source={require('../../ressources/images/question.png')}>
             <KeyboardAwareScrollView>
-                <View style={styles.text_container}>
-                    <Text style={styles.title_text}>Cette section est destinée à receuillir vos questions concerant des sujets tels que la programmation, la modélisation 3D, Veillez à bien respecter les règles suivantes afin que votre question soit au mieu prise en compte:</Text>
-                    <Text style={styles.default_text}>  -Donnez un titre court, clair et précis à votre sujet par exemple mettez "Comment programmer en python" plutôt que "je ne comprend pas comment faire pour coder un programme en snt avec le language python".</Text>
-                    <Text style={styles.default_text}>  -Essayez de vérifier votre orthographe au maximum.</Text>
-                    <Text style={styles.default_text}>  -Restez poli.</Text>
-                    <Text style={styles.default_text}>  -Quand un sujet est résolu marquez le comme tel avec l'icon "check"</Text>
-                </View>
 
                 <View style={styles.input_container}>
                     <Text style={styles.title_text}>Entrez le nom de votre sujet: </Text>
@@ -51,6 +44,15 @@ class CreationTopic extends React.Component {
                 <View style={styles.boutton_container}>
                     <Boutton title="Confirmer" disabled={this.state.textInexistant} onPress={() => creerNouveauTopic(this.textSujet, "Singe20199", this._retourAcceuil, this.textDescription)} />
                 </View>
+
+                <View style={styles.text_container}>
+                    <Text style={styles.title_text}>Cette section est destinée à receuillir vos questions concerant des sujets tels que la programmation, la modélisation 3D, Veillez à bien respecter les règles suivantes afin que votre question soit au mieu prise en compte:</Text>
+                    <Text style={styles.default_text}>  -Donnez un titre court, clair et précis à votre sujet par exemple mettez "Comment programmer en python" plutôt que "je ne comprend pas comment faire pour coder un programme en snt avec le language python".</Text>
+                    <Text style={styles.default_text}>  -Essayez de vérifier votre orthographe au maximum.</Text>
+                    <Text style={styles.default_text}>  -Restez poli.</Text>
+                    <Text style={styles.default_text}>  -Quand un sujet est résolu marquez le comme tel avec l'icon "check"</Text>
+                </View>
+
             </KeyboardAwareScrollView>
             </ImageBackground>
         )
