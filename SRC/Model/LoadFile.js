@@ -4,5 +4,5 @@ export function loadFile(file) {
 
     var url = ADRESSE_SERVEUR + file
 
-    return fetch(url).then((response) => response.json())
+    return await fetch(url).then((response) => response.json())
 }
