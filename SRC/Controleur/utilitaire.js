@@ -13,7 +13,7 @@ export function requeteSQL(requete) {
     if(requete.match(/SELECT/)) {
         return loadFile("queryRequeteSQL.php?sql=" + requete)
     }
-    if(requete.match(/DELETE|INSERT|UPDATE/)) {
-        loadFile("execRequeteSQL.php?sql=" + requete)
+    if(requete.match(/DELETE|INSERT|UPDATE|CREATE/)) {
+        return loadFile("execRequeteSQL.php?sql=" + requete)
     }
 }

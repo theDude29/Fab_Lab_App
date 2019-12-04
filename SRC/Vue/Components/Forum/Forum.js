@@ -54,8 +54,8 @@ class Forum extends React.Component {
         })
     }
 
-    _allerALADiscussion() {
-        this.props.navigation.navigate('Discussion')
+    _allerALADiscussion(nom) {
+        this.props.navigation.navigate('Discussion', {nom: nom})
     }
 }
 

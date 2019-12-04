@@ -10,9 +10,9 @@ class Message extends React.Component {
     render() {
 
         return (
-            <View style={this.props.monMessage == true ? styles.main_containerA : styles.main_containerB}>
-                <View style={this.props.monMessage == true ? styles.message_containerA : styles.message_containerB}>
-                    <Text>Messages</Text>
+            <View style={this.props.message.auteur == "REMI" ? styles.main_containerA : styles.main_containerB}>
+                <View style={this.props.message.auteur == "REMI" ? styles.message_containerA : styles.message_containerB}>
+                    <Text>{this.props.message.content}</Text>
                 </View>
             </View>
         )

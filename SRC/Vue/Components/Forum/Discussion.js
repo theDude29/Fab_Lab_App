@@ -1,11 +1,21 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, FlatList} from 'react-native'
 import Message from './Message'
+import {getDiscussion} from '../../../Controleur/infoForum'
 
 class Discussion extends React.Component {
 
     constructor(props) {
         super(props)
+
+        this.state = {
+            listMessages: undefined
+        }
+
+        this.nom = this.props.navigation.state.params.nom
+
+        this._chargerMessages = this._chargerMessages.bind(this)
+        this._chargerMessages()
     }
 
     render() {
@@ -15,10 +25,17 @@ class Discussion extends React.Component {
                 style={styles.image}
                 source={require('../../ressources/images/fond_messages.jpg')}
             >
-                <Message monMessage={true}/>
-                <Message monMessage={false}/>
-                <Message monMessage={false}/>
-                <Message monMessage={true}/>
+
+            <FlatList
+                style={styles.list}
+              data={this.state.listMessages}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={({item}) => (
+                <Message
+                    message={item}
+                />
+              )}
+            />
 
                 <View>
                     <TouchableOpacity
@@ -30,6 +47,12 @@ class Discussion extends React.Component {
                 </View>
             </ImageBackground>
         )
+    }
+
+    _chargerMessages() {
+        getDiscussion(this.nom).then(data => {
+            this.setState({listMessages: data})
+        })
     }
 }
 
@@ -46,6 +69,9 @@ const styles = StyleSheet.create({
         margin: 25,
         width: 64,
         height: 64
+    },
+    list: {
+        height: '75%'
     },
 })
 

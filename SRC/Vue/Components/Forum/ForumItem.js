@@ -4,11 +4,21 @@ import moment from 'moment'
 
 class ForumItem extends React.Component {
 
+    constructor(props) {
+        super(props)
+
+        this._allerALADiscussion = this._allerALADiscussion.bind(this)
+    }
+
+    _allerALADiscussion() {
+        this.props.onPress(this.props.sujet.nom)
+    }
+
     render() {
         return (
             <TouchableOpacity
                 style={styles.main_container}
-                onPress={this.props.onPress}
+                onPress={this._allerALADiscussion}
             >
                 <View style={styles.titre_container}>
                     <Text style={styles.title_text}>{this.props.sujet.nom}</Text>
