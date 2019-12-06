@@ -36,7 +36,7 @@ class Forum extends React.Component {
                   )}
                 />
 
-                <View >
+                <View>
                     <TouchableOpacity
                         style={styles.add_container}
                         onPress={() => this.props.navigation.navigate('CreationTopic')}

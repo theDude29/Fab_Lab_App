@@ -7,14 +7,27 @@ export function getListSujets() {
 }
 
 export function getDiscussion(nom) {
+    nom = nom.replace(/ /g, '_')
+
     return requeteSQL("SELECT * FROM App_forum_" + nom + "_messages")
 }
 
-export function creerNouveauTopic(titre, auteur, nouvellePage) {
+export function creerNouveauTopic(titre, description, auteur, nouvellePage) {
 
     requeteSQL("INSERT INTO App_forum_sujets(nom, auteur, date, resolu) VALUES('" + titre + "','" + auteur + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss')  + "','false')")
 
-    requeteSQL("CREATE TABLE App_forum_" + titre + "_messages (id INT NOT NULL AUTO_INCREMENT, auteur VARCHAR(100), content TEXT, date DATETIME, PRIMARY KEY (id))")
+    var nouveauTitre = titre.replace(/ /g, '_')
+    requeteSQL("CREATE TABLE App_forum_" + nouveauTitre + "_messages (id INT NOT NULL AUTO_INCREMENT, auteur VARCHAR(100), content TEXT, date DATETIME, PRIMARY KEY (id))")
+
+    requeteSQL("INSERT INTO App_forum_" + nouveauTitre + "_messages(auteur, content, date) VALUES('" + auteur + "','" + description + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss') + "')")
 
     nouvellePage()
+}
+
+export function envoyerMessage(content, auteur, titreSujet) {
+
+    if(content != "") {
+        titreSujet = titreSujet.replace(/ /g, '_')
+        requeteSQL("INSERT INTO App_forum_" + titreSujet + "_messages(auteur, content, date) VALUES('" + auteur + "','" + content + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss') + "')")
+    }
 }

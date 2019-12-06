@@ -12,6 +12,7 @@ class CreationTopic extends React.Component {
         this._retourAcceuil = this._retourAcceuil.bind(this)
 
         this.textSujet = ""
+        this.textDescription = ""
 
         this.state = {
             textInexistant: true
@@ -31,8 +32,17 @@ class CreationTopic extends React.Component {
                     />
                 </View>
 
+                <View style={styles.input_container}>
+                    <Text style={styles.title_text}>Entrez la description de votre sujet: </Text>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={(text) => this._descriptionTextInputChanged(text)}
+                        multiline={true}
+                    />
+                </View>
+
                 <View style={styles.boutton_container}>
-                    <Boutton title="Confirmer" disabled={this.state.textInexistant} onPress={() => creerNouveauTopic(this.textSujet, "Singe20199", this._retourAcceuil)} />
+                    <Boutton title="Confirmer" disabled={this.state.textInexistant} onPress={() => creerNouveauTopic(this.textSujet, this.textDescription, "Singe20199", this._retourAcceuil)} />
                 </View>
 
                 <View style={styles.text_container}>
@@ -56,6 +66,10 @@ class CreationTopic extends React.Component {
         else {
             this.setState({textInexistant: true})
         }
+    }
+
+    _descriptionTextInputChanged(text) {
+        this.textDescription = text
     }
 
     _retourAcceuil() {
