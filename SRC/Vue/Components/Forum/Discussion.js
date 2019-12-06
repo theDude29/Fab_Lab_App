@@ -13,6 +13,8 @@ class Discussion extends React.Component {
             listMessages: undefined
         }
 
+        this.scrollViewMessages = React.createRef();
+
         this.textMessage = ""
 
         this.sujet = this.props.navigation.state.params.sujet
@@ -41,6 +43,7 @@ class Discussion extends React.Component {
                 </View>
 
                     <FlatList
+                        ref={component => this.scrollViewMessages = component}
                         style={styles.list}
                       data={this.state.listMessages}
                       keyExtractor={(item) => item.id.toString()}
@@ -77,7 +80,10 @@ class Discussion extends React.Component {
     _envoyerMessage() {
         envoyerMessage(this.textMessage, "REMILESINGE", this.sujet.nom)
 
-        this._chargerMessages()
+        setTimeout(() => {
+            this._chargerMessages()
+            //setTimeout(this.scrollViewMessages.scrollToEnd, 100)
+        }, 100)
     }
 
     _messageTextInputChanged(text) {
