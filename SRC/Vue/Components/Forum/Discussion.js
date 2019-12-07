@@ -16,6 +16,7 @@ class Discussion extends React.Component {
         this.list = React.createRef();
         this.textMessage = ""
         this.sujet = this.props.navigation.state.params.sujet
+        this.messageTelecharges = false
 
         this._messageTextInputChanged = this._messageTextInputChanged.bind(this)
         this._envoyerMessage = this._envoyerMessage.bind(this)
@@ -44,7 +45,11 @@ class Discussion extends React.Component {
                     ref={component => this.list = component}
                     dataSource={this.state.listMessages}
                     renderRow={(rowData) => <Message message={rowData} />}
-                    onContentSizeChange={(w,h) => {this.list.scrollToEnd()}}
+                    onContentSizeChange={(w,h) => {
+                        if(this.messageTelecharges == true) {
+                            this.list.scrollToEnd()
+                        }
+                    }}
                 />
 
                 <View style={styles.input_container}>
@@ -73,16 +78,18 @@ class Discussion extends React.Component {
     _envoyerMessage() {
         envoyerMessage(this.textMessage, "REMILESINGE", this.sujet.nom)
 
-        setTimeout(this._chargerMessages, 100)
+        setTimeout(() => {
+            this._chargerMessages(true)
+        }, 100)
     }
 
     _messageTextInputChanged(text) {
         this.textMessage = text
     }
 
-    _chargerMessages() {
+    _chargerMessages(nouveauMessage) {
         getDiscussion(this.sujet.nom).then(data => {
-            this.setState({listMessages: this.state.listMessages.cloneWithRows(data)})
+            this.setState({listMessages: this.state.listMessages.cloneWithRows(data)}, nouveauMessage == true ? () => {this.messageTelecharges = true} : null)
         })
     }
 }
