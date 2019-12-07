@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, FlatList, TextInput, Keyboard, KeyboardAvoidingView} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, ListView, TextInput, KeyboardAvoidingView, ScrollView} from 'react-native'
 import Message from './Message'
 import {getDiscussion, envoyerMessage} from '../../../Controleur/infoForum'
 import moment from 'moment'
@@ -10,18 +10,15 @@ class Discussion extends React.Component {
         super(props)
 
         this.state = {
-            listMessages: undefined
+            listMessages: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
         }
 
-        this.scrollViewMessages = React.createRef();
-
+        this.list = React.createRef();
         this.textMessage = ""
-
         this.sujet = this.props.navigation.state.params.sujet
 
         this._messageTextInputChanged = this._messageTextInputChanged.bind(this)
         this._envoyerMessage = this._envoyerMessage.bind(this)
-
         this._chargerMessages = this._chargerMessages.bind(this)
         this._chargerMessages()
     }
@@ -42,17 +39,13 @@ class Discussion extends React.Component {
                     <Text style={styles.title_text}>{this.sujet.nom + " par " + this.sujet.auteur + " le " + moment(new Date(this.sujet.date)).format('DD/MM/YYYY')}</Text>
                 </View>
 
-                    <FlatList
-                        ref={component => this.scrollViewMessages = component}
-                        style={styles.list}
-                      data={this.state.listMessages}
-                      keyExtractor={(item) => item.id.toString()}
-                      renderItem={({item}) => (
-                        <Message
-                            message={item}
-                        />
-                      )}
-                    />
+                <ListView
+                    style={styles.list}
+                    ref={component => this.list = component}
+                    dataSource={this.state.listMessages}
+                    renderRow={(rowData) => <Message message={rowData} />}
+                    onContentSizeChange={(w,h) => {this.list.scrollToEnd()}}
+                />
 
                 <View style={styles.input_container}>
                     <TextInput
@@ -80,10 +73,7 @@ class Discussion extends React.Component {
     _envoyerMessage() {
         envoyerMessage(this.textMessage, "REMILESINGE", this.sujet.nom)
 
-        setTimeout(() => {
-            this._chargerMessages()
-            //setTimeout(this.scrollViewMessages.scrollToEnd, 100)
-        }, 100)
+        setTimeout(this._chargerMessages, 100)
     }
 
     _messageTextInputChanged(text) {
@@ -92,7 +82,7 @@ class Discussion extends React.Component {
 
     _chargerMessages() {
         getDiscussion(this.sujet.nom).then(data => {
-            this.setState({listMessages: data})
+            this.setState({listMessages: this.state.listMessages.cloneWithRows(data)})
         })
     }
 }
