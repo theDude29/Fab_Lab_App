@@ -14,10 +14,12 @@ class Forum extends React.Component {
 
         this._chargerSujets = this._chargerSujets.bind(this)
         this._allerALADiscussion = this._allerALADiscussion.bind(this)
+
+        this._chargerSujets()
     }
 
     render() {
-        this._chargerSujets()
+        setTimeout(this._chargerSujets, 1000*5)
 
         return (
             <ImageBackground

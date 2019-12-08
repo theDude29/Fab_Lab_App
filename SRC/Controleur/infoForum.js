@@ -1,6 +1,7 @@
 import React from 'react'
 import {requeteSQL} from '../Controleur/utilitaire'
 import moment from 'moment'
+sha1 = require('js-sha1');
 
 export function getListSujets() {
     return requeteSQL("SELECT * FROM App_forum_sujets ORDER BY date DESC")
@@ -19,8 +20,10 @@ export function creerNouveauTopic(titre, description, auteur, nouvellePage) {
     var nouveauTitre = titre.replace(/ /g, '_')
     requeteSQL("CREATE TABLE App_forum_" + nouveauTitre + "_messages (id INT NOT NULL AUTO_INCREMENT, auteur VARCHAR(100), content TEXT, date DATETIME, PRIMARY KEY (id))")
 
-    requeteSQL("INSERT INTO App_forum_" + nouveauTitre + "_messages(auteur, content, date) VALUES('" + auteur + "','" + description + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss') + "')")
-
+    if(description != "") {
+        requeteSQL("INSERT INTO App_forum_" + nouveauTitre + "_messages(auteur, content, date) VALUES('" + auteur + "','" + description + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss') + "')")
+    }
+    
     nouvellePage()
 }
 

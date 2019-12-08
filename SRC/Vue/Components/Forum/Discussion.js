@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, ListView, TextInput, KeyboardAvoidingView, ScrollView} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, ListView, TextInput, KeyboardAvoidingView} from 'react-native'
 import Message from './Message'
 import {getDiscussion, envoyerMessage} from '../../../Controleur/infoForum'
 import moment from 'moment'
@@ -14,6 +14,7 @@ class Discussion extends React.Component {
         }
 
         this.list = React.createRef();
+        this.textInput = React.createRef();
         this.textMessage = ""
         this.sujet = this.props.navigation.state.params.sujet
         this.messageTelecharges = false
@@ -21,6 +22,7 @@ class Discussion extends React.Component {
         this._messageTextInputChanged = this._messageTextInputChanged.bind(this)
         this._envoyerMessage = this._envoyerMessage.bind(this)
         this._chargerMessages = this._chargerMessages.bind(this)
+
         this._chargerMessages()
     }
 
@@ -54,6 +56,7 @@ class Discussion extends React.Component {
 
                 <View style={styles.input_container}>
                     <TextInput
+                        ref={component => this.textInput = component}
                         style={styles.textInput}
                         onChangeText={(text) => this._messageTextInputChanged(text)}
                         multiline={true}
@@ -76,11 +79,13 @@ class Discussion extends React.Component {
     }
 
     _envoyerMessage() {
-        envoyerMessage(this.textMessage, "REMILESINGE", this.sujet.nom)
+        envoyerMessage(this.textMessage, "REMI", this.sujet.nom)
 
         setTimeout(() => {
             this._chargerMessages(true)
         }, 100)
+
+        this.textInput.clear()
     }
 
     _messageTextInputChanged(text) {
@@ -103,16 +108,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     icon_container: {
-        marginTop: '5%'
+        marginTop: 5
     },
     textInput: {
         borderWidth: 2,
         borderRadius: 5,
         padding: 3,
-        margin: 2,
         fontSize: 20,
         width: '75%',
-        margin: '5%'
+        margin: '5%',
+        marginTop: 5
     },
     icon: {
         width: 32,
@@ -129,6 +134,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(200,100,0,0.5)',
         borderWidth: 3,
         margin: 20,
+        marginBottom: 5,
         padding: 10
     }
 })

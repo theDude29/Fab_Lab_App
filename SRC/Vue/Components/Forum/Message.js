@@ -13,9 +13,9 @@ class Message extends React.Component {
         return (
             <View style={this.props.message.auteur == "REMI" ? styles.main_containerA : styles.main_containerB}>
                 <View style={this.props.message.auteur == "REMI" ? styles.message_containerA : styles.message_containerB}>
-                    <Text>{this.props.message.content}</Text>
+                    <Text style={styles.text_content}>{this.props.message.content + '\n'}</Text>
                     <View style={styles.info_container}>
-                        <Text>{this.props.message.auteur + " le " + moment(new Date(this.props.message.date)).format('DD/MM/YYYY')}</Text>
+                        <Text style={styles.text_info}>{this.props.message.auteur + " le " + moment(new Date(this.props.message.date)).format('DD/MM/YYYY')}</Text>
                     </View>
                 </View>
             </View>
@@ -30,22 +30,30 @@ const styles = StyleSheet.create({
     },
     main_containerB: {
         alignItems: 'flex-start',
-        padding: 20
+        padding: 20,
     },
     message_containerA: {
         backgroundColor: 'rgba(0,200,0,0.5)',
         borderWidth: 2,
         borderRadius: 15,
-        padding: 10
+        padding: 10,
+        maxWidth: '80%'
     },
     message_containerB: {
         backgroundColor: 'rgba(0,250,250,0.5)',
         borderWidth: 2,
         borderRadius: 15,
-        padding: 10
+        padding: 10,
+        maxWidth: '80%'
     },
     info_container: {
         alignItems: 'flex-end'
+    },
+    text_info: {
+        fontSize: 12
+    },
+    text_content: {
+        fontSize: 18
     }
 })
 
