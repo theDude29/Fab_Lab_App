@@ -19,12 +19,16 @@ export function creerNouveauTopic(titre, description, auteur, nouvellePage) {
 
     var nouveauTitre = titre.replace(/ /g, '_')
     requeteSQL("CREATE TABLE App_forum_" + nouveauTitre + "_messages (id INT NOT NULL AUTO_INCREMENT, auteur VARCHAR(100), content TEXT, date DATETIME, PRIMARY KEY (id))")
+    .then(() => {
+            if(description != "") {
+                setTimeout(() => {
+                    requeteSQL("INSERT INTO App_forum_" + nouveauTitre + "_messages(auteur, content, date) VALUES('" + auteur + "','" + description + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss') + "')")
 
-    if(description != "") {
-        requeteSQL("INSERT INTO App_forum_" + nouveauTitre + "_messages(auteur, content, date) VALUES('" + auteur + "','" + description + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss') + "')")
-    }
-
-    nouvellePage()
+                    nouvellePage()
+                }, 1000)
+            }
+        }
+    )
 }
 
 export function envoyerMessage(content, auteur, titreSujet) {
