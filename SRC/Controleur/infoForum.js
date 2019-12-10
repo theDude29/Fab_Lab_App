@@ -23,7 +23,7 @@ export function creerNouveauTopic(titre, description, auteur, nouvellePage) {
     if(description != "") {
         requeteSQL("INSERT INTO App_forum_" + nouveauTitre + "_messages(auteur, content, date) VALUES('" + auteur + "','" + description + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss') + "')")
     }
-    
+
     nouvellePage()
 }
 

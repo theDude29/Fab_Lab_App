@@ -29,6 +29,7 @@ class CreationTopic extends React.Component {
                     <TextInput
                         style={styles.textInput}
                         onChangeText={(text) => this._sujetTextInputChanged(text)}
+                        maxLength={30}
                     />
                 </View>
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, TouchableOpacity, Image} from 'react-native'
 import moment from 'moment'
+import {decodeDBTextToNormalText} from '../../../Controleur/utilitaire'
 
 class ForumItem extends React.Component {
 

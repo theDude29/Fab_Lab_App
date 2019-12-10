@@ -19,7 +19,7 @@ class Forum extends React.Component {
     }
 
     render() {
-        setTimeout(this._chargerSujets, 1000*5)
+        setTimeout(this._chargerSujets, 1000*1)
 
         return (
             <ImageBackground
