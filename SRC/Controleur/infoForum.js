@@ -20,7 +20,7 @@ export function creerNouveauTopic(titre, description, auteur, nouvellePage) {
     requeteSQL("INSERT INTO App_forum_sujets(nom, auteur, date, resolu) VALUES('" + titre + "','" + auteur + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss')  + "','false')")
 
     titre = titre.replace(/ /g, '_')
-    requeteSQL("CREATE TABLE App_forum_" + titre + "_messages (id INT NOT NULL AUTO_INCREMENT, auteur VARCHAR(100), content TEXT, date DATETIME, PRIMARY KEY (id))")
+    requeteSQL("CREATE TABLE App_forum_" + titre + "_messages (id INT NOT NULL AUTO_INCREMENT, auteur VARCHAR(100), content TEXT, date DATE, PRIMARY KEY (id))")
     .then(() => {
         setTimeout(() => {
             if(description != "") {

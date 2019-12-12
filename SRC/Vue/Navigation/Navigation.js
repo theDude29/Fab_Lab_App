@@ -102,12 +102,6 @@ const ParametreStackNavigator = createStackNavigator({
 
 const MyDrawerNavigator = createDrawerNavigator({
 
-    Forum: {
-        screen: ForumStackNavigator,
-        navigationOptions: {
-            title: 'Forums'
-        }
-    },
   Home: {
     screen: Presentation,
     navigationOptions: {
@@ -124,6 +118,12 @@ const MyDrawerNavigator = createDrawerNavigator({
       screen: Faq,
       navigationOptions: {
           title: 'FAQ'
+      }
+  },
+  Forum: {
+      screen: ForumStackNavigator,
+      navigationOptions: {
+          title: 'Forums'
       }
   },
   Compte: {
