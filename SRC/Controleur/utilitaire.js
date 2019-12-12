@@ -18,6 +18,7 @@ export function encodeNormalTextToDBText(text) {
 export function decodeDBTextToNormalText(text) {
     text = text.replace(/PP/g, '+')
     text = text.replace(/QQ/g, '?')
+    text = text.replace(/AA/g, '\'')
 
     return text
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, ImageBackground, StyleSheet, FlatList, TextInput} from 'react-native'
+import {View, Text, ImageBackground, StyleSheet, FlatList, TextInput, ActivityIndicator} from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Boutton from '../Autres/Boutton'
 import {creerNouveauTopic} from '../../../Controleur/infoForum'
@@ -15,7 +15,8 @@ class CreationTopic extends React.Component {
         this.textDescription = ""
 
         this.state = {
-            textInexistant: true
+            textInexistant: true,
+            enAttente: false
         }
     }
 
@@ -23,6 +24,7 @@ class CreationTopic extends React.Component {
         return (
             <ImageBackground style={styles.image} source={require('../../ressources/images/question.png')}>
             <KeyboardAwareScrollView>
+                {this._displayDownload()}
 
                 <View style={styles.input_container}>
                     <Text style={styles.title_text}>Entrez le nom de votre sujet: </Text>
@@ -43,7 +45,10 @@ class CreationTopic extends React.Component {
                 </View>
 
                 <View style={styles.boutton_container}>
-                    <Boutton title="Confirmer" disabled={this.state.textInexistant} onPress={() => creerNouveauTopic(this.textSujet, this.textDescription, "Singe20199", this._retourAcceuil)} />
+                    <Boutton title="Confirmer" disabled={this.state.textInexistant} onPress={() => {
+                            this.setState({enAttente: true}, () => {creerNouveauTopic(this.textSujet, this.textDescription, "REMI LE SAUVAGE", this._retourAcceuil)})
+                        }}
+                     />
                 </View>
 
                 <View style={styles.text_container}>
@@ -75,6 +80,16 @@ class CreationTopic extends React.Component {
 
     _retourAcceuil() {
         this.props.navigation.navigate('Acceuil')
+    }
+
+    _displayDownload() {
+        if(this.state.enAttente == true) {
+            return (
+            <View style={styles.loading_container}>
+              <ActivityIndicator size='large' />
+            </View>
+          )
+        }
     }
 }
 
@@ -118,6 +133,9 @@ const styles = StyleSheet.create({
         margin: 2,
         fontSize: 15,
         width: '100%'
+    },
+    loading_container: {
+        margin: 10
     }
 })
 
