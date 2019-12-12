@@ -16,7 +16,7 @@ class MonCompte extends React.Component {
                 source={require('../../ressources/images/mon_compte.png')}
             >
                 <View style={styles.main_container}>
-                    <Text>Mon compte {this.props.pseudo}</Text>
+                    <Text>Bienvenu à toi {this.props.pseudo} ! Tu peux maintenant poster des messages sur le forum.</Text>
                 </View>
             </ImageBackground>
         )
