@@ -1,13 +1,20 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, ScrollView, TextInput, TouchableOpacity} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground} from 'react-native'
 import { connect } from 'react-redux'
+import Boutton from '../Autres/Boutton'
 
 class MonCompte extends React.Component {
 
     constructor(props) {
     super(props)
+
+    this._deconnection = this._deconnection.bind(this)
   }
 
+  _deconnection() {
+      var action = {type: "DECONNECTION"}
+      this.props.dispatch(action)
+  }
 
     render() {
         return (
@@ -16,7 +23,9 @@ class MonCompte extends React.Component {
                 source={require('../../ressources/images/mon_compte.png')}
             >
                 <View style={styles.main_container}>
-                    <Text>Bienvenu à toi {this.props.pseudo} ! Tu peux maintenant poster des messages sur le forum.</Text>
+                    <Text style={styles.default_text}>Bienvenu à toi {this.props.pseudo} ! Tu peux maintenant poster des messages sur le forum.</Text>
+                    <Text style={styles.default_text}>{'\n'}Clique sur le bouton en dessous pour te déconnecter.</Text>
+                    <Boutton title="Se déconnecter" onPress={this._deconnection} />
                 </View>
             </ImageBackground>
         )
@@ -34,6 +43,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,100,0,0.2)',
         borderRadius: 20,
     },
+    default_text: {
+        fontSize: 20
+    }
 })
 
 const mapStateToProps = (state) => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, TextInput, Image, ScrollView} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, TextInput, Image} from 'react-native'
 import Boutton from '../Autres/Boutton'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import {creerNouveauCompte, pseudoLibre, emailValide, mdpValide} from '../../../Controleur/creerNouveauCompte'

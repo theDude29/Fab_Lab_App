@@ -3,6 +3,8 @@ import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, ListVi
 import Message from './Message'
 import {getDiscussion, envoyerMessage} from '../../../Controleur/infoForum'
 import moment from 'moment'
+import { connect } from 'react-redux'
+import WarningPasConnecte from '../Autres/WarningPasConnecte'
 
 class Discussion extends React.Component {
 
@@ -46,7 +48,7 @@ class Discussion extends React.Component {
                     style={styles.list}
                     ref={component => this.list = component}
                     dataSource={this.state.listMessages}
-                    renderRow={(rowData) => <Message message={rowData} />}
+                    renderRow={(rowData) => <Message message={rowData} monPseudo={this.props.pseudo}/>}
                     onContentSizeChange={(w,h) => {
                         if(this.messageTelecharges == true) {
                             this.list.scrollToEnd()
@@ -54,6 +56,37 @@ class Discussion extends React.Component {
                     }}
                 />
 
+                {this._displayTextInput()}
+
+            <View style={{ height: 50 }} />
+            </KeyboardAvoidingView>
+            </ImageBackground>
+        )
+    }
+
+    _envoyerMessage() {
+        envoyerMessage(this.textMessage, this.props.pseudo, this.sujet.nom)
+
+        setTimeout(() => {
+            this._chargerMessages(true)
+        }, 100)
+
+        this.textInput.clear()
+    }
+
+    _messageTextInputChanged(text) {
+        this.textMessage = text
+    }
+
+    _chargerMessages(nouveauMessage) {
+        getDiscussion(this.sujet.nom).then(data => {
+            this.setState({listMessages: this.state.listMessages.cloneWithRows(data)}, nouveauMessage == true ? () => {this.messageTelecharges = true} : null)
+        })
+    }
+
+    _displayTextInput() {
+        if(this.props.connecte == true) {
+            return (
                 <View style={styles.input_container}>
                     <TextInput
                         ref={component => this.textInput = component}
@@ -71,31 +104,14 @@ class Discussion extends React.Component {
                         />
                     </TouchableOpacity>
                 </View>
+            )
+        }
 
-            <View style={{ height: 50 }} />
-            </KeyboardAvoidingView>
-            </ImageBackground>
-        )
-    }
-
-    _envoyerMessage() {
-        envoyerMessage(this.textMessage, "REMI", this.sujet.nom)
-
-        setTimeout(() => {
-            this._chargerMessages(true)
-        }, 100)
-
-        this.textInput.clear()
-    }
-
-    _messageTextInputChanged(text) {
-        this.textMessage = text
-    }
-
-    _chargerMessages(nouveauMessage) {
-        getDiscussion(this.sujet.nom).then(data => {
-            this.setState({listMessages: this.state.listMessages.cloneWithRows(data)}, nouveauMessage == true ? () => {this.messageTelecharges = true} : null)
-        })
+        else {
+            return (
+                <WarningPasConnecte />
+            )
+        }
     }
 }
 
@@ -131,12 +147,19 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     title_container: {
-        backgroundColor: 'rgba(200,100,0,0.5)',
         borderWidth: 3,
+        borderRadius: 5,
         margin: 20,
         marginBottom: 5,
         padding: 10
-    }
+    },
 })
 
-export default Discussion
+const mapStateToProps = (state) => {
+  return {
+      pseudo: state.pseudo,
+      connecte: state.connecte
+  }
+}
+
+export default connect(mapStateToProps)(Discussion)

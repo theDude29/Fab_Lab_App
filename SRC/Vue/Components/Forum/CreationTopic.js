@@ -3,6 +3,7 @@ import {View, Text, ImageBackground, StyleSheet, FlatList, TextInput, ActivityIn
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Boutton from '../Autres/Boutton'
 import {creerNouveauTopic} from '../../../Controleur/infoForum'
+import { connect } from 'react-redux'
 
 class CreationTopic extends React.Component {
 
@@ -46,7 +47,7 @@ class CreationTopic extends React.Component {
 
                 <View style={styles.boutton_container}>
                     <Boutton title="Confirmer" disabled={this.state.textInexistant} onPress={() => {
-                            this.setState({enAttente: true}, () => {creerNouveauTopic(this.textSujet, this.textDescription, "REMI LE SAUVAGE", this._retourAcceuil)})
+                            this.setState({enAttente: true}, () => {creerNouveauTopic(this.textSujet, this.textDescription, this.props.pseudo, this._retourAcceuil)})
                         }}
                      />
                 </View>
@@ -139,4 +140,10 @@ const styles = StyleSheet.create({
     }
 })
 
-export default CreationTopic
+const mapStateToProps = (state) => {
+  return {
+      pseudo: state.pseudo
+  }
+}
+
+export default connect(mapStateToProps)(CreationTopic)

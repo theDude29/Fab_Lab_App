@@ -2,6 +2,8 @@ import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, FlatList} from 'react-native'
 import * as InfoForums from '../../../Controleur/infoForum.js'
 import ForumItem from './ForumItem'
+import { connect } from 'react-redux'
+import WarningPasConnecte from '../Autres/WarningPasConnecte'
 
 class Forum extends React.Component {
 
@@ -38,14 +40,8 @@ class Forum extends React.Component {
                   )}
                 />
 
-                <View>
-                    <TouchableOpacity
-                        style={styles.add_container}
-                        onPress={() => this.props.navigation.navigate('CreationTopic')}
-                    >
-                        <Image style={styles.icon} source={require('../../ressources/icon/plus.png')} />
-                    </TouchableOpacity>
-                </View>
+                {this._displayBouttonCreationTopic()}
+
             </ImageBackground>
         )
     }
@@ -58,6 +54,27 @@ class Forum extends React.Component {
 
     _allerALADiscussion(sujet) {
         this.props.navigation.navigate('Discussion', {sujet: sujet})
+    }
+
+    _displayBouttonCreationTopic() {
+        if(this.props.connecte) {
+            return (
+                <View>
+                    <TouchableOpacity
+                        style={styles.add_container}
+                        onPress={() => this.props.navigation.navigate('CreationTopic')}
+                    >
+                        <Image style={styles.icon} source={require('../../ressources/icon/plus.png')} />
+                    </TouchableOpacity>
+                </View>
+            )
+        }
+
+        else {
+            return (
+                <WarningPasConnecte />
+            )
+        }
     }
 }
 
@@ -91,4 +108,10 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Forum
+const mapStateToProps = (state) => {
+  return {
+      connecte: state.connecte
+  }
+}
+
+export default connect(mapStateToProps)(Forum)

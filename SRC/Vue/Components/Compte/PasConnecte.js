@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, ScrollView, TextInput, TouchableOpacity} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, TouchableOpacity} from 'react-native'
 import Boutton from '../Autres/Boutton'
 
 class PasConnecte extends React.Component {

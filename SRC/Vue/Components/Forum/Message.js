@@ -11,8 +11,8 @@ class Message extends React.Component {
     render() {
 
         return (
-            <View style={this.props.message.auteur == "REMI" ? styles.main_containerA : styles.main_containerB}>
-                <View style={this.props.message.auteur == "REMI" ? styles.message_containerA : styles.message_containerB}>
+            <View style={this.props.message.auteur == this.props.monPseudo ? styles.main_containerA : styles.main_containerB}>
+                <View style={this.props.message.auteur == this.props.monPseudo ? styles.message_containerA : styles.message_containerB}>
                     <Text style={styles.text_content}>{this.props.message.content + '\n'}</Text>
                     <View style={styles.info_container}>
                         <Text style={styles.text_info}>{this.props.message.auteur + " le " + moment(new Date(this.props.message.date)).format('DD/MM/YYYY')}</Text>

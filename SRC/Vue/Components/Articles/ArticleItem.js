@@ -48,21 +48,18 @@ const styles = StyleSheet.create({
     title_text: {
         color: 'brown',
         fontSize: 20,
-        //fontFamily: 'futuriste',
         textAlign: 'center'
     },
     default_text: {
         color: "black",
         fontSize: 15,
-        //fontFamily: 'futuriste'
     },
     author_text: {
         color: "yellow",
         fontSize: 10,
-        //fontFamily: 'futuriste'
     },
     main_container: {
-        padding: 15,
+        padding: 12,
         backgroundColor: 'rgba(200,200,200,0.5)',
         borderRadius: 20,
     }
