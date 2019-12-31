@@ -54,7 +54,6 @@ class ConnectionCompte extends React.Component {
                             style={styles.textInput}
                             returnKeyType='next'
                             textContentType='password'
-                            secureTextEntry='true'
                             onChangeText={(text) => this._mdpTextInputChanged(text)}
                         />
                     </View>

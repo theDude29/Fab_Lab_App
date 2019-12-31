@@ -18,6 +18,7 @@ import CreationCompte from '../Components/Compte/CreationCompte'
 import AcceuilCompte from '../Components/Compte/AcceuilCompte'
 import ConnectionCompte from '../Components/Compte/ConnectionCompte'
 import Mon_compte from '../Components/Compte/Mon_compte'
+import PasConnecte from '../Components/Compte/PasConnecte'
 
 import Parametres from '../Components/Parametres/Parametres'
 import Credits from '../Components/Parametres/Credits'
@@ -82,6 +83,12 @@ const CompteStackNavigator = createStackNavigator({
       navigationOptions: {
           title: 'Mon compte'
       }
+  },
+  PasConnecte: {
+      screen: PasConnecte,
+      navigationOptions: {
+          title: "Pas connecté"
+      }
   }
 })
 
@@ -101,44 +108,43 @@ const ParametreStackNavigator = createStackNavigator({
 })
 
 const MyDrawerNavigator = createDrawerNavigator({
-
-  Home: {
-    screen: Presentation,
-    navigationOptions: {
-        title: 'Home'
-    }
-  },
-  Articles: {
-      screen: ArticleStackNavigator,
-      navigationOptions: {
-          title: 'Articles'
-      }
-  },
-  Faq: {
-      screen: Faq,
-      navigationOptions: {
-          title: 'FAQ'
-      }
-  },
-  Forum: {
-      screen: ForumStackNavigator,
-      navigationOptions: {
-          title: 'Forums'
-      }
-  },
-  Compte: {
-      screen: CompteStackNavigator,
-      navigationOptions: {
-          title: 'Mon compte'
-      }
-  },
-  Parametres: {
-      screen: ParametreStackNavigator,
-      navigationOptions: {
-          title: 'Paramètres'
-            }
-        }
-    },
+	Home: {
+	    screen: Presentation,
+	    navigationOptions: {
+		title: 'Home'
+	    }
+	  },
+	Articles: {
+	      screen: ArticleStackNavigator,
+	      navigationOptions: {
+		  title: 'Articles'
+	      }
+	  },
+	Faq: {
+	      screen: Faq,
+	      navigationOptions: {
+		  title: 'FAQ'
+	      }
+	  },
+    Forum: {
+      	      screen: ForumStackNavigator,
+      	      navigationOptions: {
+      		  title: 'Forums'
+      	      }
+      	  },
+	Compte: {
+	      screen: CompteStackNavigator,
+	      navigationOptions: {
+		  title: 'Mon compte'
+	      }
+	  },
+	  Parametres: {
+	      screen: ParametreStackNavigator,
+	      navigationOptions: {
+		  title: 'Paramètres'
+		    }
+	      },
+	  },
     {
         drawerBackgroundColor: 'green',
         drawerType: 'slide',

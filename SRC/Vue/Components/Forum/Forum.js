@@ -4,6 +4,7 @@ import * as InfoForums from '../../../Controleur/infoForum.js'
 import ForumItem from './ForumItem'
 import { connect } from 'react-redux'
 import WarningPasConnecte from '../Autres/WarningPasConnecte'
+import Navigator from '../Autres/Navigator'
 
 class Forum extends React.Component {
 
@@ -28,6 +29,7 @@ class Forum extends React.Component {
                 style={styles.image}
                 source={require('../../ressources/images/forums.jpg')}
             >
+            <Navigator navigation={this.props.navigation}/>
                 <FlatList
                     style={styles.list}
                   data={this.state.listSujets}

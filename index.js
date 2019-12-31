@@ -1,4 +1,9 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
+/**
+ * @format
+ */
 
-AppRegistry.registerComponent('Fab_Lab_App', () => App);
+import {AppRegistry} from 'react-native';
+import App from './SRC/App';
+import {name as appName} from './app.json';
+
+AppRegistry.registerComponent(appName, () => App);

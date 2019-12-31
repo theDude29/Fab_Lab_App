@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, ListView, TextInput, KeyboardAvoidingView} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, TextInput, KeyboardAvoidingView, FlatList} from 'react-native'
 import Message from './Message'
 import {getDiscussion, envoyerMessage} from '../../../Controleur/infoForum'
 import moment from 'moment'
@@ -12,7 +12,8 @@ class Discussion extends React.Component {
         super(props)
 
         this.state = {
-            listMessages: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+            listMessages: undefined,
+            nouveauMessage: false
         }
 
         this.list = React.createRef();
@@ -29,7 +30,6 @@ class Discussion extends React.Component {
     }
 
     render() {
-
         return (
             <ImageBackground
                 style={styles.image}
@@ -44,16 +44,13 @@ class Discussion extends React.Component {
                     <Text style={styles.title_text}>{this.sujet.nom + " par " + this.sujet.auteur + " le " + moment(new Date(this.sujet.date)).format('DD/MM/YYYY')}</Text>
                 </View>
 
-                <ListView
+                <FlatList
+                    data={this.state.listMessages}
                     style={styles.list}
                     ref={component => this.list = component}
-                    dataSource={this.state.listMessages}
-                    renderRow={(rowData) => <Message message={rowData} monPseudo={this.props.pseudo}/>}
-                    onContentSizeChange={(w,h) => {
-                        if(this.messageTelecharges == true) {
-                            this.list.scrollToEnd()
-                        }
-                    }}
+                    renderItem={({item}) => (
+                      <Message message={item} monPseudo={this.props.pseudo}/>
+                    )}
                 />
 
                 {this._displayTextInput()}
@@ -71,6 +68,10 @@ class Discussion extends React.Component {
             this._chargerMessages(true)
         }, 100)
 
+        setTimeout(() => {
+            this.list.scrollToEnd()
+        }, 1000)
+
         this.textInput.clear()
     }
 
@@ -80,7 +81,7 @@ class Discussion extends React.Component {
 
     _chargerMessages(nouveauMessage) {
         getDiscussion(this.sujet.nom).then(data => {
-            this.setState({listMessages: this.state.listMessages.cloneWithRows(data)}, nouveauMessage == true ? () => {this.messageTelecharges = true} : null)
+            this.setState({listMessages: data}, nouveauMessage == true ? () => {this.setState({nouveauMessage: true})} : null)
         })
     }
 
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
         height: 32,
     },
     list: {
-        height: '70%'
+        height: '80%'
     },
     title_text: {
         fontSize: 20,

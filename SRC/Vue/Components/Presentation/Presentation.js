@@ -1,34 +1,31 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, ScrollView} from 'react-native'
-import * as Font from 'expo-font' ;
 import * as InfoPresentation from '../../../Controleur/infoPresentation'
+import Navigator from '../Autres/Navigator'
 
 class Presentation extends React.Component {
 
     constructor(props) {
     super(props)
 
-    this.state = {
-      fontLoaded: false,
-      description_app: ""
-    }
+        this.state = {
+          description_app: ""
+        }
 
-    this._chargerDescription = this._chargerDescription.bind(this)
-    this._chargerDescription()
+        this._chargerDescription = this._chargerDescription.bind(this)
+        this._chargerDescription()
     }
 
     render() {
+
         return (
             <ImageBackground style={styles.image} source={require('../../ressources/images/presentation.jpg')}>
             <ScrollView>
-            {
-                this.state.fontLoaded ? (
+            <Navigator navigation={this.props.navigation}/>
                     <View style={styles.main_container}>
                         <Text style={styles.title_text}>Bienvenue dans l'application du fab lab !</Text>
                         <Text style={styles.default_text}>{this._displayDescription()}</Text>
                     </View>
-                    ) : null
-            }
             </ScrollView>
             </ImageBackground>
         )
@@ -47,14 +44,6 @@ class Presentation extends React.Component {
           })
       })
   }
-
-    async componentDidMount() {
-        await Font.loadAsync({
-          //'futuriste': require('../ressources/police/future_weknow/FUTURE.otf'),
-        });
-
-        this.setState({ fontLoaded: true });
-      }
 }
 
 const styles = StyleSheet.create({

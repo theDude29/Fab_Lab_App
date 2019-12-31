@@ -2,6 +2,7 @@ import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, FlatList} from 'react-native'
 import ArticleItem from './ArticleItem'
 import * as InfoArticles from '../../../Controleur/infoArticles'
+import Navigator from '../Autres/Navigator'
 
 class Articles extends React.Component {
 
@@ -40,6 +41,7 @@ class Articles extends React.Component {
     render() {
         return (
             <ImageBackground style={styles.image} source={require('../../ressources/images/articles.jpg')}>
+                <Navigator navigation={this.props.navigation}/>
                 {this._displayArticles()}
             </ImageBackground>
         )
@@ -62,9 +64,7 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     list: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: 110,
+        
     }
 })
 

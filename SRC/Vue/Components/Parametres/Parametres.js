@@ -1,5 +1,6 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TouchableOpacity} from 'react-native'
+import Navigator from '../Autres/Navigator'
 
 class Parametres extends React.Component {
 
@@ -13,6 +14,7 @@ class Parametres extends React.Component {
                 style={styles.image}
                 source={require('../../ressources/images/parametres.png')}
             >
+            <Navigator navigation={this.props.navigation}/>
                 <View style={styles.main_container}>
                     <TouchableOpacity
                         style={styles.item_container}

@@ -23,16 +23,18 @@ class ArticleItem extends React.Component {
     render() {
         const displayDetail = this.props.displayDetail
         return (
-            <ImageBackground style={styles.image} source={{uri: this.props.article.picture_url}}>
-                <TouchableOpacity
-                style={styles.main_container}
-                onPress={() => displayDetail(this.props.article)}
-                >
-                    <Text style={styles.title_text}>{this._getTitle()}</Text>
-                    <Text style={styles.default_text} numberOfLines={4}>{this._getContent()}</Text>
-                    <Text style={styles.author_text}>{this._getAuthor()}</Text>
-                </TouchableOpacity>
-            </ImageBackground>
+		<View style={{alignItems: 'center'}}>
+		    <ImageBackground style={styles.image} source={{uri: this.props.article.picture_url}}>
+		        <TouchableOpacity
+		        style={styles.main_container}
+		        onPress={() => displayDetail(this.props.article)}
+		        >
+		            <Text style={styles.title_text}>{this._getTitle()}</Text>
+		            <Text style={styles.default_text} numberOfLines={4}>{this._getContent()}</Text>
+		            <Text style={styles.author_text}>{this._getAuthor()}</Text>
+		        </TouchableOpacity>
+		    </ImageBackground>
+		</View>
         )
     }
 }
@@ -41,9 +43,9 @@ const styles = StyleSheet.create({
     image: {
         width: 300,
         height: 200,
-        padding: 20,
-        margin: 25,
-        borderWidth: 10
+        alignItems: 'center',
+    	justifyContent: 'center',
+    	margin: 30
     },
     title_text: {
         color: 'brown',
@@ -62,6 +64,7 @@ const styles = StyleSheet.create({
         padding: 12,
         backgroundColor: 'rgba(200,200,200,0.5)',
         borderRadius: 20,
+	width: '70%'
     }
 })
 

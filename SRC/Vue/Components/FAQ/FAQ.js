@@ -2,6 +2,7 @@ import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, FlatList} from 'react-native'
 import FaqItem from './FAQItem'
 import * as InfoFaq from '../../../Controleur/infoFAQ'
+import Navigator from '../Autres/Navigator'
 
 class Faq extends React.Component {
 
@@ -22,6 +23,7 @@ class Faq extends React.Component {
                 style={styles.image}
                 source={require('../../ressources/images/faq.jpg')}
             >
+            <Navigator navigation={this.props.navigation}/>
                 <View style={styles.main_container}>
                 <FlatList
                     style={styles.list}
@@ -54,8 +56,6 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     list: {
-        justifyContent: 'center',
-        alignItems: 'center',
         paddingTop: 30,
     }
 })

@@ -29,16 +29,16 @@ class AcceuilCompte extends React.Component {
 
     render() {
         return (
-                this._displayScreenAdapte()
+            this._displayScreenAdapte()
         )
     }
 
     _displayScreenAdapte () {
         if(this.props.connecte) {
-            return <MonCompte/>
+            return <MonCompte navigation={this.props.navigation}/>
         }
         else {
-            return <PasConnecte connection={this._allerALaConnectionCompte} creation={this._allerALaCreationCompte}/>
+            return <PasConnecte connection={this._allerALaConnectionCompte} creation={this._allerALaCreationCompte} navigation={this.props.navigation}/>
         }
     }
 }

@@ -1,11 +1,14 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TouchableOpacity} from 'react-native'
 import Boutton from '../Autres/Boutton'
+import Navigator from '../Autres/Navigator'
 
 class PasConnecte extends React.Component {
 
     constructor(props) {
     super(props)
+
+    this.navigation = this.props.navigation
   }
 
     render() {
@@ -14,6 +17,7 @@ class PasConnecte extends React.Component {
                 style={styles.image}
                 source={require('../../ressources/images/mon_compte.png')}
             >
+            <Navigator navigation={this.navigation} />
                 <View style={styles.main_container}>
                     <Text style={styles.title_text}>Bonjour malheureusement aucun compte n'est lié à l'application.</Text>
                     <TouchableOpacity

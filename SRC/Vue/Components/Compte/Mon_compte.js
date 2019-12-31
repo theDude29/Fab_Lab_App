@@ -2,6 +2,7 @@ import React from 'react'
 import {View, Text, StyleSheet, ImageBackground} from 'react-native'
 import { connect } from 'react-redux'
 import Boutton from '../Autres/Boutton'
+import Navigator from '../Autres/Navigator'
 
 class MonCompte extends React.Component {
 
@@ -9,6 +10,8 @@ class MonCompte extends React.Component {
     super(props)
 
     this._deconnection = this._deconnection.bind(this)
+
+    this.navigation = this.props.navigation
   }
 
   _deconnection() {
@@ -22,6 +25,7 @@ class MonCompte extends React.Component {
                 style={styles.image}
                 source={require('../../ressources/images/mon_compte.png')}
             >
+            <Navigator navigation={this.navigation}/>
                 <View style={styles.main_container}>
                     <Text style={styles.default_text}>Bienvenu à toi {this.props.pseudo} ! Tu peux maintenant poster des messages sur le forum.</Text>
                     <Text style={styles.default_text}>{'\n'}Clique sur le bouton en dessous pour te déconnecter.</Text>

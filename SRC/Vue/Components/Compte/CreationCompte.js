@@ -114,7 +114,7 @@ class CreationCompte extends React.Component {
                                 placeholderTextColor= '#111111'
                                 placeholder='Votre adresse mail'
                                 returnKeyType='next'
-                                textContentType='emailAdresse'
+                                textContentType='emailAddress'
                                 keyboardType='email-address'
                                 onChangeText={(text) => this._mailTextInputChanged(text)}
                             />
@@ -131,7 +131,6 @@ class CreationCompte extends React.Component {
                                 placeholder='Votre mot de passe'
                                 returnKeyType='next'
                                 textContentType='password'
-                                secureTextEntry='true'
                                 onChangeText={(text) => this._mdpTextInputChanged(text)}
                             />
                             {this._displayMessageValidite(this.state.mdpValide.etat)}
@@ -238,7 +237,7 @@ const styles = StyleSheet.create({
         padding: 3,
         margin: 2,
         fontSize: 15,
-        width: 200
+        width: '95%'
     },
     warning_text: {
         color: "red",
