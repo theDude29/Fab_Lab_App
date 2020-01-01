@@ -1,4 +1,4 @@
-package com.taupe;
+package com.fablabapp;
 
 import com.facebook.react.ReactActivity;
 

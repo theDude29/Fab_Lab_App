@@ -1,4 +1,4 @@
-package com.taupe;
+package com.fablabapp;
 
 import android.app.Application;
 import android.content.Context;

@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "taupe.app"
-               BlueprintName = "taupe"
-               ReferencedContainer = "container:taupe.xcodeproj">
+               BuildableName = "FabLabApp.app"
+               BlueprintName = "FabLabApp"
+               ReferencedContainer = "container:FabLabApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "taupeTests.xctest"
-               BlueprintName = "taupeTests"
-               ReferencedContainer = "container:taupe.xcodeproj">
+               BuildableName = "FabLabAppTests.xctest"
+               BlueprintName = "FabLabAppTests"
+               ReferencedContainer = "container:FabLabApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "taupeTests.xctest"
-               BlueprintName = "taupeTests"
-               ReferencedContainer = "container:taupe.xcodeproj">
+               BuildableName = "FabLabAppTests.xctest"
+               BlueprintName = "FabLabAppTests"
+               ReferencedContainer = "container:FabLabApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "taupe.app"
-            BlueprintName = "taupe"
-            ReferencedContainer = "container:taupe.xcodeproj">
+            BuildableName = "FabLabApp.app"
+            BlueprintName = "FabLabApp"
+            ReferencedContainer = "container:FabLabApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "taupe.app"
-            BlueprintName = "taupe"
-            ReferencedContainer = "container:taupe.xcodeproj">
+            BuildableName = "FabLabApp.app"
+            BlueprintName = "FabLabApp"
+            ReferencedContainer = "container:FabLabApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "taupe.app"
-            BlueprintName = "taupe"
-            ReferencedContainer = "container:taupe.xcodeproj">
+            BuildableName = "FabLabApp.app"
+            BlueprintName = "FabLabApp"
+            ReferencedContainer = "container:FabLabApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

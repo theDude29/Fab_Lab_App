@@ -57,7 +57,6 @@ class CreationTopic extends React.Component {
                     <Text style={styles.default_text}>  -Donnez un titre court, clair et précis à votre sujet par exemple mettez "Comment programmer en python" plutôt que "je ne comprend pas comment faire pour coder un programme en snt avec le language python".</Text>
                     <Text style={styles.default_text}>  -Essayez de vérifier votre orthographe au maximum.</Text>
                     <Text style={styles.default_text}>  -Restez poli.</Text>
-                    <Text style={styles.default_text}>  -Quand un sujet est résolu marquez le comme tel avec l'icon "check"</Text>
                 </View>
 
             </KeyboardAwareScrollView>
