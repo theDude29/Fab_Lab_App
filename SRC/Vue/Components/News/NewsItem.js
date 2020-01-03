@@ -2,26 +2,26 @@ import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native'
 import {convertHTMLtoText} from '../../../Controleur/utilitaire'
 
-class ArticleItem extends React.Component {
+class NewsItem extends React.Component {
 
     constructor(props) {
         super(props)
 
-        if(!this.props.article.picture_url.match(/http/)) {
-            this.props.navigation.state.params.article.picture_url = "https://fablab-dedale.fr/phpboost/" + this.props.navigation.state.params.article.picture_url
+        if(!this.props.news.picture_url.match(/http/)) {
+            this.props.navigation.state.params.news.picture_url = "https://fablab-dedale.fr/phpboost" + this.props.navigation.state.params.news.picture_url
         }
     }
 
     _getTitle() {
-        return convertHTMLtoText(this.props.article.title)
+        return convertHTMLtoText(this.props.news.name)
     }
 
     _getContent() {
-        return convertHTMLtoText(this.props.article.contents)
+        return convertHTMLtoText(this.props.news.contents)
     }
 
     _getAuthor() {
-        var nomAuteur = convertHTMLtoText(this.props.article.author_custom_name)
+        var nomAuteur = convertHTMLtoText(this.props.news.author_custom_name)
         if(nomAuteur == "") {
             nomAuteur = "Anomyme"
         }
@@ -32,10 +32,10 @@ class ArticleItem extends React.Component {
         const displayDetail = this.props.displayDetail
         return (
 		<View style={{alignItems: 'center'}}>
-		    <ImageBackground style={styles.image} source={{uri: this.props.article.picture_url}}>
+		    <ImageBackground style={styles.image} source={{uri: this.props.news.picture_url}}>
 		        <TouchableOpacity
-		        style={styles.main_container}
-		        onPress={() => displayDetail(this.props.article)}
+    		        style={styles.main_container}
+    		        onPress={() => displayDetail(this.props.news)}
 		        >
 		            <Text style={styles.title_text}>{this._getTitle()}</Text>
 		            <Text style={styles.default_text} numberOfLines={4}>{this._getContent()}</Text>
@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
         padding: 12,
         backgroundColor: 'rgba(200,200,200,0.5)',
         borderRadius: 20,
-	width: '70%'
+	    width: '70%'
     }
 })
 
-export default ArticleItem
+export default NewsItem

@@ -8,6 +8,9 @@ import Presentation from '../Components/Presentation/Presentation'
 import Articles from '../Components/Articles/Articles'
 import ArticleDetail from '../Components/Articles/ArticleDetail'
 
+import News from '../Components/News/News'
+import NewsDetail from '../Components/News/NewsDetail'
+
 import Forum from '../Components/Forum/Forum'
 import CreationTopic from '../Components/Forum/CreationTopic'
 import Discussion from '../Components/Forum/Discussion'
@@ -34,6 +37,21 @@ const ArticleStackNavigator = createStackNavigator({
     screen: ArticleDetail,
     navigationOptions: {
         title: 'Detail de l\'article'
+    }
+  }
+})
+
+const NewsStackNavigator = createStackNavigator({
+  News: {
+    screen: News,
+    navigationOptions: {
+      title: 'Dernières News'
+    }
+  },
+  NewsDetail: {
+    screen: NewsDetail,
+    navigationOptions: {
+        title: 'Detail de la News'
     }
   }
 })
@@ -114,6 +132,12 @@ const MyDrawerNavigator = createDrawerNavigator({
 		title: 'Home'
 	    }
 	  },
+    News : {
+        screen: NewsStackNavigator,
+        navigationOptions: {
+            title: 'News'
+        }
+    },
 	Articles: {
 	      screen: ArticleStackNavigator,
 	      navigationOptions: {

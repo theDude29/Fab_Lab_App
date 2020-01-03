@@ -3,25 +3,25 @@ import {View, Text, ImageBackground, StyleSheet, ScrollView} from 'react-native'
 import {convertHTMLtoText} from '../../../Controleur/utilitaire'
 import moment from 'moment'
 
-class ArticleDetail extends React.Component {
+class NewsDetail extends React.Component {
 
     constructor(props) {
         super(props)
 
-        if(!this.props.navigation.state.params.article.picture_url.match(/http/)) {
-            this.props.navigation.state.params.article.picture_url = "https://fablab-dedale.fr/phpboost/" + this.props.navigation.state.params.article.picture_url
+        if(!this.props.navigation.state.params.news.picture_url.match(/http/)) {
+            this.props.navigation.state.params.news.picture_url = "https://fablab-dedale.fr/phpboost" + this.props.navigation.state.params.news.picture_url
         }
     }
 
     render() {
-        article = this.props.navigation.state.params.article
+        news = this.props.navigation.state.params.news
         return (
-            <ImageBackground style={styles.image} source={{uri: article.picture_url}}>
+            <ImageBackground style={styles.image} source={{uri: news.picture_url}}>
             <ScrollView>
                 <View style={styles.main_container}>
-                    <Text style={styles.title_text}>{convertHTMLtoText(article.title)}</Text>
-                    <Text style={styles.default_text}>{convertHTMLtoText(article.contents)}</Text>
-                    <Text style={styles.author_text}>{"Posté par " + convertHTMLtoText(article.author_custom_name) + " le " + moment(new Date(article.date_created * 1000)).format('DD/MM/YYYY')}</Text>
+                    <Text style={styles.title_text}>{convertHTMLtoText(news.name)}</Text>
+                    <Text style={styles.default_text}>{convertHTMLtoText(news.contents)}</Text>
+                    <Text style={styles.author_text}>{"Posté par " + convertHTMLtoText(news.author_custom_name) + " le " + moment(new Date(news.date_created * 1000)).format('DD/MM/YYYY')}</Text>
                 </View>
             </ScrollView>
             </ImageBackground>
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ArticleDetail
+export default NewsDetail
