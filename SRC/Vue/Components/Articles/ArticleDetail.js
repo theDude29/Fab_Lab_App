@@ -8,6 +8,9 @@ class ArticleDetail extends React.Component {
     constructor(props) {
         super(props)
 
+        if(!this.props.navigation.state.params.article.picture_url.match(/http/)) {
+            this.props.navigation.state.params.article.picture_url = "https://fablab-dedale.fr/phpboost/articles/templates/images/default.png"
+        }
     }
 
     render() {

@@ -51,7 +51,6 @@ class Forum extends React.Component {
     _chargerSujets() {
         InfoForums.getListSujets().then(data => {
             this.setState({listSujets: data})
-            console.log(data)
         })
     }
 

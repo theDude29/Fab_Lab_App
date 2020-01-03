@@ -13,7 +13,6 @@ class Discussion extends React.Component {
 
         this.state = {
             listMessages: undefined,
-            nouveauMessage: false
         }
 
         this.list = React.createRef();
@@ -65,7 +64,7 @@ class Discussion extends React.Component {
         envoyerMessage(this.textMessage, this.props.pseudo, this.sujet.nom)
 
         setTimeout(() => {
-            this._chargerMessages(true)
+            this._chargerMessages()
         }, 100)
 
         setTimeout(() => {
@@ -79,9 +78,11 @@ class Discussion extends React.Component {
         this.textMessage = text
     }
 
-    _chargerMessages(nouveauMessage) {
+    _chargerMessages() {
         getDiscussion(this.sujet.nom).then(data => {
-            this.setState({listMessages: data}, nouveauMessage == true ? () => {this.setState({nouveauMessage: true})} : null)
+            this.setState({listMessages: data})
+
+            console.log(data)
         })
     }
 

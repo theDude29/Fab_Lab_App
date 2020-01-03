@@ -4,6 +4,16 @@ import {convertHTMLtoText} from '../../../Controleur/utilitaire'
 
 class ArticleItem extends React.Component {
 
+    constructor(props) {
+        super(props)
+
+        if(!this.props.article.picture_url.match(/http/)) {
+            this.props.article.picture_url = "https://fablab-dedale.fr/phpboost/articles/templates/images/default.png"
+        }
+
+        console.log(this.props.article.picture_url)
+    }
+
     _getTitle() {
         return convertHTMLtoText(this.props.article.title)
     }
