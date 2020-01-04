@@ -22,8 +22,6 @@ class Forum extends React.Component {
     }
 
     render() {
-        setTimeout(this._chargerSujets, 1000*1)
-
         return (
             <ImageBackground
                 style={styles.image}
@@ -51,6 +49,7 @@ class Forum extends React.Component {
     _chargerSujets() {
         InfoForums.getListSujets().then(data => {
             this.setState({listSujets: data})
+            console.log(data)
         })
     }
 
@@ -64,7 +63,7 @@ class Forum extends React.Component {
                 <View>
                     <TouchableOpacity
                         style={styles.add_container}
-                        onPress={() => this.props.navigation.navigate('CreationTopic')}
+                        onPress={() => this.props.navigation.navigate('CreationTopic', {callback: this._chargerSujets})}
                     >
                         <Image style={styles.icon} source={require('../../ressources/icon/plus.png')} />
                     </TouchableOpacity>

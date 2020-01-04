@@ -8,7 +8,7 @@ class NewsItem extends React.Component {
         super(props)
 
         if(!this.props.news.picture_url.match(/http/)) {
-            this.props.navigation.state.params.news.picture_url = "https://fablab-dedale.fr/phpboost" + this.props.navigation.state.params.news.picture_url
+            this.props.news.picture_url = "https://fablab-dedale.fr/phpboost" + this.props.news.picture_url
         }
     }
 
@@ -24,6 +24,7 @@ class NewsItem extends React.Component {
         var nomAuteur = convertHTMLtoText(this.props.news.author_custom_name)
         if(nomAuteur == "") {
             nomAuteur = "Anomyme"
+            this.props.news.author_custom_name = nomAuteur
         }
         return ("Auteur: " + nomAuteur)
     }
@@ -32,7 +33,7 @@ class NewsItem extends React.Component {
         const displayDetail = this.props.displayDetail
         return (
 		<View style={{alignItems: 'center'}}>
-		    <ImageBackground style={styles.image} source={{uri: this.props.news.picture_url}}>
+		    <ImageBackground style={styles.image} source={require("../../ressources/images/news_default.jpg")}>
 		        <TouchableOpacity
     		        style={styles.main_container}
     		        onPress={() => displayDetail(this.props.news)}

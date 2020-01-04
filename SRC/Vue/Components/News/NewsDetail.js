@@ -7,21 +7,17 @@ class NewsDetail extends React.Component {
 
     constructor(props) {
         super(props)
-
-        if(!this.props.navigation.state.params.news.picture_url.match(/http/)) {
-            this.props.navigation.state.params.news.picture_url = "https://fablab-dedale.fr/phpboost" + this.props.navigation.state.params.news.picture_url
-        }
     }
 
     render() {
         news = this.props.navigation.state.params.news
         return (
-            <ImageBackground style={styles.image} source={{uri: news.picture_url}}>
+            <ImageBackground style={styles.image} source={require("../../ressources/images/news_default.jpg")}>
             <ScrollView>
                 <View style={styles.main_container}>
                     <Text style={styles.title_text}>{convertHTMLtoText(news.name)}</Text>
                     <Text style={styles.default_text}>{convertHTMLtoText(news.contents)}</Text>
-                    <Text style={styles.author_text}>{"Posté par " + convertHTMLtoText(news.author_custom_name) + " le " + moment(new Date(news.date_created * 1000)).format('DD/MM/YYYY')}</Text>
+                    <Text style={styles.author_text}>{"Posté par " + convertHTMLtoText(news.author_custom_name) + " le " + moment(new Date(news.creation_date * 1000)).format('DD/MM/YYYY')}</Text>
                 </View>
             </ScrollView>
             </ImageBackground>

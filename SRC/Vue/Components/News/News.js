@@ -40,7 +40,7 @@ class News extends React.Component {
 
     render() {
         return (
-            <ImageBackground style={styles.image} source={require('../../ressources/images/articles.jpg')}>
+            <ImageBackground style={styles.image} source={require('../../ressources/images/news.jpg')}>
                 <Navigator navigation={this.props.navigation}/>
                 {this._displayNews()}
             </ImageBackground>

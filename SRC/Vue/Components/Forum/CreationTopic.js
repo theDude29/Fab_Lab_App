@@ -79,6 +79,7 @@ class CreationTopic extends React.Component {
     }
 
     _retourAcceuil() {
+        this.props.navigation.state.params.callback()
         this.props.navigation.navigate('Acceuil')
     }
 

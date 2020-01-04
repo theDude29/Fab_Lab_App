@@ -8,7 +8,7 @@ class ArticleItem extends React.Component {
         super(props)
 
         if(!this.props.article.picture_url.match(/http/)) {
-            this.props.navigation.state.params.article.picture_url = "https://fablab-dedale.fr/phpboost/" + this.props.navigation.state.params.article.picture_url
+            this.props.article.picture_url = "https://fablab-dedale.fr/phpboost" + this.props.article.picture_url
         }
     }
 
@@ -24,6 +24,7 @@ class ArticleItem extends React.Component {
         var nomAuteur = convertHTMLtoText(this.props.article.author_custom_name)
         if(nomAuteur == "") {
             nomAuteur = "Anomyme"
+            this.props.article.author_custom_name = nomAuteur
         }
         return ("Auteur: " + nomAuteur)
     }
