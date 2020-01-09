@@ -8,6 +8,10 @@ export function convertHTMLtoText(text) {
     return newText
 }
 
+export function encadreHTML(text) {
+    return "<p>" + text + "</p>"
+}
+
 export function encodeNormalTextToDBText(text) {
     text = text.replace(/\+/g, "PP")
     text = text.replace(/\?/g, "QQ")

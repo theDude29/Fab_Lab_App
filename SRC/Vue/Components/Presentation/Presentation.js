@@ -1,7 +1,9 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, ScrollView} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, ScrollView, WebView} from 'react-native'
 import * as InfoPresentation from '../../../Controleur/infoPresentation'
 import Navigator from '../Autres/Navigator'
+import {convertHTMLtoText, encadreHTML} from '../../../Controleur/utilitaire'
+import HTMLView from 'react-native-htmlview'
 
 class Presentation extends React.Component {
 
@@ -24,16 +26,10 @@ class Presentation extends React.Component {
             <Navigator navigation={this.props.navigation}/>
                     <View style={styles.main_container}>
                         <Text style={styles.title_text}>Bienvenue dans l'application du fab lab !</Text>
-                        <Text style={styles.default_text}>{this._displayDescription()}</Text>
+                        <HTMLView value={encadreHTML(this.state.description_app)} stylesheet={stylesHTML}/>
                     </View>
             </ScrollView>
             </ImageBackground>
-        )
-    }
-
-    _displayDescription() {
-        return (
-            <Text>{this.state.description_app + '\n'}</Text>
         )
     }
 
@@ -52,18 +48,24 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     title_text: {
-        color: "cyan",
+        color: "blue",
         fontSize: 35,
-    },
-    default_text: {
-        color: "white",
-        fontSize: 25,
     },
     main_container: {
         margin: 20,
         padding: 15,
         backgroundColor: 'rgba(100,100,100,0.5)',
         borderRadius: 20,
+    },
+})
+
+const stylesHTML = StyleSheet.create({
+    p: {
+        color: "white",
+        fontSize: 30,
+    },
+    a: {
+        color: 'cyan'
     }
 })
 

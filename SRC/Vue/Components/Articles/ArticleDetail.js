@@ -1,7 +1,8 @@
 import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, ScrollView} from 'react-native'
-import {convertHTMLtoText} from '../../../Controleur/utilitaire'
+import {convertHTMLtoText, encadreHTML} from '../../../Controleur/utilitaire'
 import moment from 'moment'
+import HTMLView from 'react-native-htmlview'
 
 class ArticleDetail extends React.Component {
 
@@ -17,7 +18,7 @@ class ArticleDetail extends React.Component {
             <ScrollView>
                 <View style={styles.main_container}>
                     <Text style={styles.title_text}>{convertHTMLtoText(article.title)}</Text>
-                    <Text style={styles.default_text}>{convertHTMLtoText(article.contents)}</Text>
+                    <HTMLView stylesheet={stylesHTML} value={encadreHTML(article.contents)} />
                     <Text style={styles.author_text}>{"Posté par " + convertHTMLtoText(article.author_custom_name) + " le " + moment(new Date(article.date_created * 1000)).format('DD/MM/YYYY')}</Text>
                 </View>
             </ScrollView>
@@ -37,11 +38,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'brown'
     },
-    default_text: {
-        color: "black",
-        fontSize: 23,
-        margin: 20
-    },
     author_text: {
         color: "black",
         fontSize: 18,
@@ -52,6 +48,17 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         margin: 10,
         marginTop: 20
+    }
+})
+
+const stylesHTML = StyleSheet.create({
+    p: {
+        color: "black",
+        fontSize: 23,
+        margin: 20
+    },
+    a: {
+        color: 'cyan'
     }
 })
 
