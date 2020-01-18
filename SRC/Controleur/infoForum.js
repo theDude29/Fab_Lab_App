@@ -11,7 +11,7 @@ export function getDiscussion(nom) {
     nom = nom.replace(/ /g, '_')
     nom = nom.replace(/'/g, "AA")
 
-    return requeteSQL("SELECT * FROM App_forum_" + nom + "_messages")
+    return requeteSQL("SELECT *, NOW() FROM App_forum_" + nom + "_messages")
 }
 
 export function creerNouveauTopic(titre, description, auteur, nouvellePage) {

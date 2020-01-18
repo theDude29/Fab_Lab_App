@@ -32,6 +32,7 @@ export function requeteSQL(requete) {
     requete = encodeNormalTextToDBText(requete)
 
     if(requete.match(/SELECT/)) {
+        requete = requete.replace(/SELECT/, "SELECT SQL_NO_CACHE")
         return loadFile("queryRequeteSQL.php?sql=" + requete).then((data) => JSON.parse(decodeDBTextToNormalText(data)))
     }
 

@@ -170,7 +170,7 @@ const MyDrawerNavigator = createDrawerNavigator({
 	      },
 	  },
     {
-        drawerBackgroundColor: 'green',
+        drawerBackgroundColor: "rgb(200,150,50)",
         drawerType: 'slide',
         hideStatusBar: 'true'
     }
