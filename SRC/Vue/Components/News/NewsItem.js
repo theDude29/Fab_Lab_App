@@ -6,10 +6,6 @@ class NewsItem extends React.Component {
 
     constructor(props) {
         super(props)
-
-        if(!this.props.news.picture_url.match(/http/)) {
-            this.props.news.picture_url = "https://fablab-dedale.fr/phpboost" + this.props.news.picture_url
-        }
     }
 
     _getTitle() {
