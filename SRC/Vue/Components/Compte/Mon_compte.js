@@ -28,7 +28,7 @@ class MonCompte extends React.Component {
             <Navigator navigation={this.navigation}/>
                 <View style={styles.main_container}>
                     <Text style={styles.default_text}>Bienvenu à toi {this.props.pseudo} ! Tu peux maintenant poster des messages sur le forum.</Text>
-                    <Text style={styles.default_text}>{'\n'}Clique sur le bouton en dessous pour te déconnecter.</Text>
+                    <Text style={styles.default_text}>{'\n'}Clique sur le bouton en dessous pour te déconnecter.{'\n'}</Text>
                     <Boutton title="Se déconnecter" onPress={this._deconnection} />
                 </View>
             </ImageBackground>
@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     default_text: {
-        fontSize: 20
+        fontSize: 20,
+        fontFamily: "CharlemagneStd-Bold"
     }
 })
 

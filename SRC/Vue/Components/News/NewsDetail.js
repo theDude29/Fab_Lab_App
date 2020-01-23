@@ -35,17 +35,20 @@ const styles = StyleSheet.create({
         margin: 10,
         fontSize: 40,
         textAlign: 'center',
-        color: 'brown'
+        color: 'brown',
+        fontFamily: "CharlemagneStd-Bold"
     },
     default_text: {
         color: "black",
         fontSize: 23,
-        margin: 20
+        margin: 20,
+        fontFamily: "CharlemagneStd-Bold"
     },
     author_text: {
         color: "black",
         fontSize: 18,
-        margin: 15
+        margin: 15,
+        fontFamily: "CharlemagneStd-Bold"
     },
     main_container: {
         backgroundColor: 'rgba(220,220,220,0.5)',
@@ -59,10 +62,12 @@ const stylesHTML = StyleSheet.create({
     p: {
         color: "black",
         fontSize: 23,
-        margin: 20
+        margin: 20,
+        fontFamily: "CharlemagneStd-Bold"
     },
     a: {
-        color: 'cyan'
+        color: 'cyan',
+        fontFamily: "CharlemagneStd-Bold"
     }
 })
 

@@ -204,6 +204,7 @@ const styles = StyleSheet.create({
     default_text: {
         color: "white",
         fontSize: 20,
+        fontFamily: "CharlemagneStd-Bold"
     },
     icon: {
         width: 20,
@@ -242,7 +243,8 @@ const styles = StyleSheet.create({
     warning_text: {
         color: "red",
         fontSize: 20,
-        margin: 10
+        margin: 10,
+        fontFamily: "CharlemagneStd-Bold"
     },
     inputContainer: {
         flexDirection: 'row'

@@ -55,12 +55,13 @@ const styles = StyleSheet.create({
         color: "orange",
         fontSize: 20,
         textDecorationLine: 'underline',
-        //fontFamily: 'futuriste'
+        fontFamily: "CharlemagneStd-Bold"
     },
     reponse_text: {
         color: "orange",
         fontSize: 20,
-        marginLeft: 10
+        marginLeft: 10,
+        fontFamily: "CharlemagneStd-Bold"
     },
     main_container: {
         padding: 15,

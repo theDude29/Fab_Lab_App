@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     default_text: {
         color: "black",
         fontSize: 20,
-        textAlign: 'center'
-        //fontFamily: 'futuriste'
+        textAlign: 'center',
+        fontFamily: "CharlemagneStd-Bold"
     },
     main_container: {
         backgroundColor: 'rgba(0,0,100,0.5)',

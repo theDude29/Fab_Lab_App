@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     default_text: {
         color: "white",
         fontSize: 20,
+        fontFamily: "CharlemagneStd-Bold"
     },
     main_container: {
         margin: 10,

@@ -63,12 +63,14 @@ const styles = StyleSheet.create({
     },
     title_text: {
         fontSize: 22,
-        color: 'white'
+        color: 'white',
+        fontFamily: "CharlemagneStd-Bold"
     },
     info_text: {
         marginTop: 5,
         fontSize: 15,
-        color: 'white'
+        color: 'white',
+        fontFamily: "CharlemagneStd-Bold"
     }
 })
 

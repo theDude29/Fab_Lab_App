@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     title_text: {
         color: "blue",
         fontSize: 35,
+        fontFamily: "CharlemagneStd-Bold"
     },
     main_container: {
         margin: 20,
@@ -63,9 +64,11 @@ const stylesHTML = StyleSheet.create({
     p: {
         color: "white",
         fontSize: 30,
+        fontFamily: "CharlemagneStd-Bold"
     },
     a: {
-        color: 'cyan'
+        color: 'cyan',
+        fontFamily: "CharlemagneStd-Bold"
     }
 })
 

@@ -32,7 +32,7 @@ class PasConnecte extends React.Component {
                     >
                         <Text style={styles.default_text}>Vous ne possédez pas de compte ? Créez en un simplement en cliquant ici !</Text>
                     </TouchableOpacity>
-                    <Text>Avoir un compte vous permez de poser des questions sur le forum</Text>
+                    <Text>Avoir un compte vous permez de poser des questions sur le forum.</Text>
                 </View>
             </ImageBackground>
         )
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     default_text: {
         color: "white",
         fontSize: 20,
+        fontFamily: "CharlemagneStd-Bold"
     },
     main_container: {
         margin: 20,

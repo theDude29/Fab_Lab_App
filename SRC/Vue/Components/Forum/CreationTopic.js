@@ -106,11 +106,13 @@ const styles = StyleSheet.create({
     },
     default_text: {
         fontSize: 17,
-        color: 'white'
+        color: 'white',
+        fontFamily: "CharlemagneStd-Bold"
     },
     title_text: {
             fontSize: 20,
-            color: 'white'
+            color: 'white',
+            fontFamily: "CharlemagneStd-Bold"
     },
     text_container: {
         margin: 15,

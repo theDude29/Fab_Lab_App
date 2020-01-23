@@ -107,11 +107,12 @@ const styles = StyleSheet.create({
     default_text: {
         color: "white",
         fontSize: 20,
-        //fontFamily: 'futuriste'
+        fontFamily: "CharlemagneStd-Bold"
     },
     mdpOublie_text: {
         margin: 10,
-        fontSize: 15
+        fontSize: 15,
+        fontFamily: "CharlemagneStd-Bold"
     },
     main_container: {
         margin: 20,
@@ -135,7 +136,8 @@ const styles = StyleSheet.create({
     warning_text: {
         color: "red",
         fontSize: 20,
-        margin: 10
+        margin: 10,
+        fontFamily: "CharlemagneStd-Bold"
     },
     warning_container: {
         margin: 20,
