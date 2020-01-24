@@ -81,8 +81,6 @@ class Discussion extends React.Component {
     _chargerMessages() {
         getDiscussion(this.sujet.nom).then(data => {
             this.setState({listMessages: data})
-
-            console.log(data)
         })
     }
 
