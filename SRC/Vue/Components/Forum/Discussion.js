@@ -65,11 +65,11 @@ class Discussion extends React.Component {
 
         setTimeout(() => {
             this._chargerMessages()
-        }, 100)
+        }, 500)
 
         setTimeout(() => {
             this.list.scrollToEnd()
-        }, 1000)
+        }, 1500)
 
         this.textInput.clear()
     }
@@ -146,7 +146,8 @@ const styles = StyleSheet.create({
     },
     title_text: {
         fontSize: 20,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: "CharlemagneStd-Bold"
     },
     title_container: {
         borderWidth: 3,

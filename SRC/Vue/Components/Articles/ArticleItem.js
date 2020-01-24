@@ -59,15 +59,18 @@ const styles = StyleSheet.create({
     title_text: {
         color: 'brown',
         fontSize: 20,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: "CharlemagneStd-Bold"
     },
     default_text: {
         color: "black",
         fontSize: 15,
+        fontFamily: "CharlemagneStd-Bold"
     },
     author_text: {
         color: "yellow",
         fontSize: 10,
+        fontFamily: "CharlemagneStd-Bold"
     },
     main_container: {
         padding: 12,

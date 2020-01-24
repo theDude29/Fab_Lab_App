@@ -30,14 +30,12 @@ const styles = StyleSheet.create({
     },
     default_text: {
         color: "white",
-        fontSize: 20,
-        fontFamily: "CharlemagneStd-Bold"
+        fontSize: 20
     },
     lien: {
         color: "cyan",
         fontSize: 20,
-        fontStyle: 'italic',
-        fontFamily: "CharlemagneStd-Bold"
+        fontStyle: 'italic'
     },
     main_container: {
         margin: 20,
