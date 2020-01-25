@@ -61,6 +61,8 @@ class Discussion extends React.Component {
     }
 
     _envoyerMessage() {
+        this.textMessage = this.textMessage.replace(/'/g, "AA")
+
         envoyerMessage(this.textMessage, this.props.pseudo, this.sujet.nom)
 
         setTimeout(() => {

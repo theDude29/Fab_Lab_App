@@ -16,7 +16,7 @@ export function getDiscussion(nom) {
 
 export function creerNouveauTopic(titre, description, auteur, nouvellePage) {
 
-    titre = titre.replace(/’/g, "AA")
+    titre = titre.replace(/'/g, "AA")
     requeteSQL("INSERT INTO App_forum_sujets(nom, auteur, date, resolu) VALUES('" + titre + "','" + auteur + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss')  + "','false')")
 
     titre = titre.replace(/ /g, '_')
@@ -24,7 +24,7 @@ export function creerNouveauTopic(titre, description, auteur, nouvellePage) {
     .then(() => {
         setTimeout(() => {
             if(description != "") {
-                description = description.replace(/’/g, 'AA')
+                description = description.replace(/'/g, 'AA')
                 requeteSQL("INSERT INTO App_forum_" + titre + "_messages(auteur, content, date) VALUES('" + auteur + "','" + description + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss') + "')")
             }
 
