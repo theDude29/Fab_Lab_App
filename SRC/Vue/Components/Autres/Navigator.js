@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, StyleSheet, TouchableOpacity} from 'react-native'
+import {Image, StyleSheet, TouchableOpacity, Dimensions} from 'react-native'
 
 class Navigator extends React.Component {
 
@@ -24,12 +24,12 @@ class Navigator extends React.Component {
 
 const styles = StyleSheet.create({
     image: {
-        width: 64,
-        height: 64
+        width: (Dimensions.get('window').width / 8),
+        height: (Dimensions.get('window').width / 8)
     },
     main_container: {
-        width: 80,
-        height: 80,
+        width: (Dimensions.get('window').width / 8) + 10,
+        height: (Dimensions.get('window').width / 8) + 10,
         backgroundColor: 'rgba(100,100,200,0.5)',
         borderRadius: 10,
         alignItems: 'center',
