@@ -1,4 +1,4 @@
-ADRESSE_SERVEUR_FAB_LAB = "https://fablab-dedale.fr/App/php/" //"https://fablab-dedale.fr/App/php/" //"http://192.168.0.5/test/App/"
+ADRESSE_SERVEUR_FAB_LAB = "https://fablab-dedale.fr/App/php/" //"https://fablab-dedale.fr/App/php/" "http://192.168.0.5/test/App/" "http://remi.perenne.free.fr/App/php/"
 ADRESSE_SERVEUR_APP = "http://remi.perenne.free.fr/App/php/"
 
 import {loadFile} from '../Model/LoadFile'
@@ -40,11 +40,15 @@ export function requeteSQL(requete) {
     }
 
     if(requete.match(/SELECT/)) {
-        requete = requete.replace(/SELECT/, "SELECT SQL_NO_CACHE")
         return loadFile(serveur + "queryRequeteSQL.php?sql=" + requete).then((data) => JSON.parse(decodeDBTextToNormalText(data)))
     }
 
     if(requete.match(/DELETE|INSERT|UPDATE|CREATE/)) {
         return loadFile(serveur + "execRequeteSQL.php?sql=" + requete)
     }
+}
+
+export function getMemberNameFromID(id) {
+    return requeteSQL("SELECT display_name FROM phpboost_member WHERE user_id=" + id)
+
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native'
-import {convertHTMLtoText} from '../../../Controleur/utilitaire'
+import {convertHTMLtoText, getMemberNameFromID} from '../../../Controleur/utilitaire'
 
 class ArticleItem extends React.Component {
 
@@ -10,6 +10,13 @@ class ArticleItem extends React.Component {
         if(!this.props.article.picture_url.match(/http/)) {
             this.props.article.picture_url = "https://fablab-dedale.fr/phpboost" + this.props.article.picture_url
         }
+
+        this.state = {
+            auteur: undefined
+        }
+
+        this._getAuthor = this._getAuthor.bind(this)
+        this._getAuthor()
     }
 
     _getTitle() {
@@ -21,12 +28,9 @@ class ArticleItem extends React.Component {
     }
 
     _getAuthor() {
-        var nomAuteur = convertHTMLtoText(this.props.article.author_custom_name)
-        if(nomAuteur == "") {
-            nomAuteur = "Anomyme"
-            this.props.article.author_custom_name = nomAuteur
-        }
-        return ("Auteur: " + nomAuteur)
+        getMemberNameFromID(this.props.article.author_user_id).then(data => {
+            this.setState({auteur: data[0].display_name}, () => {this.props.article.author_custom_name = this.state.auteur})
+        })
     }
 
     render() {
@@ -40,7 +44,7 @@ class ArticleItem extends React.Component {
 		        >
 		            <Text style={styles.title_text}>{this._getTitle()}</Text>
 		            <Text style={styles.default_text} numberOfLines={4}>{this._getContent()}</Text>
-		            <Text style={styles.author_text}>{this._getAuthor()}</Text>
+		            <Text style={styles.author_text}>{"Auteur: " + this.state.auteur}</Text>
 		        </TouchableOpacity>
 		    </ImageBackground>
 		</View>

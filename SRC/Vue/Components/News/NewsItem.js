@@ -1,11 +1,18 @@
 import React from 'react'
 import {View, Text, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native'
-import {convertHTMLtoText} from '../../../Controleur/utilitaire'
+import {convertHTMLtoText, getMemberNameFromID} from '../../../Controleur/utilitaire'
 
 class NewsItem extends React.Component {
 
     constructor(props) {
         super(props)
+
+        this.state = {
+            auteur: undefined
+        }
+
+        this._getAuthor = this._getAuthor.bind(this)
+        this._getAuthor()
     }
 
     _getTitle() {
@@ -17,12 +24,9 @@ class NewsItem extends React.Component {
     }
 
     _getAuthor() {
-        var nomAuteur = convertHTMLtoText(this.props.news.author_custom_name)
-        if(nomAuteur == "") {
-            nomAuteur = "Anomyme"
-            this.props.news.author_custom_name = nomAuteur
-        }
-        return ("Auteur: " + nomAuteur)
+        getMemberNameFromID(this.props.news.author_user_id).then(data => {
+            this.setState({auteur: data[0].display_name}, () => {this.props.news.author_custom_name = this.state.auteur})
+        })
     }
 
     render() {
@@ -36,7 +40,7 @@ class NewsItem extends React.Component {
 		        >
 		            <Text style={styles.title_text}>{this._getTitle()}</Text>
 		            <Text style={styles.default_text} numberOfLines={4}>{this._getContent()}</Text>
-		            <Text style={styles.author_text}>{this._getAuthor()}</Text>
+		            <Text style={styles.author_text}>{"Auteur: " + this.state.auteur}</Text>
 		        </TouchableOpacity>
 		    </ImageBackground>
 		</View>
