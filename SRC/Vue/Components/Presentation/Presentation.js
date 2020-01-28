@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     title_text: {
-        color: "blue",
+        color: "rgb(250,250,200)",
         fontSize: 35,
         fontFamily: "CharlemagneStd-Bold"
     },

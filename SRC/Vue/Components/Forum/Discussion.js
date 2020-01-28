@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, TextInput, KeyboardAvoidingView, FlatList} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, TextInput, KeyboardAvoidingView, FlatList, Dimensions} from 'react-native'
 import Message from './Message'
 import {getDiscussion, envoyerMessage} from '../../../Controleur/infoForum'
 import moment from 'moment'
@@ -89,29 +89,33 @@ class Discussion extends React.Component {
     _displayTextInput() {
         if(this.props.connecte == true) {
             return (
-                <View style={styles.input_container}>
-                    <TextInput
-                        ref={component => this.textInput = component}
-                        style={styles.textInput}
-                        onChangeText={(text) => this._messageTextInputChanged(text)}
-                        multiline={true}
-                    />
-                    <TouchableOpacity
-                        style={styles.icon_container}
-                        onPress={this._envoyerMessage}
-                    >
-                        <Image
-                            source={require('../../ressources/icon/send-message.png')}
-                            style={styles.icon}
+                <View style={styles.container_bas}>
+                    <View style={styles.input_container}>
+                        <TextInput
+                            ref={component => this.textInput = component}
+                            style={styles.textInput}
+                            onChangeText={(text) => this._messageTextInputChanged(text)}
+                            multiline={true}
                         />
-                    </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.icon_container}
+                            onPress={this._envoyerMessage}
+                        >
+                            <Image
+                                source={require('../../ressources/icon/send-message.png')}
+                                style={styles.icon}
+                            />
+                        </TouchableOpacity>
+                    </View>
                 </View>
             )
         }
 
         else {
             return (
-                <WarningPasConnecte />
+                <View style={styles.container_bas}>
+                    <WarningPasConnecte />
+                </View>
             )
         }
     }
@@ -122,6 +126,9 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
+    container_bas: {
+        height: Dimensions.get('window').height * 0.15
+    },
     input_container: {
         flexDirection: 'row',
     },
@@ -131,18 +138,18 @@ const styles = StyleSheet.create({
     textInput: {
         borderWidth: 2,
         borderRadius: 5,
-        padding: 3,
+        padding: '3%',
         fontSize: 20,
         width: '75%',
         margin: '5%',
-        marginTop: 5
+        marginTop: 5,
     },
     icon: {
         width: 32,
         height: 32,
     },
     list: {
-        height: '80%'
+        height: Dimensions.get('window').height * 0.7
     },
     title_text: {
         fontSize: 20,
@@ -154,7 +161,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         margin: 20,
         marginBottom: 5,
-        padding: 10
+        padding: 10,
+        height: Dimensions.get('window').height * 0.08
     },
 })
 
