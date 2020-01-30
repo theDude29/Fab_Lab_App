@@ -1,4 +1,4 @@
-package com.fablabapp;
+package com.fablabdedale;
 
 import com.facebook.react.ReactActivity;
 

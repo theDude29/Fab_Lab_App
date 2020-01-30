@@ -1,4 +1,4 @@
-package com.fablabapp;
+package com.fablabdedale;
 
 import android.app.Application;
 import android.content.Context;
