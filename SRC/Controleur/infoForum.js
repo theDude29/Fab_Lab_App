@@ -14,7 +14,22 @@ export function getDiscussion(nom) {
     return requeteSQL("SELECT *, NOW() FROM App_forum_" + nom + "_messages")
 }
 
+export function envoyerMessageAuMembresFLD(content) {
+
+    requeteSQL("SELECT * FROM App_fablabMembres_id").then(data => {
+
+        for(var i = 0; i < data.length; i+=1) {
+            var messagePerso = content.replace(/NOM/g, data[i].nom)
+            var requete = "INSERT INTO phpboost_pm_msg(idconvers, user_id, content) VALUES(" + data[i].id_phpboost + ", -1, '" + messagePerso + "')"
+            console.log(requete)
+            requeteSQL(requete)
+        }
+    })
+}
+
 export function creerNouveauTopic(titre, description, auteur, nouvellePage) {
+
+    envoyerMessageAuMembresFLD("Salut NOM un nouveau topic a été créé sur l'app du FabLab son titre est " + titre + ", peux tu aider cette personne ?")
 
     titre = titre.replace(/'/g, "AA")
     requeteSQL("INSERT INTO App_forum_sujets(nom, auteur, date, resolu) VALUES('" + titre + "','" + auteur + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss')  + "','false')")

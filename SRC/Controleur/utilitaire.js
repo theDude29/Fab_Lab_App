@@ -43,7 +43,7 @@ export function requeteSQL(requete) {
         return loadFile(serveur + "queryRequeteSQL.php?sql=" + requete).then((data) => JSON.parse(decodeDBTextToNormalText(data)))
     }
 
-    if(requete.match(/DELETE|INSERT|UPDATE|CREATE/)) {
+    if(requete.match(/INSERT|UPDATE|CREATE/)) {
         return loadFile(serveur + "execRequeteSQL.php?sql=" + requete)
     }
 }
