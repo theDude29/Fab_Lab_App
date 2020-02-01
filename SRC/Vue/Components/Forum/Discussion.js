@@ -34,10 +34,6 @@ class Discussion extends React.Component {
                 style={styles.image}
                 source={require('../../ressources/images/fond_messages.jpg')}
             >
-            <KeyboardAvoidingView
-              style={styles.container}
-              behavior="height"
-            >
 
                 <View style={styles.title_container}>
                     <Text style={styles.title_text}>{this.sujet.nom + " par " + this.sujet.auteur + " le " + moment(new Date(this.sujet.date)).format('DD/MM/YYYY')}</Text>
@@ -52,9 +48,11 @@ class Discussion extends React.Component {
                     )}
                 />
 
+            <KeyboardAvoidingView
+              style={styles.container}
+              behavior="height"
+            >
                 {this._displayTextInput()}
-
-            <View style={{ height: 50 }} />
             </KeyboardAvoidingView>
             </ImageBackground>
         )
@@ -127,7 +125,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     container_bas: {
-        height: Dimensions.get('window').height * 0.15
+
     },
     input_container: {
         flexDirection: 'row',
@@ -149,7 +147,7 @@ const styles = StyleSheet.create({
         height: 32,
     },
     list: {
-        height: Dimensions.get('window').height * 0.7
+        
     },
     title_text: {
         fontSize: 20,
@@ -161,8 +159,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         margin: 20,
         marginBottom: 5,
-        padding: 10,
-        height: Dimensions.get('window').height * 0.08
+        padding: 10
     },
 })
 
