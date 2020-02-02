@@ -31,9 +31,11 @@ export function decodeDBTextToNormalText(text) {
     return text
 }
 
-export function requeteSQL(requete) {
+export function requeteSQL(requete, encode = true) {
 
-    requete = encodeNormalTextToDBText(requete)
+    if(encode == true) {
+        requete = encodeNormalTextToDBText(requete)
+    }
 
     var serveur = ADRESSE_SERVEUR_APP
     if(requete.match(/phpboost/)) {

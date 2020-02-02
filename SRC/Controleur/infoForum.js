@@ -21,7 +21,7 @@ export function envoyerMessageAuMembresFLD(content) {
         for(var i = 0; i < data.length; i+=1) {
             var messagePerso = content.replace(/NOM/g, data[i].nom)
             var requete = "INSERT INTO phpboost_pm_msg(idconvers, user_id, contents) VALUES(" + data[i].id_phpboost + ", -1, \"" + messagePerso + "\")"
-            requeteSQL(requete)
+            requeteSQL(requete, false)
         }
     })
 }
@@ -29,7 +29,7 @@ export function envoyerMessageAuMembresFLD(content) {
 export function creerNouveauTopic(titre, description, auteur, nouvellePage) {
 
     //ne pas mettre de caractère enmerdant dans ce message comme les apostrophes etc...
-    envoyerMessageAuMembresFLD("Salut NOM un nouveau topic a été créé sur l app du FabLab son titre est " + titre + ", peux tu aider cette personne ?")
+    envoyerMessageAuMembresFLD("Salut NOM un nouveau topic a été créé sur l app du FabLab son titre est \\\"" + titre + "\\\", peux tu aider cette personne ?")
 
     titre = titre.replace(/'/g, "AA")
     requeteSQL("INSERT INTO App_forum_sujets(nom, auteur, date, resolu) VALUES('" + titre + "','" + auteur + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss')  + "','false')")
