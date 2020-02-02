@@ -26,6 +26,7 @@ export function decodeDBTextToNormalText(text) {
     text = text.replace(/PP/g, '+')
     text = text.replace(/QQ/g, '?')
     text = text.replace(/AA/g, '\'')
+    text = text.replace(/NN/g, '\\n')
 
     return text
 }

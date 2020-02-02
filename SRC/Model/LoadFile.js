@@ -2,5 +2,7 @@ ADRESSE_SERVEUR = "https://fablab-dedale.fr/App/php/" //"https://fablab-dedale.f
 
 export function loadFile(file) {
 
+    console.log(file)
+
     return fetch(file).then((response) => response.text())
 }

@@ -60,6 +60,7 @@ class Discussion extends React.Component {
 
     _envoyerMessage() {
         this.textMessage = this.textMessage.replace(/'/g, "AA")
+        this.textMessage = this.textMessage.replace(/\n/g, "NN")
 
         envoyerMessage(this.textMessage, this.props.pseudo, this.sujet.nom)
 
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
         height: 32,
     },
     list: {
-        
+
     },
     title_text: {
         fontSize: 20,

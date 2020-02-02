@@ -1,11 +1,14 @@
 import React from 'react'
 import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image, FlatList} from 'react-native'
 import moment from 'moment'
+import {decodeDBTextToNormalText} from "../../../Controleur/utilitaire"
 
 class Message extends React.Component {
 
     constructor(props) {
         super(props)
+
+        this.message = decodeDBTextToNormalText(this.props.message.content)
     }
 
     render() {
@@ -13,7 +16,7 @@ class Message extends React.Component {
         return (
             <View style={this.props.message.auteur == this.props.monPseudo ? styles.main_containerA : styles.main_containerB}>
                 <View style={this.props.message.auteur == this.props.monPseudo ? styles.message_containerA : styles.message_containerB}>
-                    <Text style={styles.text_content}>{this.props.message.content + '\n'}</Text>
+                    <Text style={styles.text_content}>{this.message + '\n'}</Text>
                     <View style={styles.info_container}>
                         <Text style={styles.text_info}>{this.props.message.auteur + " le " + moment(new Date(this.props.message.date)).format('DD/MM/YYYY')}</Text>
                     </View>

@@ -20,7 +20,7 @@ export function envoyerMessageAuMembresFLD(content) {
 
         for(var i = 0; i < data.length; i+=1) {
             var messagePerso = content.replace(/NOM/g, data[i].nom)
-            var requete = "INSERT INTO phpboost_pm_msg(idconvers, user_id, contents) VALUES(" + data[i].id_phpboost + ", -1, '" + messagePerso + "')"
+            var requete = "INSERT INTO phpboost_pm_msg(idconvers, user_id, contents) VALUES(" + data[i].id_phpboost + ", -1, \"" + messagePerso + "\")"
             requeteSQL(requete)
         }
     })
@@ -40,6 +40,7 @@ export function creerNouveauTopic(titre, description, auteur, nouvellePage) {
         setTimeout(() => {
             if(description != "") {
                 description = description.replace(/'/g, 'AA')
+                description = description.replace(/\n/g, "NN")
                 requeteSQL("INSERT INTO App_forum_" + titre + "_messages(auteur, content, date) VALUES('" + auteur + "','" + description + "','" + moment(new Date()).format('YYYY-MM-DD HH:mm:ss') + "')")
             }
 
