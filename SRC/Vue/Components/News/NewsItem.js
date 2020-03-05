@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         fontFamily: "CharlemagneStd-Bold"
     },
     author_text: {
-        color: "yellow",
+        color: "rgb(55,150,50)",
         fontSize: 10,
         fontFamily: "CharlemagneStd-Bold"
     },
