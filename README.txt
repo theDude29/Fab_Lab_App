@@ -3,7 +3,7 @@ Ce logiciel a été développé par Rémi Pérenne et est sous license GNU GENER
 Pour compiler l'application vous devez installer toutes les dépendances en executant $ npm install à la racine du projet.
 Suivez ensuite la démarche décrite dans la documentation officiel de React-Native : https://facebook.github.io/react-native/docs/getting-started
 
-Pour plus de détails allez voire mon site : http://remi.perenne.free.fr/site_app_fablab/presentation.php
+Pour plus de détails allez voire mon site : http://remi.perenne.free.fr/site/html/fablab-app.html
 
 Me contacter:
 6 rue Bourdelle, Brest 29200
